@@ -12,6 +12,7 @@ import './global.css';
 
 // --- Pages ----
 import HomePage from './pages/Home';
+import QuizPage from './pages/Quiz';
 import ContactoPage from './pages/Contacto';
 import { PagesInfo } from './helpers/constants';
 // import SobreMi from './pages/SobreMi';
@@ -29,6 +30,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path={PagesInfo.HOME.path} element={<HomePage />} />
+            <Route path={PagesInfo.QUIZ.path} element={<QuizPage />} />
             <Route path={PagesInfo.CONTACTO.path} element={<ContactoPage />} />
             {/* <Route path="/lorem1" element={<Lorem1 />} /> */}
             {/* <Route path="/lorem2" element={<Lorem2 />} /> */}
