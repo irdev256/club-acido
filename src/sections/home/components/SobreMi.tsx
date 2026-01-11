@@ -1,10 +1,10 @@
 import { Box, Container, Typography } from '@mui/material';
-import { HomeSection } from '../../helpers/constants';
+import { PagesInfo } from '../../../helpers/constants';
 
 export default function SobreMi() {
   return (
     <Box
-      id={HomeSection.SOBRE_MI}
+      id={PagesInfo.HOME.sections.SOBRE_MI}
       component="section"
       role="img"
       aria-label="Retrato de Alejandrina González, médium consciente y guía espiritual, en un entorno natural con girasoles"

@@ -1,11 +1,11 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import Navbar from '../layout/Navbar';
-import { HomeSection } from '../../helpers/constants';
+import { PagesInfo } from '../../../helpers/constants';
+import Navbar from '../../../components/layout/Navbar';
 
 export default function Hero() {
   return (
     <Box
-      id={HomeSection.HERO}
+      id={PagesInfo.HOME.sections.HERO}
       aria-label="Mujer en meditación conectando con su energía interior durante una mentoría espiritual consciente"
       role="img"
       sx={{
@@ -102,7 +102,7 @@ export default function Hero() {
           {/* CTA */}
           <Button
             component="a"
-            href={`/#${HomeSection.CONTENT}`}
+            href={`/#${PagesInfo.HOME.sections.CONTENT}`}
             variant="contained"
             size="large"
             sx={{

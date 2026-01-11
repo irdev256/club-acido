@@ -1,4 +1,5 @@
 import { theme } from './theme/theme';
+import { HelmetProvider } from 'react-helmet-async';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -22,23 +23,25 @@ import { PagesInfo } from './helpers/constants';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <BrowserRouter>
-        <Routes>
-          <Route path={PagesInfo.HOME.path} element={<Home />} />
-          {/* <Route path="/lorem1" element={<Lorem1 />} /> */}
-          {/* <Route path="/lorem2" element={<Lorem2 />} /> */}
-          {/* <Route path="/lorem3" element={<Lorem3 />} /> */}
-          {/* <Route path="/sobre-mi" element={<SobreMi />} /> */}
-          <Route path={PagesInfo.CONTACTO.path} element={<Contacto />} />
-        </Routes>
-        <Footer />
-        <MusicButton />
-        <WhatsAppButton />
-        <ScrollToTop />
-      </BrowserRouter>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <Routes>
+            <Route path={PagesInfo.HOME.path} element={<Home />} />
+            {/* <Route path="/lorem1" element={<Lorem1 />} /> */}
+            {/* <Route path="/lorem2" element={<Lorem2 />} /> */}
+            {/* <Route path="/lorem3" element={<Lorem3 />} /> */}
+            {/* <Route path="/sobre-mi" element={<SobreMi />} /> */}
+            <Route path={PagesInfo.CONTACTO.path} element={<Contacto />} />
+          </Routes>
+          <Footer />
+          <MusicButton />
+          <WhatsAppButton />
+          <ScrollToTop />
+        </BrowserRouter>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 

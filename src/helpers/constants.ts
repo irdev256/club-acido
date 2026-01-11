@@ -1,20 +1,17 @@
-export const HomeSection = {
-  HERO: 'inicio',
-  CONTENT: 'mentoria',
-  SOBRE_MI: 'sobre-mi',
-  TESTIMONIALS: 'testimonios',
-};
-
 export const PagesInfo = {
-  HOME: { path: '/', helmet: 'Home | Club Ácido' },
+  HOME: {
+    path: '/',
+    helmet: 'Home | Club Ácido',
+    sections: { HERO: 'inicio', CONTENT: 'mentoria', SOBRE_MI: 'sobre-mi', TESTIMONIALS: 'testimonios' },
+  },
   CONTACTO: { path: '/contacto', helmet: 'Contacto | Club Ácido' },
 };
 
 export const NavItems = [
-  { label: 'Mentoría', href: HomeSection.CONTENT, type: 'anchor' },
-  { label: 'Sobre mí', href: HomeSection.SOBRE_MI, type: 'anchor' },
-  { label: 'Testimonios', href: HomeSection.TESTIMONIALS, type: 'anchor' },
-  { label: 'Contacto', href: PagesInfo.CONTACTO, type: 'route' },
+  { label: 'Mentoría', href: PagesInfo.HOME.sections.CONTENT, type: 'anchor' },
+  { label: 'Sobre mí', href: PagesInfo.HOME.sections.SOBRE_MI, type: 'anchor' },
+  { label: 'Testimonios', href: PagesInfo.HOME.sections.TESTIMONIALS, type: 'anchor' },
+  { label: 'Contacto', href: PagesInfo.CONTACTO.path, type: 'route' },
 ];
 
 // --------------------------------------------------------------

@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
-import { HomeSection } from '../../helpers/constants';
+import { PagesInfo } from '../../../helpers/constants';
 
 type ContentBlockProps = {
   eyebrow: string;
@@ -57,7 +57,7 @@ function ContentBlock({ eyebrow, title, content, aside, reverse }: ContentBlockP
 export default function Content() {
   return (
     <Box
-      id={HomeSection.CONTENT}
+      id={PagesInfo.HOME.sections.CONTENT}
       sx={{
         position: 'relative',
         py: { xs: 10, md: 14 },

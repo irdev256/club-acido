@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { HomeSection } from '../../helpers/constants';
+import { PagesInfo } from '../../../helpers/constants';
 
 type Testimonial = {
   text: string;
@@ -41,7 +41,7 @@ export default function Testimonials() {
 
   return (
     <Box
-      id={HomeSection.TESTIMONIALS}
+      id={PagesInfo.HOME.sections.TESTIMONIALS}
       component="section"
       sx={{
         position: 'relative',
