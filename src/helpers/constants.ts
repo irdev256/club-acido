@@ -12,7 +12,7 @@ export const NavItems = [
   { label: 'Mentoría', href: PagesInfo.HOME.sections.CONTENT, type: 'anchor' },
   { label: 'Sobre mí', href: PagesInfo.HOME.sections.SOBRE_MI, type: 'anchor' },
   { label: 'Testimonios', href: PagesInfo.HOME.sections.TESTIMONIALS, type: 'anchor' },
-  { label: 'Contacto', href: '/quiz/diagnostico-piel', type: 'route' },
+  { label: 'QUIZ', href: '/quiz/diagnostico-piel', type: 'route' },
 ];
 
 // --------------------------------------------------------------
