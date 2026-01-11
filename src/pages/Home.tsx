@@ -5,12 +5,13 @@ import Hero from '../components/sections/Hero';
 import Links from '../components/sections/Links';
 import SobreMi from '../components/sections/SobreMi';
 import Testimonials from '../components/sections/Testimonials';
+import { PagesInfo } from '../helpers/constants';
 
 export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Mentoría espiritual consciente | Alejandrina González</title>
+        <title>{PagesInfo.HOME.helmet}</title>
       </Helmet>
 
       <Hero />

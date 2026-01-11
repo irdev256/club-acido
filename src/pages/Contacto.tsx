@@ -4,6 +4,7 @@ import Navbar from '../components/layout/Navbar';
 import { useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Helmet } from 'react-helmet-async';
+import { PagesInfo } from '../helpers/constants';
 
 export default function Contacto() {
   const location = useLocation();
@@ -45,7 +46,7 @@ export default function Contacto() {
   return (
     <>
       <Helmet>
-        <title>Contacto | Mentoría espiritual con Alejandrina González</title>
+        <title>{PagesInfo.CONTACTO.helmet}</title>
       </Helmet>
 
       <Box
