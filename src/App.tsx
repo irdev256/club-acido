@@ -29,11 +29,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path={PagesInfo.HOME.path} element={<HomePage />} />
+            <Route path={PagesInfo.CONTACTO.path} element={<ContactoPage />} />
             {/* <Route path="/lorem1" element={<Lorem1 />} /> */}
             {/* <Route path="/lorem2" element={<Lorem2 />} /> */}
             {/* <Route path="/lorem3" element={<Lorem3 />} /> */}
             {/* <Route path="/sobre-mi" element={<SobreMi />} /> */}
-            <Route path={PagesInfo.CONTACTO.path} element={<ContactoPage />} />
           </Routes>
           <Footer />
           <MusicButton />
