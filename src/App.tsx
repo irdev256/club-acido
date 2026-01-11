@@ -11,8 +11,8 @@ import WhatsAppButton from './components/common/WhatsAppButton';
 import './global.css';
 
 // --- Pages ----
-import Home from './pages/Home';
-import Contacto from './pages/Contacto';
+import HomePage from './pages/Home';
+import ContactoPage from './pages/Contacto';
 import { PagesInfo } from './helpers/constants';
 // import SobreMi from './pages/SobreMi';
 // import Lorem1 from './pages/Lorem1';
@@ -28,12 +28,12 @@ function App() {
         <CssBaseline />
         <BrowserRouter>
           <Routes>
-            <Route path={PagesInfo.HOME.path} element={<Home />} />
+            <Route path={PagesInfo.HOME.path} element={<HomePage />} />
             {/* <Route path="/lorem1" element={<Lorem1 />} /> */}
             {/* <Route path="/lorem2" element={<Lorem2 />} /> */}
             {/* <Route path="/lorem3" element={<Lorem3 />} /> */}
             {/* <Route path="/sobre-mi" element={<SobreMi />} /> */}
-            <Route path={PagesInfo.CONTACTO.path} element={<Contacto />} />
+            <Route path={PagesInfo.CONTACTO.path} element={<ContactoPage />} />
           </Routes>
           <Footer />
           <MusicButton />

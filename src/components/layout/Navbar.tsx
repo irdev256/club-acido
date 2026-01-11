@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import NavigationLoader from './NavigationLoader';
 import { Link, useLocation } from 'react-router-dom';
-import { HomeSection, NavItems } from '../../helpers/constants';
+import { PagesInfo, NavItems } from '../../helpers/constants';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ export default function Navbar() {
         <Toolbar sx={{ maxWidth: 1200, mx: 'auto', width: '100%' }}>
           <Box
             component="a"
-            href={`/#${HomeSection.HERO}`}
+            href={`/#${PagesInfo.HOME.sections.HERO}`}
             sx={{
               flexGrow: 1,
               display: 'flex',
