@@ -30,7 +30,7 @@ export const theme = createTheme({
     mode: 'light',
 
     background: {
-      default: '#FEFCFA', // blanco roto
+      default: '#f0eff4', // GHOST WHITE
       paper: '#EADFCC', // arena clara para cards / panels
     },
 
