@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
+import { PagesInfo } from '../../../helpers/constants';
 // import { useNavigate } from 'react-router-dom';
 
 type LinkCardProps = {
@@ -13,6 +14,7 @@ type LinkCardProps = {
 function LinkCard({ title, subtitle, image, onClick, ariaLabel }: LinkCardProps) {
   return (
     <Box
+      id={PagesInfo.HOME.sections.LINKS}
       onClick={onClick}
       role="img"
       aria-label={ariaLabel}

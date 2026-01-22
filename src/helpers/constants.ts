@@ -2,7 +2,7 @@ export const PagesInfo = {
   HOME: {
     path: '/',
     helmet: 'Home | Club Ácido',
-    sections: { HERO: 'inicio', CONTENT: 'mentoria', SOBRE_MI: 'sobre-mi', TESTIMONIALS: 'testimonios' },
+    sections: { HERO: 'inicio', CONTENT: 'mentoria', SOBRE_MI: 'sobre-mi', TESTIMONIALS: 'testimonios', LINKS: 'links' },
   },
   CONTACTO: { path: '/contacto', helmet: 'Contacto | Club Ácido' },
   QUIZ: { path: '/quiz/:quizSlug', helmet: 'Quiz | Club Ácido' },

@@ -3,6 +3,14 @@ import { PagesInfo } from '../../../helpers/constants';
 import Navbar from '../../../components/layout/Navbar';
 
 export default function Hero() {
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById(PagesInfo.HOME.sections.LINKS);
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Box
       id={PagesInfo.HOME.sections.HERO}
@@ -87,18 +95,18 @@ export default function Hero() {
         </Stack>
       </Container>
       <Tooltip
-        title="Dale, scrolleá papi 😉"
+        title="Ok, apretame y te bajo yo 🙄"
         placement="top"
         arrow
         slotProps={{
           tooltip: {
             sx: {
-              fontSize: 26,
-              padding: '12px 18px',
+              fontSize: 22,
+              padding: '14px 20px',
               borderRadius: 12,
               backgroundColor: 'rgba(30,30,30,0.85)',
               backdropFilter: 'blur(6px)',
-              maxWidth: 360,
+              maxWidth: 380,
               textAlign: 'center',
             },
           },
@@ -110,6 +118,7 @@ export default function Hero() {
         }}
       >
         <Box
+          onClick={scrollToNextSection}
           sx={(theme) => ({
             position: 'absolute',
             bottom: 32,
@@ -121,12 +130,16 @@ export default function Hero() {
             alignItems: 'center',
             gap: 1,
             color: theme.palette.text.secondary,
-            cursor: 'default',
+            cursor: 'pointer',
 
             '@keyframes scrollArrow': {
               '0%': { transform: 'translateY(0)' },
               '50%': { transform: 'translateY(12px)' },
               '100%': { transform: 'translateY(0)' },
+            },
+
+            '&:hover': {
+              opacity: 0.9,
             },
           })}
         >
