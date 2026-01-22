@@ -4,13 +4,13 @@ import Content from './components/Content';
 import SobreMi from './components/SobreMi';
 import FinalCTA from './components/FinalCta';
 import Testimonials from './components/Testimonials';
-import BrandsCarousel from './components/BrandsCarousel';
+import SocialDemoSection from './components/SocialDemoSection';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <BrandsCarousel />
+      <SocialDemoSection />
       <Links />
       <Content />
       <FinalCTA />

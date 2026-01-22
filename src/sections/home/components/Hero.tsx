@@ -4,7 +4,7 @@ import Navbar from '../../../components/layout/Navbar';
 
 export default function Hero() {
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById(PagesInfo.HOME.sections.LINKS);
+    const nextSection = document.getElementById(PagesInfo.HOME.sections.SOCIAL_DEMO);
 
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
@@ -95,7 +95,7 @@ export default function Hero() {
         </Stack>
       </Container>
       <Tooltip
-        title="Ok, apretame y te bajo yo 🙄"
+        title="O apretá... hacé lo que quieras 🙄"
         placement="top"
         arrow
         slotProps={{
@@ -106,7 +106,7 @@ export default function Hero() {
               borderRadius: 12,
               backgroundColor: 'rgba(30,30,30,0.85)',
               backdropFilter: 'blur(6px)',
-              maxWidth: 380,
+              maxWidth: 480,
               textAlign: 'center',
             },
           },
