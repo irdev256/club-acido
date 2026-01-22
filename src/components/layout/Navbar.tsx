@@ -1,14 +1,30 @@
 import { AppBar, Box, Drawer, IconButton, Stack, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
 import NavigationLoader from './NavigationLoader';
 import { Link, useLocation } from 'react-router-dom';
 import { PagesInfo, NavItems } from '../../helpers/constants';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrolledVh = (window.scrollY / window.innerHeight) * 100;
+
+      setShowNavbar(scrolledVh > 80);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    onScroll(); // estado inicial
+
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const isHome = location.pathname === '/';
 
   const visibleNavItems = NavItems.filter((item) => {
@@ -29,7 +45,12 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: 'rgba(168, 160, 160, 0.5)', // vidrio oscuro
+          opacity: showNavbar ? 1 : 0,
+          transform: showNavbar ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'opacity 200ms ease-out, transform 200ms ease-out',
+          pointerEvents: showNavbar ? 'auto' : 'none',
+
+          backgroundColor: 'rgba(168, 160, 160, 0.5)',
           backdropFilter: 'blur(10px) saturate(120%)',
           WebkitBackdropFilter: 'blur(10px) saturate(120%)',
           borderBottom: '1px solid rgba(255,255,255,0.08)',
@@ -69,7 +90,7 @@ export default function Navbar() {
                 whiteSpace: 'nowrap',
               }}
             >
-              Alejandrina González
+              Club ácido
             </Typography>
           </Box>
 

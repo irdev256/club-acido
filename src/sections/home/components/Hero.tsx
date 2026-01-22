@@ -1,4 +1,4 @@
-import { Box, Button, Container, Stack, Typography } from '@mui/material';
+import { alpha, Box, Container, Stack, Tooltip } from '@mui/material';
 import { PagesInfo } from '../../../helpers/constants';
 import Navbar from '../../../components/layout/Navbar';
 
@@ -18,18 +18,16 @@ export default function Hero() {
 
       {/* Fondo principal */}
       <Box
-        sx={{
+        sx={(theme) => ({
           position: 'absolute',
           inset: 0,
           background: `
-            radial-gradient(
-              circle at top,
-              rgba(255,255,255,0.92) 0%,
-              rgba(254,252,250,0.95) 55%,
-              rgba(234,223,204,0.96) 100%
-            )
-          `,
-        }}
+          radial-gradient(
+          circle at top,
+          ${alpha(theme.palette.common.white, 0.92)} 0%,
+          ${alpha(theme.palette.background.default, 0.95)} 55%,
+          ${alpha(theme.palette.background.paper, 0.96)} 100%)`,
+        })}
       />
 
       {/* Detalles sutiles de luz */}
@@ -75,78 +73,97 @@ export default function Hero() {
         }}
       >
         <Stack spacing={4} alignItems="center">
-          {/* Video */}
+          <Box
+            src="/logo.png"
+            component="img"
+            aria-hidden
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              paddingBottom: 10, // PADDING BOT PARA SUBIRLO UN POCO
+            }}
+          />
+        </Stack>
+      </Container>
+      <Tooltip
+        title="Dale, scrolleá papi 😉"
+        placement="top"
+        arrow
+        slotProps={{
+          tooltip: {
+            sx: {
+              fontSize: 26,
+              padding: '12px 18px',
+              borderRadius: 12,
+              backgroundColor: 'rgba(30,30,30,0.85)',
+              backdropFilter: 'blur(6px)',
+              maxWidth: 360,
+              textAlign: 'center',
+            },
+          },
+          arrow: {
+            sx: {
+              color: 'rgba(30,30,30,0.85)',
+            },
+          },
+        }}
+      >
+        <Box
+          sx={(theme) => ({
+            position: 'absolute',
+            bottom: 32,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 1,
+            color: theme.palette.text.secondary,
+            cursor: 'default',
+
+            '@keyframes scrollArrow': {
+              '0%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(12px)' },
+              '100%': { transform: 'translateY(0)' },
+            },
+          })}
+        >
           <Box
             sx={{
-              width: { xs: 220, sm: 280, md: 340 },
-              aspectRatio: '1 / 1',
+              animation: 'scrollArrow 0.8s ease-in-out infinite',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             <Box
-              component="video"
-              src="/logo-animated.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              aria-hidden
-              sx={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain',
-              }}
-            />
+              component="svg"
+              width={78}
+              height={86}
+              viewBox="0 0 24 36"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 2v26" />
+              <path d="M19 21l-7 7-7-7" />
+            </Box>
           </Box>
-
-          {/* Texto */}
-          <Typography
-            variant="h1"
-            fontWeight={600}
+          <Box
             sx={{
-              color: '#5B5450',
-              fontSize: {
-                xs: '2.2rem',
-                sm: '2.8rem',
-                md: '3.4rem',
-              },
+              fontSize: 23,
+              letterSpacing: '0.08em',
+              opacity: 0.75,
             }}
           >
-            Despertar con el Plan de tu Alma
-          </Typography>
-
-          <Typography
-            variant="h6"
-            sx={{
-              color: '#6B6460',
-              maxWidth: 600,
-            }}
-          >
-            Mentoría espiritual para reconectar con tu propósito, tu energía y tu verdad.
-          </Typography>
-
-          {/* CTA */}
-          <Button
-            component="a"
-            href={`/#${PagesInfo.HOME.sections.CONTENT}`}
-            variant="contained"
-            size="large"
-            sx={{
-              textTransform: 'none',
-              px: 4,
-              py: 1.5,
-              fontWeight: 500,
-              color: '#9A6B1F',
-              backgroundColor: '#FFF1D6',
-              border: '1px solid #9A6B1F',
-              '&:hover': {
-                backgroundColor: '#ffe8b9',
-              },
-            }}
-          >
-            Quiero más información
-          </Button>
-        </Stack>
-      </Container>
+            Scrolleá
+          </Box>
+        </Box>
+      </Tooltip>
     </Box>
   );
 }
