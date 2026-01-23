@@ -40,3 +40,23 @@ export function evaluateQuizByScore(quiz: QuizDefinition, answers: Record<string
     scores: scoreMap,
   };
 }
+
+export function smoothScrollTo(targetY: number, duration = 900) {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
+
+  function step(currentTime: number) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+
+    window.scrollTo(0, startY + distance * eased);
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+}

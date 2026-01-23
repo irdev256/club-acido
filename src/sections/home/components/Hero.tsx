@@ -4,7 +4,7 @@ import Navbar from '../../../components/layout/Navbar';
 
 export default function Hero() {
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById(PagesInfo.HOME.sections.SOCIAL_DEMO);
+    const nextSection = document.getElementById(PagesInfo.HOME.sections.LINKS);
 
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
@@ -89,7 +89,11 @@ export default function Hero() {
               width: '100%',
               height: '100%',
               objectFit: 'contain',
-              paddingBottom: 10, // PADDING BOT PARA SUBIRLO UN POCO
+              paddingBottom: 10,
+              filter: `
+      drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.45))
+      drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.35))
+    `,
             }}
           />
         </Stack>

@@ -1,19 +1,30 @@
+// -------------------------------------------------------------
+
+export const NAVBAR_SECTION_OFFSET_ON_TOP = { xs: -40, md: -10 };
+export const NAVBAR_SECTION_OFFSET_OVER_IT = { xs: 20, md: 60 };
+
+// -------------------------------------------------------------
+
 export const PagesInfo = {
   HOME: {
     path: '/',
     helmet: 'Home | Club Ácido',
     sections: { HERO: 'inicio', CONTENT: 'mentoria', SOBRE_MI: 'sobre-mi', TESTIMONIALS: 'testimonios', LINKS: 'links', SOCIAL_DEMO: 'social-demo' },
   },
-  CONTACTO: { path: '/contacto', helmet: 'Contacto | Club Ácido' },
+  SKINCARE: { path: '/skincare', helmet: 'Skincare | Club Ácido' },
+  TATTOO: { path: '/tattoo', helmet: 'Tattoo | Club Ácido' },
+  TALLERES: { path: '/talleres', helmet: 'Talleres | Club Ácido' },
   QUIZ: { path: '/quiz/:quizSlug', helmet: 'Quiz | Club Ácido' },
 };
 
 export const NavItems = [
-  { label: 'Mentoría', href: PagesInfo.HOME.sections.CONTENT, type: 'anchor' },
-  { label: 'Sobre mí', href: PagesInfo.HOME.sections.SOBRE_MI, type: 'anchor' },
-  { label: 'Testimonios', href: PagesInfo.HOME.sections.TESTIMONIALS, type: 'anchor' },
-  { label: 'QUIZ', href: '/quiz/diagnostico-piel', type: 'route' },
+  { label: 'Skincare', href: '/skincare', type: 'route', icon: '/icon.png' },
+  { label: 'Tattoo', href: '/tattoo', type: 'route', icon: '/icon.png' },
+  { label: 'Talleres', href: '/talleres', type: 'route', icon: '/icon.png' },
+  // { label: 'QUIZ', href: '/quiz/diagnostico-piel', type: 'route', icon: '/icon.png'  },
 ];
+
+export const HamburgerNavItems = [{ label: 'Home', href: `/`, type: 'route', icon: '/icon.png' }, ...NavItems];
 
 // --------------------------------------------------------------
 

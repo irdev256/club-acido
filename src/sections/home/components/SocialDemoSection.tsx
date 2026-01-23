@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import PhoneMockup from '../../../components/common/PhoneMockup';
-import { PagesInfo } from '../../../helpers/constants';
+import { NAVBAR_SECTION_OFFSET_ON_TOP, PagesInfo } from '../../../helpers/constants';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import IconButton from '@mui/material/IconButton';
@@ -15,7 +15,7 @@ export default function SocialDemoSection() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        scrollMarginTop: { xs: -40, md: -10 }, // TODO: Esto ayuda a que el scroll de sections quede bien, pero se tiene que mejorar a nivel global
+        scrollMarginTop: NAVBAR_SECTION_OFFSET_ON_TOP,
         backgroundColor: theme.palette.background.default,
       })}
     >
@@ -74,7 +74,6 @@ export default function SocialDemoSection() {
                   mt: 6,
                   display: 'flex',
                   justifyContent: 'space-between',
-                  maxWidth: 720,
                 }}
               >
                 <IconButton sx={iconStyle}>
@@ -102,7 +101,7 @@ export default function SocialDemoSection() {
 }
 
 const iconStyle = {
-  fontSize: 140,
+  fontSize: { xs: 70, md: 140 },
   color: 'text.secondary',
   transition: 'transform 0.2s ease, color 0.2s ease',
   backgroundColor: 'transparent',

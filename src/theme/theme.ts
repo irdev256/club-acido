@@ -30,17 +30,17 @@ export const theme = createTheme({
     mode: 'light',
 
     background: {
-      default: '#f0eff4', // GHOST WHITE
+      default: '#F8F4F9', // GHOST WHITE
       paper: '#EADFCC', // arena clara para cards / panels
     },
 
     primary: {
-      main: '#F2C6CC', // rosa cuarzo
+      main: '#FF6600', // NARANJA VIVO
       contrastText: '#6B6460',
     },
 
     secondary: {
-      main: '#B08EA2', // malva suave
+      main: '#BC5EE8', // PURPURA SUAVE
       contrastText: '#FEFCFA',
     },
 
@@ -52,7 +52,7 @@ export const theme = createTheme({
     divider: '#E3D7D0', // separadores muy suaves
 
     action: {
-      hover: 'rgba(242, 198, 204, 0.12)', // rosa cuarzo translúcido
+      hover: 'rgba(255, 102, 0, 0.12)', // naranja vivo traslúcido
       selected: 'rgba(176, 142, 162, 0.16)',
     },
   },

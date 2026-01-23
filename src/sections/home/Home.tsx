@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <SocialDemoSection />
       <Links />
+      <SocialDemoSection />
       <Content />
       <FinalCTA />
       <SobreMi />

@@ -2,13 +2,19 @@ import { useParams } from 'react-router-dom';
 import { Box, Container, Typography } from '@mui/material';
 import { getQuizBySlug } from './quizzes';
 import QuizRenderer from './components/QuizRenderer';
+import Navbar from '../../components/layout/Navbar';
 
 export default function Quiz() {
   const { quizSlug } = useParams();
   const quiz = getQuizBySlug(quizSlug!);
 
   if (!quiz) {
-    return <Typography>Quiz no encontrado</Typography>;
+    return (
+      <>
+        <Navbar />
+        <Typography>Quiz no encontrado</Typography>
+      </>
+    );
   }
 
   return (
@@ -19,6 +25,7 @@ export default function Quiz() {
         py: 8,
       }}
     >
+      <Navbar />
       <Container maxWidth="sm">
         <Typography variant="h3" textAlign="center" mb={2}>
           {quiz.title}

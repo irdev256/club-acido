@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
-import { PagesInfo } from '../../../helpers/constants';
+import { NAVBAR_SECTION_OFFSET_OVER_IT, PagesInfo } from '../../../helpers/constants';
 // import { useNavigate } from 'react-router-dom';
 
 type LinkCardProps = {
@@ -26,7 +26,7 @@ function LinkCard({ title, subtitle, image, onClick, ariaLabel }: LinkCardProps)
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         overflow: 'hidden',
-
+        scrollMarginTop: NAVBAR_SECTION_OFFSET_OVER_IT,
         '&::after': {
           content: '""',
           position: 'absolute',
