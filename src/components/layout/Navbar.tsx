@@ -32,7 +32,7 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'secondary.main',
           backdropFilter: 'blur(10px)',
           borderBottom: '1px solid rgba(255,255,255,0.1)',
         }}
