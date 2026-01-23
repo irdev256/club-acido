@@ -31,13 +31,10 @@ function LinkCard({ title, subtitle, image, onClick, ariaLabel }: LinkCardProps)
           content: '""',
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(0,0,0,0.4)',
           transition: 'background-color 0.3s ease',
         },
 
-        '&:hover::after': {
-          backgroundColor: 'rgba(0,0,0,0.6)',
-        },
+        '&:hover::after': {},
 
         '&:hover .content': {
           transform: 'scale(1.04)',
@@ -65,31 +62,33 @@ function LinkCard({ title, subtitle, image, onClick, ariaLabel }: LinkCardProps)
         </Typography>
 
         {/* Separador */}
-        <Box
-          sx={{
-            width: 48,
-            height: 2,
-            backgroundColor: 'rgba(255,255,255,0.6)',
-            mb: 2,
-          }}
-        />
-
         {subtitle && (
-          <Typography
-            variant="body2"
-            sx={{
-              color: '#fff', // 🔑 fuerza blanco puro
-              maxWidth: 280,
-              lineHeight: 1.6,
-              px: 2,
-              py: 1,
-              borderRadius: 1,
-              backgroundColor: 'rgba(0,0,0,0.45)', // un poco más oscuro
-              backdropFilter: 'blur(2px)',
-            }}
-          >
-            {subtitle}
-          </Typography>
+          <>
+            <Box
+              sx={{
+                width: 48,
+                height: 2,
+                backgroundColor: 'rgba(255,255,255,0.6)',
+                mb: 2,
+              }}
+            />
+
+            <Typography
+              variant="body2"
+              sx={{
+                color: '#fff', // 🔑 fuerza blanco puro
+                maxWidth: 280,
+                lineHeight: 1.6,
+                px: 2,
+                py: 1,
+                borderRadius: 1,
+                backgroundColor: 'rgba(0,0,0,0.45)', // un poco más oscuro
+                backdropFilter: 'blur(2px)',
+              }}
+            >
+              {subtitle}
+            </Typography>
+          </>
         )}
       </Box>
     </Box>
@@ -123,20 +122,20 @@ export default function Links() {
       <Grid container spacing={1} sx={{ position: 'relative', zIndex: 0 }}>
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <LinkCard
-            title="Sanación y Liberación"
-            subtitle="Suelta bloqueos emocionales y energéticos del pasado."
-            image="/person-conducting-reiki-therapy.jpg"
-            ariaLabel="Sesión de sanación energética y liberación emocional durante una mentoría espiritual consciente"
+            title=""
+            subtitle=""
+            image="/tattoo.png"
+            ariaLabel=""
 
             // onClick={() => navigate('/sanacion')}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <LinkCard
-            title="Buscas tu propósito espiritual"
-            subtitle="Deseas encontrar el sentido profundo de tu existencia."
-            image="/link1.jpg"
-            ariaLabel="Espacio de meditación y búsqueda del propósito espiritual y sentido de vida"
+            title=""
+            subtitle=""
+            image="/skincare.png"
+            ariaLabel=""
 
             // onClick={() => navigate('/proposito')}
           />
@@ -144,10 +143,10 @@ export default function Links() {
 
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <LinkCard
-            title="Claves para tu Camino"
-            subtitle="Herramientas para manifestar la vida que deseas."
-            image="/link3.jpg"
-            ariaLabel="Herramientas espirituales para manifestar una vida consciente y alineada con el alma"
+            title=""
+            subtitle=""
+            image="/talleres.png"
+            ariaLabel=""
 
             // onClick={() => navigate('/camino')}
           />

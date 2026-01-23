@@ -45,28 +45,69 @@ export default function SocialDemoSection() {
           {/* Columna derecha – texto */}
           <Grid size={{ xs: 12, md: 7 }}>
             <Box>
-              <Typography variant="h4" gutterBottom>
-                Lorem ipsum en redes sociales
+              <Typography
+                sx={{
+                  fontSize: 'clamp(32px, 5vw, 56px)',
+                  fontWeight: 800,
+                  lineHeight: 1.05,
+                  letterSpacing: '-0.03em',
+                  mb: 4,
+                }}
+              >
+                Club Ácido
+                <br />
+                en redes
               </Typography>
 
-              <Typography variant="body1" paragraph>
+              <Typography
+                sx={{
+                  fontSize: 18,
+                  lineHeight: 1.6,
+                  fontWeight: 500,
+                  maxWidth: 520,
+                  mb: 4,
+                  color: 'text.primary',
+                }}
+              >
+                No es solo contenido. Es proceso, cuerpo y ritual compartido en tiempo real.
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontSize: 15,
+                  lineHeight: 1.9,
+                  color: 'text.secondary',
+                  maxWidth: 560,
+                  mb: 3,
+                }}
+              >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </Typography>
 
-              <Typography variant="body1" paragraph>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas ab autem veniam, in praesentium dolorem amet deserunt. Eaque
-                repellat quisquam reprehenderit, nisi labore accusantium hic nam, illo veniam perferendis quia. Lorem ipsum dolor sit, amet
-                consectetur adipisicing elit. Totam cum ipsam, tenetur itaque expedita harum assumenda deleniti odio fugiat eveniet asperiores
-                aspernatur culpa veniam. Error mollitia temporibus facere ipsa aspernatur.
+              <Typography
+                sx={{
+                  mt: 6,
+                  mb: 4,
+                  fontSize: 20,
+                  fontWeight: 700,
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                Lo que pasa en Club Ácido no se explica, se vive.
               </Typography>
 
-              <Typography variant="body1" paragraph>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
-              </Typography>
-
-              <Typography variant="body1" paragraph>
-                ¿Querés verme en acción? Seguime en mis redes sociales:
+              <Typography
+                sx={{
+                  fontSize: 14,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.12em',
+                  color: 'text.secondary',
+                  mb: 2,
+                }}
+              >
+                Seguí el proceso
               </Typography>
 
               <Box
