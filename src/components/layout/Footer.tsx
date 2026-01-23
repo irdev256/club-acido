@@ -3,7 +3,7 @@ import { Box, Container, Grid, Link, Stack, Typography, IconButton } from '@mui/
 import InstagramIcon from '@mui/icons-material/Instagram';
 // import FacebookIcon from '@mui/icons-material/Facebook';
 
-import { CLIENT_INSTAGRAM_LINK, CLIENT_TIKTOK_LINK, OUR_WHATSAPP_LINK } from '../../helpers/constants';
+import { CLIENT_EMAIL, CLIENT_INSTAGRAM_LINK, CLIENT_PHONE_NUMBER, CLIENT_TIKTOK_LINK, OUR_WHATSAPP_LINK } from '../../helpers/constants';
 import TikTokIcon from '../icons/TikTokIcon';
 
 export default function Footer() {
@@ -28,29 +28,7 @@ export default function Footer() {
               spacing={1.2}
               alignItems="center" // siempre centrado (nombre + girasol)
             >
-              <Typography
-                sx={{
-                  fontFamily: '"Ms Madi", cursive',
-                  fontSize: 32,
-                  lineHeight: 1,
-                  color: 'text.primary',
-                  textAlign: 'center',
-                }}
-              >
-                Alejandrina González
-              </Typography>
-
-              <Box
-                component="img"
-                src="/sunflower1.png"
-                alt="Girasol"
-                sx={{
-                  width: 45,
-                  height: 45,
-                  objectFit: 'contain',
-                  opacity: 0.9,
-                }}
-              />
+              <Box component="img" src="/logo.png" alt="Logo_small" sx={{ width: 220, height: 128 }} />
             </Stack>
           </Grid>
           {/* Contactame */}
@@ -60,12 +38,12 @@ export default function Footer() {
                 Contactame
               </Typography>
 
-              <Link href="tel:+541160482048" underline="none" color="text.secondary">
-                +54 1160482048
+              <Link href={`tel:${CLIENT_PHONE_NUMBER}`} underline="none" color="text.secondary">
+                {CLIENT_PHONE_NUMBER}
               </Link>
 
-              <Link href="mailto:aleinty.gonzalez@gmail.com" underline="none" color="text.secondary">
-                aleinty.gonzalez@gmail.com
+              <Link href={`mailto:${CLIENT_EMAIL}`} underline="none" color="text.secondary">
+                {CLIENT_EMAIL}
               </Link>
             </Stack>
           </Grid>

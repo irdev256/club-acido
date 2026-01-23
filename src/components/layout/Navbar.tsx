@@ -7,6 +7,7 @@ import NavigationLoader from './NavigationLoader';
 import { PagesInfo, NavItems, HamburgerNavItems } from '../../helpers/constants';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { alpha } from '@mui/material/styles';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -28,14 +29,32 @@ export default function Navbar() {
   return (
     <>
       {/* ================= TOP NAVBAR ================= */}
+
       <AppBar
         position="fixed"
         elevation={0}
-        sx={{
-          backgroundColor: 'secondary.main',
-          backdropFilter: 'blur(10px)',
-          borderBottom: '1px solid rgba(255,255,255,0.1)',
-        }}
+        sx={(theme) => ({
+          backgroundColor: alpha(theme.palette.secondary.main, 0.75),
+          backdropFilter: 'blur(14px) saturate(100%)',
+          WebkitBackdropFilter: 'blur(14px) saturate(100%)',
+          borderBottom: '1px solid rgba(255,255,255,0.15)',
+          color: '#fff',
+
+          // highlight superior tipo vidrio
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            background: `
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.18),
+          rgba(255,255,255,0.02)
+        )
+      `,
+            pointerEvents: 'none',
+          },
+        })}
       >
         <Toolbar
           sx={{

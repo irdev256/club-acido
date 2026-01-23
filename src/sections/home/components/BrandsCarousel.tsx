@@ -5,12 +5,16 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 
 const brands = [
-  { name: 'Dermalogica', logo: '/brands/dermalogica.svg' },
-  { name: 'La Roche-Posay', logo: '/brands/laroche.svg' },
-  { name: 'Vichy', logo: '/brands/vichy.svg' },
-  { name: 'ISDIN', logo: '/brands/isdin.svg' },
-  { name: 'Eucerin', logo: '/brands/eucerin.svg' },
-  { name: 'Skinceuticals', logo: '/brands/skinceuticals.svg' },
+  { name: 'Siluma', logo: '/brands/siluma.svg' },
+  { name: 'HDM', logo: '/brands/hdm.svg' },
+  { name: 'Especificos Buenos Aires', logo: '/brands/especificosba.svg' },
+  { name: 'Zine', logo: '/brands/zine.svg' },
+  { name: 'SZ lab', logo: '/brands/szlab.svg' },
+  { name: 'Dermassy', logo: '/brands/dermassy.svg' },
+  { name: 'Farmacia once', logo: '/brands/farmaciaonce.svg' },
+  { name: 'Magistral Lacroze', logo: '/brands/magistrallacroze.svg' },
+  { name: 'Coony', logo: '/brands/coony.svg' },
+  { name: 'BEK', logo: '/brands/bek.svg' },
 ];
 
 export default function BrandsCarousel() {
