@@ -19,6 +19,7 @@ import SkincarePage from './pages/Skincare';
 import TalleresPage from './pages/Talleres';
 import SmoothScroll from './components/layout/SmoothScroll';
 import ToTopButton from './components/common/ToTopButton';
+import CalendarButton from './components/common/CalendarButton';
 
 // --------------------------------------------------------------
 
@@ -39,6 +40,7 @@ function App() {
           </Routes>
           {/* <MusicButton /> */}
           {/* <WhatsAppButton /> */}
+          <CalendarButton />
           <ToTopButton />
           <Footer />
         </BrowserRouter>
