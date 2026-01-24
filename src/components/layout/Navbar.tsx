@@ -25,6 +25,7 @@ export default function Navbar() {
 
   const [open, setOpen] = useState(false);
   const [showBrand, setShowBrand] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   useEffect(() => {
     document.body.style.pointerEvents = open ? 'none' : '';
@@ -43,8 +44,9 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      const scrolledVh = (window.scrollY / window.innerHeight) * 100;
-      setShowBrand(scrolledVh > 80);
+      const atTop = window.scrollY < 10;
+      setIsAtTop(atTop);
+      setShowBrand(!atTop);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -52,6 +54,8 @@ export default function Navbar() {
 
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+
 
   return (
     <>
@@ -61,26 +65,19 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={(theme) => ({
-          backgroundColor: alpha(theme.palette.secondary.main, 0.75),
-          backdropFilter: 'blur(14px) saturate(100%)',
-          WebkitBackdropFilter: 'blur(14px) saturate(100%)',
-          borderBottom: '1px solid rgba(255,255,255,0.15)',
-          color: '#fff',
+          backgroundColor: isAtTop
+            ? 'transparent'
+            : alpha(theme.palette.primary.main, 0.85),
 
-          // highlight superior tipo vidrio
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            background: `
-        linear-gradient(
-          to bottom,
-          rgba(255,255,255,0.18),
-          rgba(255,255,255,0.02)
-        )
-      `,
-            pointerEvents: 'none',
-          },
+          transition: 'background-color 300ms ease, box-shadow 300ms ease',
+
+          boxShadow: isAtTop
+            ? 'none'
+            : theme.shadows[4],
+
+          color: isAtTop
+            ? theme.palette.text.primary
+            : theme.palette.primary.contrastText,
         })}
       >
         <Toolbar
@@ -94,10 +91,10 @@ export default function Navbar() {
           {/* Logo */}
           <Box
             sx={{
-              flexGrow: 1,
               display: 'flex',
               alignItems: 'center',
               gap: 1.5,
+              mr: 'auto', // 👈 clave: empuja el resto a la derecha
               textDecoration: 'none',
               opacity: showBrand || !isHome ? 1 : 0,
               transform: showBrand || !isHome ? 'translateY(0)' : 'translateY(-6px)',
@@ -121,13 +118,13 @@ export default function Navbar() {
           <Stack direction="row" spacing={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
             {NavItems.map((item) =>
               item.type === 'route' ? (
-                <Box key={item.label} component={Link} to={item.href} sx={linkStyle}>
+                <Box key={item.label} component={Link} to={item.href} sx={linkStyle(isAtTop)}>
                   {item.label}
                 </Box>
               ) : (
                 <Box
                   key={item.label}
-                  sx={linkStyle}
+                  sx={linkStyle(isAtTop)}
                   onClick={() => {
                     if (isHome) {
                       scrollToSection(item.href);
@@ -141,12 +138,15 @@ export default function Navbar() {
           </Stack>
           <IconButton
             onClick={() => setOpen(true)}
-            sx={{
+            sx={(theme) => ({
               position: 'fixed',
               right: 16,
               zIndex: 1201,
-              color: '#fff',
-            }}
+              color: isAtTop
+                ? theme.palette.text.primary
+                : theme.palette.primary.contrastText,
+              transition: 'color 200ms ease',
+            })}
           >
             <MenuIcon sx={{ fontSize: 30 }} />
           </IconButton>
@@ -278,13 +278,17 @@ export default function Navbar() {
 
 /* ================= Styles ================= */
 
-const linkStyle = {
+const linkStyle = (isAtTop: boolean) => ({
   textDecoration: 'none',
-  color: '#fff',
   fontSize: 18,
   cursor: 'pointer',
-  '&:hover': { opacity: 0.6 },
-};
+  color: isAtTop ? 'text.primary' : 'primary.contrastText',
+  transition: 'opacity 200ms ease, color 200ms ease',
+
+  '&:hover': {
+    opacity: 0.7,
+  },
+});
 
 const hamburgerRowStyle = {
   width: '100%',

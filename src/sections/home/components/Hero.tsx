@@ -1,75 +1,26 @@
-import { alpha, Box, Container, Stack, Tooltip } from '@mui/material';
+import { Box, Container, Stack } from '@mui/material';
 import { PagesInfo } from '../../../helpers/constants';
 import { scrollTo } from '../../../helpers/utils';
 
 export default function Hero() {
   const scrollToNextSection = () => {
     const nextSection = document.getElementById(PagesInfo.HOME.sections.LINKS);
-
     if (!nextSection) return;
-
     scrollTo(nextSection);
   };
 
   return (
     <Box
       id={PagesInfo.HOME.sections.HERO}
-      sx={{
+      sx={(theme) => ({
         minHeight: '93vh',
         position: 'relative',
-        overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-      }}
+        backgroundColor: theme.palette.background.default,
+      })}
     >
-      {/* Fondo principal */}
-      <Box
-        sx={(theme) => ({
-          position: 'absolute',
-          inset: 0,
-          background: `
-          radial-gradient(
-          circle at top,
-          ${alpha(theme.palette.common.white, 0.92)} 0%,
-          ${alpha(theme.palette.background.default, 0.95)} 55%,
-          ${alpha(theme.palette.background.paper, 0.96)} 100%)`,
-        })}
-      />
-
-      {/* Detalles sutiles de luz */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: `
-            linear-gradient(
-              120deg,
-              rgba(200,164,93,0.08),
-              transparent 40%,
-              rgba(200,164,93,0.06)
-            )
-          `,
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Glow suave central */}
-      <Box
-        sx={{
-          position: 'absolute',
-          width: 600,
-          height: 600,
-          borderRadius: '50%',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          background: 'rgba(200,164,93,0.12)',
-          filter: 'blur(120px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Contenido */}
+      {/* CONTENIDO */}
       <Container
         maxWidth="lg"
         sx={{
@@ -79,75 +30,58 @@ export default function Hero() {
         }}
       >
         <Stack spacing={4} alignItems="center">
-          <Box
-            src="/logo.png"
+         <Box
             component="img"
+            src="/logo.png"
             aria-hidden
-            sx={{
-              width: '100%',
-              height: '100%',
+            sx={(theme) => ({
+              width: '90vw',
+              maxWidth: '1200px',
+              maxHeight: '70vh',
               objectFit: 'contain',
-              paddingBottom: 10,
-              filter: `
-      drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.45))
-      drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.35))
-    `,
-            }}
+              paddingBottom: theme.spacing(6),
+
+              '@media (max-width:600px)': {
+                width: '95vw',
+                maxHeight: '60vh',
+              },
+
+              filter: `drop-shadow(0px 10px 28px rgba(0,0,0,0.28))`,
+            })}
           />
         </Stack>
       </Container>
-      <Tooltip
-        title="O apretá... hacé lo que quieras 🙄"
-        placement="top"
-        arrow
-        slotProps={{
-          tooltip: {
-            sx: {
-              fontSize: 22,
-              padding: '14px 20px',
-              borderRadius: 12,
-              backgroundColor: 'rgba(30,30,30,0.85)',
-              backdropFilter: 'blur(6px)',
-              maxWidth: 480,
-              textAlign: 'center',
-            },
-          },
-          arrow: {
-            sx: {
-              color: 'rgba(30,30,30,0.85)',
-            },
-          },
-        }}
-      >
-        <Box
-          onClick={scrollToNextSection}
-          sx={(theme) => ({
-            position: 'absolute',
-            bottom: 32,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 1,
-            color: theme.palette.text.secondary,
-            cursor: 'pointer',
 
-            '@keyframes scrollArrow': {
-              '0%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(12px)' },
-              '100%': { transform: 'translateY(0)' },
-            },
+      {/* SCROLL INDICATOR */}
+      <Box
+        onClick={scrollToNextSection}
+        sx={(theme) => ({
+          position: 'absolute',
+          bottom: 32,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 1,
+          color: theme.palette.text.secondary,
+          cursor: 'pointer',
 
-            '&:hover': {
-              opacity: 0.9,
-            },
-          })}
+          '@keyframes scrollArrow': {
+            '0%': { transform: 'translateY(0)' },
+            '50%': { transform: 'translateY(10px)' },
+            '100%': { transform: 'translateY(0)' },
+          },
+
+          '&:hover': {
+            color: theme.palette.text.primary,
+          },
+        })}
         >
           <Box
             sx={{
-              animation: 'scrollArrow 0.8s ease-in-out infinite',
+              animation: 'scrollArrow 0.9s ease-in-out infinite',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -155,8 +89,8 @@ export default function Hero() {
           >
             <Box
               component="svg"
-              width={78}
-              height={86}
+              width={64}
+              height={72}
               viewBox="0 0 24 36"
               fill="none"
               stroke="currentColor"
@@ -168,17 +102,17 @@ export default function Hero() {
               <path d="M19 21l-7 7-7-7" />
             </Box>
           </Box>
+
           <Box
             sx={{
-              fontSize: 23,
-              letterSpacing: '0.08em',
-              opacity: 0.75,
+              fontSize: 18,
+              letterSpacing: '0.12em',
+              opacity: 0.7,
             }}
           >
             Scrolleá
           </Box>
         </Box>
-      </Tooltip>
     </Box>
   );
 }
