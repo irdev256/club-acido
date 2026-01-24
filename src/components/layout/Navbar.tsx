@@ -1,18 +1,45 @@
 import { AppBar, Box, IconButton, Stack, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import NavigationLoader from './NavigationLoader';
-import { PagesInfo, NavItems, HamburgerNavItems } from '../../helpers/constants';
+import { NavItems, HamburgerNavItems, PagesInfo } from '../../helpers/constants';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { alpha } from '@mui/material/styles';
+import { scrollTo } from '../../helpers/utils';
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === '/';
+  const isRouteChange = useRef(location.pathname);
+
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (!el) return;
+
+    scrollTo(el, 80); // offset navbar
+  };
+
+  const [open, setOpen] = useState(false);
   const [showBrand, setShowBrand] = useState(false);
+
+  useEffect(() => {
+    document.body.style.pointerEvents = open ? 'none' : '';
+    return () => {
+      document.body.style.pointerEvents = '';
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (isRouteChange.current !== location.pathname) {
+      isRouteChange.current = location.pathname;
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setOpen(false);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -76,9 +103,16 @@ export default function Navbar() {
               transform: showBrand || !isHome ? 'translateY(0)' : 'translateY(-6px)',
               transition: 'opacity 400ms ease, transform 400ms ease',
               pointerEvents: showBrand || !isHome ? 'auto' : 'none',
+              cursor: 'pointer',
             }}
-            component="a"
-            href={`/#${PagesInfo.HOME.sections.HERO}`}
+            component="div"
+            onClick={() => {
+              if (!isHome) {
+                navigate('/');
+                return;
+              }
+              scrollToSection(PagesInfo.HOME.sections.HERO);
+            }}
           >
             <Box component="img" src="/logo.png" alt="Logo_small" sx={{ width: 80, height: 28 }} />
           </Box>
@@ -91,7 +125,15 @@ export default function Navbar() {
                   {item.label}
                 </Box>
               ) : (
-                <Box key={item.label} component="a" href={`/#${item.href}`} sx={linkStyle}>
+                <Box
+                  key={item.label}
+                  sx={linkStyle}
+                  onClick={() => {
+                    if (isHome) {
+                      scrollToSection(item.href);
+                    }
+                  }}
+                >
                   {item.label}
                 </Box>
               )

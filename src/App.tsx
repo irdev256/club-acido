@@ -3,8 +3,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import ScrollToTop from './components/layout/ScrollToTop';
 // import MusicButton from './components/common/MusicButton';
 // import WhatsAppButton from './components/common/WhatsAppButton';
 
@@ -17,6 +17,8 @@ import { PagesInfo } from './helpers/constants';
 import TattooPage from './pages/Tattoo';
 import SkincarePage from './pages/Skincare';
 import TalleresPage from './pages/Talleres';
+import SmoothScroll from './components/layout/SmoothScroll';
+import ToTopButton from './components/common/ToTopButton';
 
 // --------------------------------------------------------------
 
@@ -26,6 +28,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
+          <Navbar />
+          <SmoothScroll />
           <Routes>
             <Route path={PagesInfo.HOME.path} element={<HomePage />} />
             <Route path={PagesInfo.TATTOO.path} element={<TattooPage />} />
@@ -33,10 +37,10 @@ function App() {
             <Route path={PagesInfo.TALLERES.path} element={<TalleresPage />} />
             <Route path={PagesInfo.QUIZ.path} element={<QuizPage />} />
           </Routes>
-          <Footer />
           {/* <MusicButton /> */}
           {/* <WhatsAppButton /> */}
-          <ScrollToTop />
+          <ToTopButton />
+          <Footer />
         </BrowserRouter>
       </ThemeProvider>
     </HelmetProvider>

@@ -1,3 +1,4 @@
+import type Lenis from 'lenis';
 import type { QuizDefinition } from '../sections/quiz/helpers.ts/types';
 
 type WhatsAppOptions = {
@@ -41,22 +42,19 @@ export function evaluateQuizByScore(quiz: QuizDefinition, answers: Record<string
   };
 }
 
-export function smoothScrollTo(targetY: number, duration = 900) {
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  const startTime = performance.now();
+// ---------- Smooth scrolling ----------
 
-  function step(currentTime: number) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
+let lenisInstance: Lenis | null = null;
 
-    window.scrollTo(0, startY + distance * eased);
+export function registerLenis(lenis: Lenis) {
+  lenisInstance = lenis;
+}
 
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    }
-  }
+export function scrollTo(target: number | HTMLElement, offset = 0) {
+  if (!lenisInstance) return;
 
-  requestAnimationFrame(step);
+  lenisInstance.scrollTo(target, {
+    offset: -offset,
+    immediate: false,
+  });
 }

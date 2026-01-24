@@ -1,9 +1,9 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import PhoneMockup from '../../../components/common/PhoneMockup';
-import { NAVBAR_SECTION_OFFSET_ON_TOP, PagesInfo } from '../../../helpers/constants';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import IconButton from '@mui/material/IconButton';
+import { PagesInfo } from '../../../helpers/constants';
 
 export default function SocialDemoSection() {
   return (
@@ -15,7 +15,6 @@ export default function SocialDemoSection() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        scrollMarginTop: NAVBAR_SECTION_OFFSET_ON_TOP,
         backgroundColor: theme.palette.background.default,
       })}
     >

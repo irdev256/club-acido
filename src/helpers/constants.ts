@@ -1,7 +1,7 @@
 // -------------------------------------------------------------
 
-export const NAVBAR_SECTION_OFFSET_ON_TOP = { xs: -40, md: -10 };
-export const NAVBAR_SECTION_OFFSET_OVER_IT = { xs: 20, md: 60 };
+// export const NAVBAR_SECTION_OFFSET_ON_TOP = { xs: -40, md: -10 };
+// export const NAVBAR_SECTION_OFFSET_OVER_IT = { xs: 20, md: 60 };
 
 // -------------------------------------------------------------
 

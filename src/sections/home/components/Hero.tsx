@@ -1,29 +1,27 @@
 import { alpha, Box, Container, Stack, Tooltip } from '@mui/material';
 import { PagesInfo } from '../../../helpers/constants';
-import Navbar from '../../../components/layout/Navbar';
+import { scrollTo } from '../../../helpers/utils';
 
 export default function Hero() {
   const scrollToNextSection = () => {
     const nextSection = document.getElementById(PagesInfo.HOME.sections.LINKS);
 
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (!nextSection) return;
+
+    scrollTo(nextSection);
   };
 
   return (
     <Box
       id={PagesInfo.HOME.sections.HERO}
       sx={{
-        minHeight: '100vh',
+        minHeight: '93vh',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
       }}
     >
-      <Navbar />
-
       {/* Fondo principal */}
       <Box
         sx={(theme) => ({
