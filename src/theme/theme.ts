@@ -3,26 +3,32 @@ import { createTheme } from '@mui/material/styles';
 export const theme = createTheme({
   typography: {
     fontFamily: `'Inter', sans-serif`,
+
     h2: {
       fontSize: '3.2rem',
       lineHeight: 1.15,
-      color: '#6B6460', // gris cálido, elegante y suave
+      fontWeight: 600,
       '@media (max-width:600px)': {
         fontSize: '2.2rem',
       },
     },
+
     h5: {
       fontSize: '1.25rem',
-      color: '#6B6460',
+      fontWeight: 500,
       '@media (max-width:600px)': {
         fontSize: '1.1rem',
       },
     },
+
     body1: {
-      color: '#6B6460',
+      fontSize: '1rem',
+      lineHeight: 1.6,
     },
+
     body2: {
-      color: '#8A817C', // variante más suave para textos secundarios
+      fontSize: '0.875rem',
+      lineHeight: 1.5,
     },
   },
 
@@ -30,34 +36,56 @@ export const theme = createTheme({
     mode: 'light',
 
     background: {
-      default: '#F8F4F9', // GHOST WHITE
-      paper: '#EADFCC', // arena clara para cards / panels
+      default: '#F8F4F9',
+      paper: '#FFFFFF',
     },
 
     primary: {
-      main: '#FF6600', // NARANJA VIVO
-      contrastText: '#6B6460',
+      main: '#FF6600',
+      contrastText: '#FFFFFF',
     },
 
     secondary: {
-      main: '#BC5EE8', // PURPURA SUAVE
-      contrastText: '#FEFCFA',
+      main: '#BC5EE8',
+      contrastText: '#FFFFFF',
     },
 
+    /* 🔹 EXTENDED PALETTE */
+    accent: {
+      main: '#FFF94F',
+      contrastText: '#4F4A47',
+    },
+
+    highlight: {
+      main: '#F665B5',
+      contrastText: '#FFFFFF',
+    },
+
+    neutral: {
+      main: '#F8F4F9',
+      contrastText: '#4F4A47',
+    },
+
+    /* 🔹 TEXT SYSTEM */
     text: {
-      primary: '#6B6460', // gris cálido
-      secondary: '#8A817C',
+      primary: '#4F4A47',
+      secondary: '#7A726E',
+      disabled: 'rgba(79,74,71,0.38)',
     },
 
-    divider: '#E3D7D0', // separadores muy suaves
+    divider: 'rgba(79,74,71,0.12)',
 
+    /* 🔹 INTERACTIONS */
     action: {
-      hover: 'rgba(255, 102, 0, 0.12)', // naranja vivo traslúcido
-      selected: 'rgba(176, 142, 162, 0.16)',
+      hover: 'rgba(255, 102, 0, 0.10)',      // primary soft
+      selected: 'rgba(188, 94, 232, 0.14)', // secondary soft
+      disabled: 'rgba(79,74,71,0.26)',
+      disabledBackground: 'rgba(79,74,71,0.08)',
+      focus: 'rgba(255, 102, 0, 0.18)',
     },
   },
 
   shape: {
-    borderRadius: 12, // más orgánico y femenino
+    borderRadius: 12,
   },
 });
