@@ -1,8 +1,7 @@
 import { Box } from '@mui/material';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { useEffect, useState } from 'react';
-
-const AGENDA_URL = 'https://agendapro.com/site/ar/elclubacido/';
+import { CLIENT_AGENDA_PRO } from '../../helpers/constants';
 
 export default function CalendarButton() {
   const [visible, setVisible] = useState(false);
@@ -23,7 +22,7 @@ export default function CalendarButton() {
                                             <Box
                                                   role="button"
                                                         aria-label="Reservar turno"
-                                                              onClick={() => window.open(AGENDA_URL, '_blank', 'noopener,noreferrer')}
+                                                              onClick={() => window.open(CLIENT_AGENDA_PRO, '_blank', 'noopener,noreferrer')}
                                                                     sx={(theme) => ({
                                                                             position: 'fixed',
 
