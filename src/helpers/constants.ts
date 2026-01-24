@@ -18,10 +18,8 @@ export const PagesInfo = {
 };
 
 export const NavItems = [
-  { label: 'Skincare', href: '/skincare', type: 'route', icon: '/icon.png' },
-  { label: 'Tattoo', href: '/tattoo', type: 'route', icon: '/icon.png' },
-  { label: 'Talleres', href: '/talleres', type: 'route', icon: '/icon.png' },
-  // { label: 'QUIZ', href: '/quiz/diagnostico-piel', type: 'route', icon: '/icon.png'  },
+  { label: 'Agendá tu turno', href: 'https://agendapro.com/site/ar/elclubacido/', type: 'route', icon: '/icon.png' },
+  { label: 'QUIZ', href: '/quiz/diagnostico-piel', type: 'route', icon: '/icon.png'  },
 ];
 
 export const HamburgerNavItems = [{ label: 'Home', href: `/`, type: 'route', icon: '/icon.png' }, ...NavItems];
@@ -36,6 +34,7 @@ export const CLIENT_FACEBOOK_LINK = '';
 export const WHATSAPP_DEFAULT_MESSAGE = 'Hola! Me darías más información?';
 export const CLIENT_EMAIL = 'clubacido@gmail.com';
 export const CLIENT_PHONE_NUMBER = '+54123456789';
+export const CLIENT_AGENDA_PRO = 'https://agendapro.com/site/ar/elclubacido/';
 
 // OUR
 export const OUR_WHATSAPP_LINK = '';
