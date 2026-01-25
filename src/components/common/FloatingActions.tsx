@@ -12,7 +12,7 @@ export default function FloatingActions() {
         right: { xs: 16, md: 24 },
         bottom: { xs: 16, md: 24 },
         zIndex: 1300,
-        pointerEvents: 'none', 
+        pointerEvents: 'none',
       }}
     >
       {/* Orden visual: de arriba hacia abajo */}

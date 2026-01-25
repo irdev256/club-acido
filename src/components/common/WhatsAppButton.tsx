@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
     message: WHATSAPP_DEFAULT_MESSAGE,
   });
   return (
-      <Box
+    <Box
       component="a"
       href={whatsappUrl}
       target="_blank"

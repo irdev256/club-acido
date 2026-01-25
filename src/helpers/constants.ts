@@ -27,12 +27,8 @@ export const PagesInfo = {
   QUIZ: { path: '/quiz/:quizSlug', helmet: 'Quiz | Club Ácido' },
 };
 
-export const NavItems = [
-  { label: 'Agendá tu turno', href: CLIENT_AGENDA_PRO, type: 'route', icon: '/icon.png' },
-];
+export const NavItems = [{ label: 'Agendá tu turno', href: CLIENT_AGENDA_PRO, type: 'route', icon: '/icon.png' }];
 
 export const HamburgerNavItems = [{ label: 'Home', href: `/`, type: 'route', icon: '/icon.png' }, ...NavItems];
 
 // --------------------------------------------------------------
-
-

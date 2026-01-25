@@ -45,7 +45,7 @@ export default function Hero() {
         }}
       >
         <Stack spacing={4} alignItems="center">
-         <Box
+          <Box
             component="img"
             src="/logo.png"
             aria-hidden
@@ -85,9 +85,7 @@ export default function Hero() {
           // 👇 estado visible / oculto
           opacity: showScrollIndicator ? 1 : 0,
           pointerEvents: showScrollIndicator ? 'auto' : 'none',
-          transform: showScrollIndicator
-            ? 'translate(-50%, 0)'
-            : 'translate(-50%, 12px)',
+          transform: showScrollIndicator ? 'translate(-50%, 0)' : 'translate(-50%, 12px)',
           transition: 'opacity 400ms ease, transform 400ms ease',
 
           '@keyframes scrollArrow': {
@@ -101,40 +99,40 @@ export default function Hero() {
           },
         })}
       >
+        <Box
+          sx={{
+            animation: 'scrollArrow 0.9s ease-in-out infinite',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Box
-            sx={{
-              animation: 'scrollArrow 0.9s ease-in-out infinite',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            component="svg"
+            width={64}
+            height={72}
+            viewBox="0 0 24 36"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <Box
-              component="svg"
-              width={64}
-              height={72}
-              viewBox="0 0 24 36"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 2v26" />
-              <path d="M19 21l-7 7-7-7" />
-            </Box>
-          </Box>
-
-          <Box
-            sx={{
-              fontSize: 18,
-              letterSpacing: '0.12em',
-              opacity: 0.7,
-            }}
-          >
-            Scrolleá
+            <path d="M12 2v26" />
+            <path d="M19 21l-7 7-7-7" />
           </Box>
         </Box>
+
+        <Box
+          sx={{
+            fontSize: 18,
+            letterSpacing: '0.12em',
+            opacity: 0.7,
+          }}
+        >
+          Scrolleá
+        </Box>
+      </Box>
     </Box>
   );
 }

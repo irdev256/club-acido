@@ -55,8 +55,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-
-
   return (
     <>
       {/* ================= TOP NAVBAR ================= */}
@@ -65,19 +63,13 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={(theme) => ({
-          backgroundColor: isAtTop
-            ? 'transparent'
-            : alpha(theme.palette.primary.main, 0.85),
+          backgroundColor: isAtTop ? 'transparent' : alpha(theme.palette.primary.main, 0.85),
 
           transition: 'background-color 300ms ease, box-shadow 300ms ease',
 
-          boxShadow: isAtTop
-            ? 'none'
-            : theme.shadows[4],
+          boxShadow: isAtTop ? 'none' : theme.shadows[4],
 
-          color: isAtTop
-            ? theme.palette.text.primary
-            : theme.palette.primary.contrastText,
+          color: isAtTop ? theme.palette.text.primary : theme.palette.primary.contrastText,
         })}
       >
         <Toolbar
@@ -142,9 +134,7 @@ export default function Navbar() {
               position: 'fixed',
               right: 16,
               zIndex: 1201,
-              color: isAtTop
-                ? theme.palette.text.primary
-                : theme.palette.primary.contrastText,
+              color: isAtTop ? theme.palette.text.primary : theme.palette.primary.contrastText,
               transition: 'color 200ms ease',
             })}
           >

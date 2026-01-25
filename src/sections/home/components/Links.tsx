@@ -2,13 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
 import { PagesInfo } from '../../../helpers/constants';
 
-type TitlePosition =
-  | 'top'
-  | 'top-left'
-  | 'top-right'
-  | 'bottom'
-  | 'bottom-left'
-  | 'bottom-right';
+type TitlePosition = 'top' | 'top-left' | 'top-right' | 'bottom' | 'bottom-left' | 'bottom-right';
 
 type TitleColor = 'secondary' | 'accent' | 'highlight';
 
@@ -21,14 +15,7 @@ type LinkCardProps = {
   ariaLabel: string;
 };
 
-function LinkCard({
-  title,
-  image,
-  titlePosition,
-  titleColor,
-  onClick,
-  ariaLabel,
-}: LinkCardProps) {
+function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel }: LinkCardProps) {
   const positionStyles = {
     top: { top: -28, left: '50%', transform: 'translateX(-50%)' },
     'top-left': { top: -20, left: -12 },
@@ -99,39 +86,20 @@ function LinkCard({
   );
 }
 
-
 export default function Links() {
   return (
-     <Box id={PagesInfo.HOME.sections.LINKS} sx={{ mt: 6 }}>
+    <Box id={PagesInfo.HOME.sections.LINKS} sx={{ mt: 6 }}>
       <Grid container spacing={4}>
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-          <LinkCard
-            title="Skincare"
-            image="/skincare.jpeg"
-            titlePosition="top"
-            titleColor="secondary"
-            ariaLabel="Skincare"
-          />
+          <LinkCard title="Skincare" image="/skincare.jpeg" titlePosition="top" titleColor="secondary" ariaLabel="Skincare" />
         </Grid>
 
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-          <LinkCard
-            title="Tattoo"
-            image="/tattoo.jpg"
-            titlePosition="bottom"
-            titleColor="accent"
-            ariaLabel="Tattoo"
-          />
+          <LinkCard title="Tattoo" image="/tattoo.jpg" titlePosition="bottom" titleColor="accent" ariaLabel="Tattoo" />
         </Grid>
 
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-          <LinkCard
-            title="Talleres"
-            image="/talleres.jpg"
-            titlePosition="top"
-            titleColor="highlight"
-            ariaLabel="Talleres"
-          />
+          <LinkCard title="Talleres" image="/talleres.jpg" titlePosition="top" titleColor="highlight" ariaLabel="Talleres" />
         </Grid>
       </Grid>
     </Box>

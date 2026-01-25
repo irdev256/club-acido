@@ -77,7 +77,7 @@ export const theme = createTheme({
 
     /* 🔹 INTERACTIONS */
     action: {
-      hover: 'rgba(255, 102, 0, 0.10)',      // primary soft
+      hover: 'rgba(255, 102, 0, 0.10)', // primary soft
       selected: 'rgba(188, 94, 232, 0.14)', // secondary soft
       disabled: 'rgba(79,74,71,0.26)',
       disabledBackground: 'rgba(79,74,71,0.08)',
