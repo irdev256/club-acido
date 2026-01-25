@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import { CLIENT_INSTAGRAM_LINK, CLIENT_TIKTOK_LINK, PagesInfo } from '../../../helpers/constants';
 import TikTokIcon from '../../../components/icons/TikTokIcon';
 
-export default function SocialDemoSection() {
+export default function SocialDemo() {
   return (
     <Box
       id={PagesInfo.HOME.sections.SOCIAL_DEMO}
