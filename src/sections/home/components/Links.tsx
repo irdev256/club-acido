@@ -21,6 +21,7 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
 
   return (
     <Box
+      className="link-card"
       onClick={onClick}
       role="img"
       aria-label={ariaLabel}
@@ -32,6 +33,7 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
         alignItems: 'center',
       }}
     >
+
       {/* TÍTULO MOBILE */}
       <Box
         sx={{
@@ -78,28 +80,41 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
         }}
       >
         {/* TÍTULO DESKTOP */}
-        <Box
-          sx={(theme) => ({
-            display: { xs: 'none', md: 'block' },
-            position: 'absolute',
-            zIndex: 2,
-            px: 4,
-            py: 1,
-            backgroundColor: theme.palette[titleColor].main,
-            color: theme.palette[titleColor].contrastText,
-            borderRadius: 1,
-            boxShadow: {
-              xs: 1,
-              md: 3,
-            },
+      <Box
+        sx={(theme) => ({
+          display: { xs: 'none', md: 'block' },
+          position: 'absolute',
+          zIndex: 2,
+          px: 4,
+          py: 1,
+          backgroundColor: theme.palette[titleColor].main,
+          color: theme.palette[titleColor].contrastText,
+          borderRadius: 1,
+          boxShadow: { xs: 1, md: 3 },
 
-            ...(style?.top !== undefined && { top: style.top }),
-            ...(style?.bottom !== undefined && { bottom: style.bottom }),
-            ...(style?.left !== undefined && { left: style.left }),
-            ...(style?.right !== undefined && { right: style.right }),
-            ...(style?.transform && { transform: style.transform }),
-          })}
-        >
+          ...(style?.top !== undefined && { top: style.top }),
+          ...(style?.bottom !== undefined && { bottom: style.bottom }),
+          ...(style?.left !== undefined && { left: style.left }),
+          ...(style?.right !== undefined && { right: style.right }),
+
+          transform: `
+            ${style?.left === '50%' ? 'translateX(-50%)' : ''}
+            rotate(${style?.rotate ?? 0}deg)
+          `,
+
+          transition: 'transform 0.25s ease',
+
+          '@media (hover: hover)': {
+            '.link-card:hover &': {
+              transform: `
+                ${style?.left === '50%' ? 'translateX(-50%)' : ''}
+                rotate(${(style?.rotate ?? 0) * 0.3}deg)
+                scale(1.06)
+              `,
+            },
+          },
+        })}
+      > 
           <Typography
             sx={{
               fontSize: 32,
@@ -227,33 +242,37 @@ const positionStyles: Record<
     bottom?: number;
     left?: number | string;
     right?: number | string;
-    transform?: string;
+    rotate?: number; // 👈 nuevo
   }
 > = {
   top: {
     top: -28,
     left: '50%',
-    transform: 'translateX(-50%)',
+    rotate: -3,
   },
   bottom: {
     bottom: -28,
     left: '50%',
-    transform: 'translateX(-50%)',
+    rotate: 2,
   },
   'top-left': {
     top: -20,
     left: -12,
+    rotate: -5,
   },
   'top-right': {
     top: -20,
     right: -12,
+    rotate: 4,
   },
   'bottom-left': {
     bottom: -20,
     left: -12,
+    rotate: -2,
   },
   'bottom-right': {
     bottom: -20,
     right: -12,
+    rotate: 3,
   },
 };
