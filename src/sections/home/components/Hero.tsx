@@ -23,7 +23,7 @@ export default function Hero() {
   const scrollToNextSection = () => {
     const nextSection = document.getElementById(PagesInfo.HOME.sections.LINKS);
     if (!nextSection) return;
-    scrollTo(nextSection, 100);
+    scrollTo(nextSection, 150);
   };
 
   return (

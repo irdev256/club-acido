@@ -55,63 +55,55 @@ export default function SocialDemoSection() {
             >
               <Typography
                 sx={{
-                  fontSize: 'clamp(28px, 5vw, 56px)',
-                  fontWeight: 800,
-                  lineHeight: 1.05,
-                  letterSpacing: '-0.03em',
-                  mb: 3,
-                  maxWidth: { xs: '100%' },
+                  fontSize: 'clamp(40px, 7vw, 84px)',
+                  fontWeight: 900,
+                  lineHeight: 0.9,
+                  letterSpacing: '-0.05em',
+                  mb: 5,
                 }}
               >
                 Club Ácido
                 <br />
-                en redes
+                <span style={{ fontWeight: 300 }}>en redes</span>
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontSize: 'clamp(22px, 3vw, 32px)',
+                  lineHeight: 1.3,
+                  fontWeight: 400,
+                  mb: 5,
+                }}
+              >
+                Proceso <Highlight>real</Highlight>.
+                <br />
+                Cuerpo <Highlight>presente</Highlight>.
+                <br />
+                Contenido <Highlight>vivo</Highlight>.
               </Typography>
 
               <Typography
                 sx={{
                   fontSize: 18,
-                  lineHeight: 1.6,
-                  fontWeight: 500,
-                  mb: 4,
-                  color: 'text.primary',
-                }}
-              >
-                No es solo contenido. Es proceso, cuerpo y ritual compartido en tiempo real.
-              </Typography>
-
-              <Typography
-                sx={{
-                  fontSize: 15,
-                  lineHeight: 1.9,
+                  lineHeight: 1.5,
                   color: 'text.secondary',
-                  mb: 3,
-                }}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Typography>
-
-              <Typography
-                sx={{
-                  mt: 6,
+                  maxWidth: 520,
                   mb: 4,
-                  fontSize: 20,
-                  fontWeight: 700,
-                  letterSpacing: '-0.01em',
                 }}
               >
-                Lo que pasa en Club Ácido no se explica, se vive.
+                Lo que pasa acá no se explica.
+                <br />
+                <strong>Se vive.</strong>
               </Typography>
 
               <Typography
                 sx={{
-                  fontSize: 14,
+                  fontSize: 11,
+                  letterSpacing: '0.25em',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.12em',
-                  color: 'text.secondary',
-                  mb: 2,
+                  fontWeight: 700,
+                  color: 'text.primary',
+                  mb: 3,
                 }}
               >
                 Seguí el proceso
@@ -152,3 +144,27 @@ const iconStyle = {
     transform: 'translateY(-6px)', // mucho más sutil
   },
 };
+
+// ------
+const Highlight = ({ children }: { children: React.ReactNode }) => (
+  <Box
+    component="span"
+    sx={{
+      position: 'relative',
+      fontWeight: 700,
+      color: 'text.primary',
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        left: -4,
+        bottom: 2,
+        width: 'calc(100% + 8px)',
+        height: '0.5em',
+        backgroundColor: '#FFE600',
+        zIndex: -1,
+      },
+    }}
+  >
+    {children}
+  </Box>
+);
