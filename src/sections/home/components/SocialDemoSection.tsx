@@ -13,15 +13,16 @@ export default function SocialDemoSection() {
       sx={(theme) => ({
         py: { xs: 6, md: 10 },
         minHeight: { md: '100vh' },
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         backgroundColor: theme.palette.background.default,
       })}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
+        <Grid container spacing={{ xs: 6, md: 20 }} alignItems="center">
           {/* Columna izquierda – teléfono */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Box display="flex" justifyContent={{ xs: 'center', md: 'flex-start' }}>
               <PhoneMockup>
                 <Box
@@ -42,7 +43,7 @@ export default function SocialDemoSection() {
           </Grid>
 
           {/* Columna derecha – texto */}
-          <Grid size={{ xs: 12, md: 7 }}>
+          <Grid size={{ xs: 12, md: 8 }}>
             <Box
               sx={{
                 height: { md: '100%' },
@@ -59,7 +60,7 @@ export default function SocialDemoSection() {
                   lineHeight: 1.05,
                   letterSpacing: '-0.03em',
                   mb: 3,
-                  maxWidth: { xs: '100%', md: 420 },
+                  maxWidth: { xs: '100%' },
                 }}
               >
                 Club Ácido
@@ -72,7 +73,6 @@ export default function SocialDemoSection() {
                   fontSize: 18,
                   lineHeight: 1.6,
                   fontWeight: 500,
-                  maxWidth: 520,
                   mb: 4,
                   color: 'text.primary',
                 }}
@@ -85,7 +85,6 @@ export default function SocialDemoSection() {
                   fontSize: 15,
                   lineHeight: 1.9,
                   color: 'text.secondary',
-                  maxWidth: 560,
                   mb: 3,
                 }}
               >
