@@ -43,7 +43,7 @@ export default function WhatsAppButton() {
         },
         arrow: {
           sx: {
-            color: 'black',
+            color: 'highlight.main',
           },
         },
       }}

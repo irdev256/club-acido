@@ -183,6 +183,24 @@ export default function UbicacionSection() {
           </Box>
         </Box>
       </Container>
+        <Box
+        component="svg"
+        viewBox="0 0 1440 80"
+        preserveAspectRatio="none"
+        sx={{
+          position: 'absolute',
+          bottom: -1,
+          left: 0,
+          width: '100%',
+          height: 36,
+          pointerEvents: 'none',
+          zIndex: 1,
+          transform: 'scaleY(-1)',
+        }}
+      >
+        <path d={`${scallopPath} L1440,0 L0,0 Z`} fill={NEXT_BG} />
+        <path d={scallopPath} fill="none" />
+      </Box>
     </Box>
   );
 }

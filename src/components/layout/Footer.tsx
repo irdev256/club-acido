@@ -11,8 +11,6 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        borderTop: '1px solid',
-        borderColor: 'divider',
         pt: { xs: 6, md: 8 },
         pb: { xs: 2, md: 3 },
         backgroundColor: 'background.default',

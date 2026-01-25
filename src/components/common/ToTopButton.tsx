@@ -37,19 +37,19 @@ export default function ToTopButton() {
         },
         arrow: {
           sx: {
-            color: 'black',
+            color: 'highlight.main',
           },
         },
       }}
     >
       <Box
         onClick={() => scrollTo(0)}
-        sx={(theme) => ({
+        sx={{
           width: 56,
           height: 56,
           borderRadius: '50%',
-          backgroundColor: 'rgba(255,255,255,0.9)',
-          color: theme.palette.text.secondary,
+          backgroundColor: 'highlight.main',
+          color: 'accent.main',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -62,9 +62,8 @@ export default function ToTopButton() {
           '&:hover': {
             transform: 'translateY(-2px) scale(1.05)',
             boxShadow: '0 12px 32px rgba(0,0,0,0.3)',
-            color: theme.palette.primary.main,
           },
-        })}
+        }}
       >
         <KeyboardArrowUpIcon sx={{ fontSize: 34 }} />
       </Box>
