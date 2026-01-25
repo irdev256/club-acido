@@ -1,10 +1,16 @@
 import { Box, useTheme } from '@mui/material';
 
-export default function OrganicDivider() {
+type OrganicDividerProps = {
+  nextBg?: string;
+  main?: string;
+  stroke?: string;
+};
+
+export default function OrganicDivider({ nextBg, main, stroke }: OrganicDividerProps) {
   const theme = useTheme();
-  const NEXT_BG = theme.palette.background.default;
-  const ORANGE = theme.palette.primary.main;
-  const STROKE = '#4A4A4A';
+  const NEXT_BG = nextBg || theme.palette.background.default;
+  const ORANGE = main || theme.palette.primary.main;
+  const STROKE = stroke || '#4A4A4A';
 
   const scallopPath = `
     M0,30

@@ -93,10 +93,10 @@ export default function Navbar() {
               gap: 1.5,
               mr: 'auto', // 👈 clave: empuja el resto a la derecha
               textDecoration: 'none',
-              opacity: showBrand || !isHome ? 1 : 0,
-              transform: showBrand || !isHome ? 'translateY(0)' : 'translateY(-6px)',
+              opacity: showBrand ? 1 : 0,
+              transform: showBrand ? 'translateY(0)' : 'translateY(-6px)',
               transition: 'opacity 400ms ease, transform 400ms ease',
-              pointerEvents: showBrand || !isHome ? 'auto' : 'none',
+              pointerEvents: showBrand ? 'auto' : 'none',
               cursor: 'pointer',
             }}
             component="div"
