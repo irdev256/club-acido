@@ -15,9 +15,10 @@ export default function PhoneMockup({ children }: PhoneMockupProps) {
         padding: '10px',
         position: 'relative',
         boxShadow: `
-          0 30px 70px rgba(0,0,0,0.45),
-          inset 0 0 0 1px rgba(255,255,255,0.15)
+          0 16px 40px rgba(0,0,0,0.28),
+          inset 0 0 0 1px rgba(255,255,255,0.12)
         `,
+
       }}
     >
       {/* Borde metálico */}

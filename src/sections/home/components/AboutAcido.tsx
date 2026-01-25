@@ -8,7 +8,7 @@ export default function AboutAcido() {
       sx={{
         position: 'relative',
         py: { xs: 10, md: 16 },
-        backgroundColor: '#FAF7F5',
+        backgroundColor: 'background.default',
         overflow: 'hidden',
       }}
     >
@@ -57,7 +57,7 @@ export default function AboutAcido() {
         </Grid>
 
         <Box
-          sx={{ mt: 10 }}
+          sx={{ mt: 10, backgroundColor: 'highlight.main', width: 'fit-content' }}
           onClick={() => {
             window.open(CLIENT_AGENDA_PRO, '_blank', 'noopener,noreferrer');
           }}
@@ -98,6 +98,7 @@ const collageImage = (x: number, y: number, r: number) => ({
 
 const ctaStyle = {
   fontSize: 12,
+  color: 'black',
   letterSpacing: '0.3em',
   fontWeight: 700,
   textTransform: 'uppercase',
