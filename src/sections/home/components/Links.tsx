@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
 import { PagesInfo } from '../../../helpers/constants';
+import { useNavigate } from 'react-router-dom';
 
 type TitlePosition = 'top' | 'top-left' | 'top-right' | 'bottom' | 'bottom-left' | 'bottom-right';
 
@@ -72,7 +73,7 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
       <Box
         sx={{
           position: 'relative',
-          width: { xs: 220, md: 300 },
+          width: { xs: 220, sm: 260, md: 300 },
           aspectRatio: '1 / 1',
         }}
       >
@@ -137,6 +138,7 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
 }
 
 export default function Links() {
+  const navigate = useNavigate();
   return (
     <Box
       id={PagesInfo.HOME.sections.LINKS}
@@ -146,15 +148,36 @@ export default function Links() {
     >
       <Grid container spacing={{ xs: 6, md: 8 }}>
         <Grid size={{ xs: 12, md: 4 }}>
-          <LinkCard title="Skincare" image="/skincare.jpeg" titlePosition="top" titleColor="secondary" ariaLabel="Skincare" />
+          <LinkCard
+            onClick={() => navigate(PagesInfo.SKINCARE.path)}
+            title="Skincare"
+            image="/skincare.jpeg"
+            titlePosition="top"
+            titleColor="secondary"
+            ariaLabel="Skincare"
+          />
         </Grid>
 
         <Grid size={{ xs: 12, md: 4 }}>
-          <LinkCard title="Tattoo" image="/tattoo.jpg" titlePosition="bottom" titleColor="accent" ariaLabel="Tattoo" />
+          <LinkCard
+            onClick={() => navigate(PagesInfo.TATTOO.path)}
+            title="Tattoo"
+            image="/tattoo.jpg"
+            titlePosition="bottom"
+            titleColor="accent"
+            ariaLabel="Tattoo"
+          />
         </Grid>
 
         <Grid size={{ xs: 12, md: 4 }}>
-          <LinkCard title="Talleres" image="/talleres.jpg" titlePosition="top" titleColor="highlight" ariaLabel="Talleres" />
+          <LinkCard
+            onClick={() => navigate(PagesInfo.TALLERES.path)}
+            title="Talleres"
+            image="/talleres.jpg"
+            titlePosition="top"
+            titleColor="highlight"
+            ariaLabel="Talleres"
+          />
         </Grid>
       </Grid>
     </Box>
