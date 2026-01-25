@@ -181,19 +181,6 @@ export default function Links() {
 
         <Grid
           size={{ xs: 12, md: 4 }}
-          sx={{
-            position: 'relative',
-            '&::before': {
-              content: '""',
-              display: { xs: 'none', md: 'block' },
-              position: 'absolute',
-              left: 0,
-              top: '10%',
-              height: '80%',
-              width: '1px',
-              backgroundColor: (theme) => theme.palette.divider,
-            },
-          }}
         >
           <LinkCard
             onClick={() => navigate(PagesInfo.TATTOO.path)}
@@ -207,19 +194,6 @@ export default function Links() {
 
         <Grid
           size={{ xs: 12, md: 4 }}
-          sx={{
-            position: 'relative',
-            '&::before': {
-              content: '""',
-              display: { xs: 'none', md: 'block' },
-              position: 'absolute',
-              left: 0,
-              top: '10%',
-              height: '80%',
-              width: '1px',
-              backgroundColor: (theme) => theme.palette.divider,
-            },
-          }}
         >
           <LinkCard
             onClick={() => navigate(PagesInfo.TALLERES.path)}
@@ -242,7 +216,7 @@ const positionStyles: Record<
     bottom?: number;
     left?: number | string;
     right?: number | string;
-    rotate?: number; // 👈 nuevo
+    rotate?: number;
   }
 > = {
   top: {

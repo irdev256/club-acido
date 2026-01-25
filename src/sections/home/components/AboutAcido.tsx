@@ -22,7 +22,7 @@ export default function AboutAcido() {
             mb: 8,
           }}
         >
-          About Ácido
+          Sobre Ácido
         </Typography>
 
         <Grid container spacing={6}>
