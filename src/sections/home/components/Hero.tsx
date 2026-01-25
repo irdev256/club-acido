@@ -109,20 +109,19 @@ export default function Hero() {
             justifyContent: 'center',
           }}
         >
-          <Box
-            component="svg"
-            width={64}
-            height={72}
-            viewBox="0 0 24 36"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 2v26" />
-            <path d="M19 21l-7 7-7-7" />
-          </Box>
+        <Box
+          component="svg"
+          width={64}
+          height={48}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </Box>
         </Box>
 
         <Box
