@@ -27,7 +27,7 @@ export default function SocialDemoSection() {
               <PhoneMockup>
                 <Box
                   component="video"
-                  src="/logo-animated.mp4"
+                  src="/video-landing.mp4"
                   autoPlay
                   loop
                   muted
@@ -136,6 +136,7 @@ export default function SocialDemoSection() {
 const iconStyle = {
   fontSize: { xs: 48, md: 72 },
   color: 'text.secondary',
+  px: 0,
   transition: 'transform 0.2s ease, color 0.2s ease',
   backgroundColor: 'transparent',
   '&:hover': {
