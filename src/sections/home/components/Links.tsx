@@ -175,7 +175,7 @@ export default function Links() {
               left: 0,
               top: '10%',
               height: '80%',
-              width: '3px',
+              width: '1px',
               backgroundColor: (theme) => theme.palette.divider,
             },
           }}
@@ -201,7 +201,7 @@ export default function Links() {
               left: 0,
               top: '10%',
               height: '80%',
-              width: '3px',
+              width: '1px',
               backgroundColor: (theme) => theme.palette.divider,
             },
           }}

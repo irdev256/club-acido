@@ -1,9 +1,9 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import PhoneMockup from '../../../components/common/PhoneMockup';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import IconButton from '@mui/material/IconButton';
-import { PagesInfo } from '../../../helpers/constants';
+import { CLIENT_INSTAGRAM_LINK, CLIENT_TIKTOK_LINK, PagesInfo } from '../../../helpers/constants';
+import TikTokIcon from '../../../components/icons/TikTokIcon';
 
 export default function SocialDemoSection() {
   return (
@@ -11,8 +11,8 @@ export default function SocialDemoSection() {
       id={PagesInfo.HOME.sections.SOCIAL_DEMO}
       component="section"
       sx={(theme) => ({
-        py: { xs: 8, md: 12 },
-        minHeight: '100vh',
+        py: { xs: 6, md: 10 },
+        minHeight: { md: '100vh' },
         display: 'flex',
         alignItems: 'center',
         backgroundColor: theme.palette.background.default,
@@ -43,14 +43,23 @@ export default function SocialDemoSection() {
 
           {/* Columna derecha – texto */}
           <Grid size={{ xs: 12, md: 7 }}>
-            <Box>
+            <Box
+              sx={{
+                height: { md: '100%' },
+                maxHeight: { md: 620 }, // mismo alto visual que PhoneMockup
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            >
               <Typography
                 sx={{
-                  fontSize: 'clamp(32px, 5vw, 56px)',
+                  fontSize: 'clamp(28px, 5vw, 56px)',
                   fontWeight: 800,
                   lineHeight: 1.05,
                   letterSpacing: '-0.03em',
-                  mb: 4,
+                  mb: 3,
+                  maxWidth: { xs: '100%', md: 420 },
                 }}
               >
                 Club Ácido
@@ -111,25 +120,18 @@ export default function SocialDemoSection() {
 
               <Box
                 sx={{
-                  mt: 6,
                   display: 'flex',
-                  justifyContent: 'space-between',
+                  gap: { xs: 2, md: 4 },
+
+                  justifyContent: { xs: 'center', md: 'flex-start' },
                 }}
               >
-                <IconButton sx={iconStyle}>
+                <IconButton sx={iconStyle} onClick={() => window.open(CLIENT_INSTAGRAM_LINK, '_blank', 'noopener,noreferrer')}>
                   <InstagramIcon fontSize="inherit" />
                 </IconButton>
 
-                <IconButton sx={iconStyle}>
-                  <YouTubeIcon fontSize="inherit" />
-                </IconButton>
-
-                <IconButton sx={iconStyle}>
-                  <InstagramIcon fontSize="inherit" />
-                </IconButton>
-
-                <IconButton sx={iconStyle}>
-                  <YouTubeIcon fontSize="inherit" />
+                <IconButton sx={iconStyle} onClick={() => window.open(CLIENT_TIKTOK_LINK, '_blank', 'noopener,noreferrer')}>
+                  <TikTokIcon fontSize="inherit" />
                 </IconButton>
               </Box>
             </Box>
@@ -141,13 +143,13 @@ export default function SocialDemoSection() {
 }
 
 const iconStyle = {
-  fontSize: { xs: 70, md: 140 },
+  fontSize: { xs: 48, md: 72 },
   color: 'text.secondary',
   transition: 'transform 0.2s ease, color 0.2s ease',
   backgroundColor: 'transparent',
   '&:hover': {
     backgroundColor: 'transparent',
     color: 'primary.main',
-    transform: 'translateY(-20px)',
+    transform: 'translateY(-6px)', // mucho más sutil
   },
 };

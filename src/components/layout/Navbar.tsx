@@ -169,111 +169,109 @@ export default function Navbar() {
       <Toolbar />
 
       {/* ================= FULLSCREEN OVERLAY MENU ================= */}
-      {open && (
+      <Box
+        sx={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: Z_INDEX.HAMBURGER_MENU,
+          backgroundColor: 'secondary.main',
+          transform: open ? 'translateY(0)' : 'translateY(-100%)',
+          transition: `transform 1200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear ${open ? '0s' : '1200ms'}`,
+          visibility: open ? 'visible' : 'hidden',
+          pointerEvents: open ? 'auto' : 'none',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        {/* Overlay header */}
         <Box
           sx={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: Z_INDEX.HAMBURGER_MENU,
-            backgroundColor: 'secondary.main',
-            transform: open ? 'translateY(0)' : 'translateY(-100%)',
-            transition: `transform 1200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear ${open ? '0s' : '1200ms'}`,
-            visibility: open ? 'visible' : 'hidden',
-            pointerEvents: open ? 'auto' : 'none',
+            height: 64,
             display: 'flex',
-            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderBottom: '1px solid rgba(0,0,0,0.25)',
           }}
         >
-          {/* Overlay header */}
+          <Typography sx={{ fontWeight: 700, color: 'white', px: { xs: 3, md: 6 } }}>Club ácido</Typography>
+          <IconButton sx={{ mr: 2.6, fontSize: 30, color: 'white' }} onClick={() => setOpen(false)}>
+            <CloseIcon />
+          </IconButton>
+        </Box>
+
+        {/* Hamburger Items */}
+        <Stack
+          sx={{
+            flex: 1,
+          }}
+        >
+          {HamburgerNavItems.map((item, index) => {
+            const handleClick = () => {
+              setOpen(false);
+
+              switch (item.type) {
+                case 'route':
+                  navigate(item.href);
+                  break;
+
+                case 'section':
+                  scrollToSection(item.href);
+                  break;
+
+                case 'external':
+                  window.open(item.href, '_blank', 'noopener,noreferrer');
+                  break;
+              }
+            };
+
+            return (
+              <Box key={item.label} onClick={handleClick} sx={hamburgerRowStyle}>
+                {/* Texto */}
+                <Typography sx={hamburgerTextStyle}>{item.label}</Typography>
+
+                {/* Icono derecho */}
+                {item.icon && (
+                  <Box
+                    component="img"
+                    src={item.icon}
+                    alt=""
+                    sx={{
+                      ...hamburgerIconRightStyle,
+                      '--spin-duration': getSpinDuration(index + 1, 7, 4),
+                      '--spin-direction': getSpinDirection(index + 1),
+                    }}
+                  />
+                )}
+              </Box>
+            );
+          })}
+        </Stack>
+
+        {/* Footer */}
+        <Box
+          sx={{
+            fontSize: 14,
+            color: 'white',
+          }}
+        >
           <Box
             sx={{
-              height: 64,
               display: 'flex',
+              gap: 10,
+              justifyContent: 'center',
               alignItems: 'center',
-              justifyContent: 'space-between',
-              borderBottom: '1px solid rgba(0,0,0,0.25)',
             }}
           >
-            <Typography sx={{ fontWeight: 700, color: 'white', px: { xs: 3, md: 6 } }}>Club ácido</Typography>
-            <IconButton sx={{ mr: 2.6, fontSize: 30, color: 'white' }} onClick={() => setOpen(false)}>
-              <CloseIcon />
+            <IconButton sx={iconStyle} onClick={() => window.open(CLIENT_INSTAGRAM_LINK, '_blank', 'noopener,noreferrer')}>
+              <InstagramIcon fontSize="inherit" />
+            </IconButton>
+
+            <IconButton sx={iconStyle} onClick={() => window.open(CLIENT_TIKTOK_LINK, '_blank', 'noopener,noreferrer')}>
+              <TikTokIcon fontSize="inherit" />
             </IconButton>
           </Box>
-
-          {/* Hamburger Items */}
-          <Stack
-            sx={{
-              flex: 1,
-            }}
-          >
-            {HamburgerNavItems.map((item, index) => {
-              const handleClick = () => {
-                setOpen(false);
-
-                switch (item.type) {
-                  case 'route':
-                    navigate(item.href);
-                    break;
-
-                  case 'section':
-                    scrollToSection(item.href);
-                    break;
-
-                  case 'external':
-                    window.open(item.href, '_blank', 'noopener,noreferrer');
-                    break;
-                }
-              };
-
-              return (
-                <Box key={item.label} onClick={handleClick} sx={hamburgerRowStyle}>
-                  {/* Texto */}
-                  <Typography sx={hamburgerTextStyle}>{item.label}</Typography>
-
-                  {/* Icono derecho */}
-                  {item.icon && (
-                    <Box
-                      component="img"
-                      src={item.icon}
-                      alt=""
-                      sx={{
-                        ...hamburgerIconRightStyle,
-                        '--spin-duration': getSpinDuration(index + 1, 7, 4),
-                        '--spin-direction': getSpinDirection(index + 1),
-                      }}
-                    />
-                  )}
-                </Box>
-              );
-            })}
-          </Stack>
-
-          {/* Footer */}
-          <Box
-            sx={{
-              fontSize: 14,
-              color: 'white',
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <IconButton sx={iconStyle} onClick={() => window.open(CLIENT_INSTAGRAM_LINK, '_blank', 'noopener,noreferrer')}>
-                <InstagramIcon fontSize="inherit" />
-              </IconButton>
-
-              <IconButton sx={iconStyle} onClick={() => window.open(CLIENT_TIKTOK_LINK, '_blank', 'noopener,noreferrer')}>
-                <TikTokIcon fontSize="inherit" />
-              </IconButton>
-            </Box>
-          </Box>
         </Box>
-      )}
+      </Box>
 
       <NavigationLoader />
     </>
