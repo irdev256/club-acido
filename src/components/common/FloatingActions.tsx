@@ -2,6 +2,7 @@ import { Stack } from '@mui/material';
 import WhatsAppButton from './WhatsAppButton';
 import CalendarButton from './CalendarButton';
 import ToTopButton from './ToTopButton';
+import { Z_INDEX } from '../../helpers/constants';
 
 export default function FloatingActions() {
   return (
@@ -11,8 +12,7 @@ export default function FloatingActions() {
         position: 'fixed',
         right: { xs: 16, md: 24 },
         bottom: { xs: 16, md: 24 },
-        zIndex: 1300,
-        pointerEvents: 'none',
+        zIndex: Z_INDEX.FLOATING_ACTIONS,
       }}
     >
       {/* Orden visual: de arriba hacia abajo */}

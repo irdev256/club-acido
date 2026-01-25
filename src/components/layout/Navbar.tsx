@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import NavigationLoader from './NavigationLoader';
-import { NavItems, HamburgerNavItems, PagesInfo } from '../../helpers/constants';
+import { NavItems, HamburgerNavItems, PagesInfo, Z_INDEX } from '../../helpers/constants';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { alpha } from '@mui/material/styles';
@@ -44,6 +44,14 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
+      // Las dos lineas comentadas son para mostrar la navbar al mismo tiempo que las floating actions
+      // pero también queda bien que la navbar aparezca antes, por eso las dejo comentadas:
+      // const scrolledVh = (window.scrollY / window.innerHeight) * 100;
+      // const atTop = scrolledVh <= 80;
+
+      // ----------------------------------------------
+
+      // Mostrar la navbar antes:
       const atTop = window.scrollY < 10;
       setIsAtTop(atTop);
       setShowBrand(!atTop);
@@ -106,28 +114,43 @@ export default function Navbar() {
             <Box component="img" src="/logo-white.png" alt="Logo_small" sx={{ width: 80, height: 28 }} />
           </Box>
 
-          {/* Desktop links */}
+          {/* Navbar Items */}
           <Stack direction="row" spacing={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {NavItems.map((item) =>
-              item.type === 'route' ? (
-                <Box key={item.label} component={Link} to={item.href} sx={linkStyle(isAtTop)}>
-                  {item.label}
-                </Box>
-              ) : (
-                <Box
-                  key={item.label}
-                  sx={linkStyle(isAtTop)}
-                  onClick={() => {
-                    if (isHome) {
-                      scrollToSection(item.href);
-                    }
-                  }}
-                >
-                  {item.label}
-                </Box>
-              )
-            )}
+            {NavItems.map((item) => {
+              switch (item.type) {
+                case 'route':
+                  return (
+                    <Box key={item.label} component={Link} to={item.href} sx={linkStyle(isAtTop)}>
+                      {item.label}
+                    </Box>
+                  );
+
+                case 'section':
+                  return (
+                    <Box
+                      key={item.label}
+                      sx={linkStyle(isAtTop)}
+                      onClick={() => {
+                        if (isHome) scrollToSection(item.href);
+                      }}
+                    >
+                      {item.label}
+                    </Box>
+                  );
+
+                case 'external':
+                  return (
+                    <Box key={item.label} sx={linkStyle(isAtTop)} onClick={() => window.open(item.href, '_blank', 'noopener,noreferrer')}>
+                      {item.label}
+                    </Box>
+                  );
+
+                default:
+                  return null;
+              }
+            })}
           </Stack>
+
           <IconButton
             onClick={() => setOpen(true)}
             sx={(theme) => ({
@@ -150,7 +173,7 @@ export default function Navbar() {
         sx={{
           position: 'fixed',
           inset: 0,
-          zIndex: 1300,
+          zIndex: Z_INDEX.HAMBURGER_MENU,
           backgroundColor: 'secondary.main',
           transform: open ? 'translateY(0)' : 'translateY(-100%)',
           transition: `transform 1200ms cubic-bezier(0.22, 1, 0.36, 1)`,
@@ -175,24 +198,33 @@ export default function Navbar() {
           </IconButton>
         </Box>
 
-        {/* Menu items */}
+        {/* Hamburger Items */}
         <Stack
           sx={{
             flex: 1,
           }}
         >
           {HamburgerNavItems.map((item, index) => {
-            const Component = item.type === 'route' ? Link : 'a';
+            const handleClick = () => {
+              setOpen(false);
+
+              switch (item.type) {
+                case 'route':
+                  navigate(item.href);
+                  break;
+
+                case 'section':
+                  scrollToSection(item.href);
+                  break;
+
+                case 'external':
+                  window.open(item.href, '_blank', 'noopener,noreferrer');
+                  break;
+              }
+            };
 
             return (
-              <Box
-                key={item.label}
-                component={Component}
-                to={item.type === 'route' ? item.href : undefined}
-                href={item.type !== 'route' ? `/#${item.href}` : undefined}
-                onClick={() => setOpen(false)}
-                sx={hamburgerRowStyle}
-              >
+              <Box key={item.label} onClick={handleClick} sx={hamburgerRowStyle}>
                 {/* Texto */}
                 <Typography sx={hamburgerTextStyle}>{item.label}</Typography>
 
@@ -278,7 +310,7 @@ const hamburgerRowStyle = {
   borderBottom: '1px solid rgba(0,0,0,0.25)',
   backgroundColor: 'transparent',
   transition: 'background-color 300ms ease',
-
+  cursor: 'pointer',
   '&:hover': {
     backgroundColor: '#D8A8FF',
   },

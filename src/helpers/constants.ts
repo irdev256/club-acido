@@ -1,5 +1,7 @@
 // -------------------------------------------------------------
 
+import type { NavItem } from './types';
+
 // CLIENT
 export const CLIENT_WHATSAPP_LINK = 'https://wa.me/message/2XPF4LNDEZXLK1';
 export const CLIENT_INSTAGRAM_LINK = 'https://www.instagram.com/clubacido?igsh=ZTQ4cWlsN3lobWQ3&utm_source=qr';
@@ -13,7 +15,7 @@ export const CLIENT_AGENDA_PRO = 'https://agendapro.com/site/ar/elclubacido/';
 // OUR
 export const OUR_WHATSAPP_LINK = '';
 
-// -------------------------------------------------------------
+// --------------------------------------------------------------
 
 export const PagesInfo = {
   HOME: {
@@ -27,8 +29,19 @@ export const PagesInfo = {
   QUIZ: { path: '/quiz/:quizSlug', helmet: 'Quiz | Club Ácido' },
 };
 
-export const NavItems = [{ label: 'Agendá tu turno', href: CLIENT_AGENDA_PRO, type: 'route', icon: '/icon.png' }];
+export const NavItems: NavItem[] = [{ label: 'Agendá tu turno', href: CLIENT_AGENDA_PRO, type: 'external', icon: '/icon.png' }];
 
-export const HamburgerNavItems = [{ label: 'Home', href: `/`, type: 'route', icon: '/icon.png' }, ...NavItems];
+export const HamburgerNavItems: NavItem[] = [
+  { label: 'Home', href: `/`, type: 'route', icon: '/icon.png' },
+  { label: 'Skincare', href: '/skincare', type: 'route', icon: '/icon.png' },
+  { label: 'Tattoo', href: '/tattoo', type: 'route', icon: '/icon.png' },
+  { label: 'Talleres', href: '/talleres', type: 'route', icon: '/icon.png' },
+  ...NavItems,
+];
 
 // --------------------------------------------------------------
+
+export const Z_INDEX = {
+  FLOATING_ACTIONS: 1200,
+  HAMBURGER_MENU: 1300,
+};

@@ -44,7 +44,6 @@ export default function MusicButton() {
           alignItems: 'center',
           justifyContent: 'center',
           boxShadow: '0 8px 24px rgba(0,0,0,0.25)',
-          zIndex: 1300,
           cursor: 'pointer',
           transition: 'transform 0.2s ease, box-shadow 0.2s ease',
           '&:hover': {
