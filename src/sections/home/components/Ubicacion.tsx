@@ -114,8 +114,7 @@ export default function UbicacionSection() {
             sx={{
               position: 'absolute',
               inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 22%, rgba(0,0,0,0) 40%)',
+              background: 'linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 22%, rgba(0,0,0,0) 40%)',
               pointerEvents: 'none',
             }}
           />
@@ -146,21 +145,16 @@ export default function UbicacionSection() {
               Ubicación
             </Typography>
 
-            <Typography sx={{ fontSize: 20, fontWeight: 800, mb: 1 }}>
-              Club Ácido
+            <Typography sx={{ fontSize: 20, fontWeight: 800, mb: 1 }}>Club Ácido</Typography>
+
+            <Typography sx={{ fontSize: 14, lineHeight: 1.5, mb: 3 }}>
+              Gobernador Inocencio Arias 2570 307#
+              <br />
+              Castelar, Buenos Aires, Argentina
             </Typography>
 
-          <Typography sx={{ fontSize: 14, lineHeight: 1.5, mb: 3 }}>
-            Gobernador Inocencio Arias 2570 307#
-            <br />
-            Castelar, Buenos Aires, Argentina
-          </Typography>
-
-
             <Box
-              onClick={() =>
-                window.open(CLIENT_GOOGLE_MAPS_LINK, '_blank', 'noopener,noreferrer')
-              }
+              onClick={() => window.open(CLIENT_GOOGLE_MAPS_LINK, '_blank', 'noopener,noreferrer')}
               sx={{
                 display: 'inline-block',
                 px: 3,
@@ -183,7 +177,7 @@ export default function UbicacionSection() {
           </Box>
         </Box>
       </Container>
-        <Box
+      <Box
         component="svg"
         viewBox="0 0 1440 80"
         preserveAspectRatio="none"

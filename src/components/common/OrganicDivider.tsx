@@ -4,7 +4,7 @@ export default function OrganicDivider() {
   const theme = useTheme();
   const NEXT_BG = theme.palette.background.default;
   const ORANGE = theme.palette.primary.main;
-  const STROKE = '#4A4A4A'
+  const STROKE = '#4A4A4A';
 
   const scallopPath = `
     M0,30

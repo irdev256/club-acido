@@ -33,7 +33,6 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
         alignItems: 'center',
       }}
     >
-
       {/* TÍTULO MOBILE */}
       <Box
         sx={{
@@ -80,41 +79,41 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
         }}
       >
         {/* TÍTULO DESKTOP */}
-      <Box
-        sx={(theme) => ({
-          display: { xs: 'none', md: 'block' },
-          position: 'absolute',
-          zIndex: 2,
-          px: 4,
-          py: 1,
-          backgroundColor: theme.palette[titleColor].main,
-          color: theme.palette[titleColor].contrastText,
-          borderRadius: 1,
-          boxShadow: { xs: 1, md: 3 },
+        <Box
+          sx={(theme) => ({
+            display: { xs: 'none', md: 'block' },
+            position: 'absolute',
+            zIndex: 2,
+            px: 4,
+            py: 1,
+            backgroundColor: theme.palette[titleColor].main,
+            color: theme.palette[titleColor].contrastText,
+            borderRadius: 1,
+            boxShadow: { xs: 1, md: 3 },
 
-          ...(style?.top !== undefined && { top: style.top }),
-          ...(style?.bottom !== undefined && { bottom: style.bottom }),
-          ...(style?.left !== undefined && { left: style.left }),
-          ...(style?.right !== undefined && { right: style.right }),
+            ...(style?.top !== undefined && { top: style.top }),
+            ...(style?.bottom !== undefined && { bottom: style.bottom }),
+            ...(style?.left !== undefined && { left: style.left }),
+            ...(style?.right !== undefined && { right: style.right }),
 
-          transform: `
+            transform: `
             ${style?.left === '50%' ? 'translateX(-50%)' : ''}
             rotate(${style?.rotate ?? 0}deg)
           `,
 
-          transition: 'transform 0.25s ease',
+            transition: 'transform 0.25s ease',
 
-          '@media (hover: hover)': {
-            '.link-card:hover &': {
-              transform: `
+            '@media (hover: hover)': {
+              '.link-card:hover &': {
+                transform: `
                 ${style?.left === '50%' ? 'translateX(-50%)' : ''}
                 rotate(${(style?.rotate ?? 0) * 0.3}deg)
                 scale(1.06)
               `,
+              },
             },
-          },
-        })}
-      > 
+          })}
+        >
           <Typography
             sx={{
               fontSize: 32,
@@ -179,9 +178,7 @@ export default function Links() {
           />
         </Grid>
 
-        <Grid
-          size={{ xs: 12, md: 4 }}
-        >
+        <Grid size={{ xs: 12, md: 4 }}>
           <LinkCard
             onClick={() => navigate(PagesInfo.TATTOO.path)}
             title="Tattoo"
@@ -192,9 +189,7 @@ export default function Links() {
           />
         </Grid>
 
-        <Grid
-          size={{ xs: 12, md: 4 }}
-        >
+        <Grid size={{ xs: 12, md: 4 }}>
           <LinkCard
             onClick={() => navigate(PagesInfo.TALLERES.path)}
             title="Talleres"
