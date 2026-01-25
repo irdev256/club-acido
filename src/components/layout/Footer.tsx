@@ -38,7 +38,7 @@ export default function Footer() {
                 Contactame
               </Typography>
 
-              <Link href={`tel:${CLIENT_PHONE_NUMBER}`} underline="none" color="text.secondary">
+              <Link underline="none" color="text.secondary">
                 {CLIENT_PHONE_NUMBER}
               </Link>
 
@@ -142,7 +142,7 @@ export default function Footer() {
             underline="none"
             color="text.secondary"
             sx={{
-              fontSize: 12,
+              fontSize: 16,
               '&:hover': { color: 'text.primary' },
             }}
           >

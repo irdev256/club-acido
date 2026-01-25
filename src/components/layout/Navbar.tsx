@@ -4,11 +4,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import NavigationLoader from './NavigationLoader';
-import { NavItems, HamburgerNavItems, PagesInfo, Z_INDEX } from '../../helpers/constants';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import { NavItems, HamburgerNavItems, PagesInfo, Z_INDEX, CLIENT_INSTAGRAM_LINK, CLIENT_TIKTOK_LINK } from '../../helpers/constants';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { alpha } from '@mui/material/styles';
 import { scrollTo } from '../../helpers/utils';
+import TikTokIcon from '../icons/TikTokIcon';
 
 export default function Navbar() {
   const location = useLocation();
@@ -82,10 +82,7 @@ export default function Navbar() {
       >
         <Toolbar
           sx={{
-            maxWidth: 1200,
-            mx: 'auto',
             width: '100%',
-            position: 'relative',
           }}
         >
           {/* Logo */}
@@ -115,7 +112,14 @@ export default function Navbar() {
           </Box>
 
           {/* Navbar Items */}
-          <Stack direction="row" spacing={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Stack
+            direction="row"
+            spacing={3}
+            alignItems="center"
+            sx={{
+              ml: 'auto',
+            }}
+          >
             {NavItems.map((item) => {
               switch (item.type) {
                 case 'route':
@@ -149,135 +153,127 @@ export default function Navbar() {
                   return null;
               }
             })}
+            <IconButton
+              onClick={() => setOpen(true)}
+              sx={(theme) => ({
+                color: isAtTop ? theme.palette.text.primary : theme.palette.primary.contrastText,
+                transition: 'color 200ms ease',
+              })}
+            >
+              <MenuIcon sx={{ fontSize: 30 }} />
+            </IconButton>
           </Stack>
-
-          <IconButton
-            onClick={() => setOpen(true)}
-            sx={(theme) => ({
-              position: 'fixed',
-              right: 16,
-              zIndex: 1201,
-              color: isAtTop ? theme.palette.text.primary : theme.palette.primary.contrastText,
-              transition: 'color 200ms ease',
-            })}
-          >
-            <MenuIcon sx={{ fontSize: 30 }} />
-          </IconButton>
         </Toolbar>
       </AppBar>
 
       <Toolbar />
 
       {/* ================= FULLSCREEN OVERLAY MENU ================= */}
-      <Box
-        sx={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: Z_INDEX.HAMBURGER_MENU,
-          backgroundColor: 'secondary.main',
-          transform: open ? 'translateY(0)' : 'translateY(-100%)',
-          transition: `transform 1200ms cubic-bezier(0.22, 1, 0.36, 1)`,
-          display: 'flex',
-          flexDirection: 'column',
-          pointerEvents: open ? 'auto' : 'none',
-        }}
-      >
-        {/* Overlay header */}
+      {open && (
         <Box
           sx={{
-            height: 64,
+            position: 'fixed',
+            inset: 0,
+            zIndex: Z_INDEX.HAMBURGER_MENU,
+            backgroundColor: 'secondary.main',
+            transform: open ? 'translateY(0)' : 'translateY(-100%)',
+            transition: `transform 1200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear ${open ? '0s' : '1200ms'}`,
+            visibility: open ? 'visible' : 'hidden',
+            pointerEvents: open ? 'auto' : 'none',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            borderBottom: '1px solid rgba(0,0,0,0.25)',
+            flexDirection: 'column',
           }}
         >
-          <Typography sx={{ fontWeight: 700, color: 'white', px: { xs: 3, md: 6 } }}>Club ácido</Typography>
-          <IconButton onClick={() => setOpen(false)}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-
-        {/* Hamburger Items */}
-        <Stack
-          sx={{
-            flex: 1,
-          }}
-        >
-          {HamburgerNavItems.map((item, index) => {
-            const handleClick = () => {
-              setOpen(false);
-
-              switch (item.type) {
-                case 'route':
-                  navigate(item.href);
-                  break;
-
-                case 'section':
-                  scrollToSection(item.href);
-                  break;
-
-                case 'external':
-                  window.open(item.href, '_blank', 'noopener,noreferrer');
-                  break;
-              }
-            };
-
-            return (
-              <Box key={item.label} onClick={handleClick} sx={hamburgerRowStyle}>
-                {/* Texto */}
-                <Typography sx={hamburgerTextStyle}>{item.label}</Typography>
-
-                {/* Icono derecho */}
-                {item.icon && (
-                  <Box
-                    component="img"
-                    src={item.icon}
-                    alt=""
-                    sx={{
-                      ...hamburgerIconRightStyle,
-                      '--spin-duration': getSpinDuration(index + 1, 7, 4),
-                      '--spin-direction': getSpinDirection(index + 1),
-                    }}
-                  />
-                )}
-              </Box>
-            );
-          })}
-        </Stack>
-
-        {/* Footer */}
-        <Box
-          sx={{
-            fontSize: 14,
-            color: 'white',
-          }}
-        >
+          {/* Overlay header */}
           <Box
             sx={{
+              height: 64,
               display: 'flex',
-              gap: 10,
-              justifyContent: 'center',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              borderBottom: '1px solid rgba(0,0,0,0.25)',
             }}
           >
-            <IconButton sx={iconStyle}>
-              <InstagramIcon fontSize="inherit" />
-            </IconButton>
-
-            <IconButton sx={iconStyle}>
-              <YouTubeIcon fontSize="inherit" />
-            </IconButton>
-
-            <IconButton sx={iconStyle}>
-              <InstagramIcon fontSize="inherit" />
-            </IconButton>
-
-            <IconButton sx={iconStyle}>
-              <YouTubeIcon fontSize="inherit" />
+            <Typography sx={{ fontWeight: 700, color: 'white', px: { xs: 3, md: 6 } }}>Club ácido</Typography>
+            <IconButton sx={{ mr: 2.6, fontSize: 30, color: 'white' }} onClick={() => setOpen(false)}>
+              <CloseIcon />
             </IconButton>
           </Box>
+
+          {/* Hamburger Items */}
+          <Stack
+            sx={{
+              flex: 1,
+            }}
+          >
+            {HamburgerNavItems.map((item, index) => {
+              const handleClick = () => {
+                setOpen(false);
+
+                switch (item.type) {
+                  case 'route':
+                    navigate(item.href);
+                    break;
+
+                  case 'section':
+                    scrollToSection(item.href);
+                    break;
+
+                  case 'external':
+                    window.open(item.href, '_blank', 'noopener,noreferrer');
+                    break;
+                }
+              };
+
+              return (
+                <Box key={item.label} onClick={handleClick} sx={hamburgerRowStyle}>
+                  {/* Texto */}
+                  <Typography sx={hamburgerTextStyle}>{item.label}</Typography>
+
+                  {/* Icono derecho */}
+                  {item.icon && (
+                    <Box
+                      component="img"
+                      src={item.icon}
+                      alt=""
+                      sx={{
+                        ...hamburgerIconRightStyle,
+                        '--spin-duration': getSpinDuration(index + 1, 7, 4),
+                        '--spin-direction': getSpinDirection(index + 1),
+                      }}
+                    />
+                  )}
+                </Box>
+              );
+            })}
+          </Stack>
+
+          {/* Footer */}
+          <Box
+            sx={{
+              fontSize: 14,
+              color: 'white',
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 10,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <IconButton sx={iconStyle} onClick={() => window.open(CLIENT_INSTAGRAM_LINK, '_blank', 'noopener,noreferrer')}>
+                <InstagramIcon fontSize="inherit" />
+              </IconButton>
+
+              <IconButton sx={iconStyle} onClick={() => window.open(CLIENT_TIKTOK_LINK, '_blank', 'noopener,noreferrer')}>
+                <TikTokIcon fontSize="inherit" />
+              </IconButton>
+            </Box>
+          </Box>
         </Box>
-      </Box>
+      )}
 
       <NavigationLoader />
     </>
@@ -304,21 +300,23 @@ const hamburgerRowStyle = {
   px: { xs: 3, md: 6 },
   display: 'grid',
   gridTemplateColumns: 'auto max-content auto',
-  columnGap: 24,
+  columnGap: 12,
   alignItems: 'center',
   textDecoration: 'none',
   borderBottom: '1px solid rgba(0,0,0,0.25)',
   backgroundColor: 'transparent',
   transition: 'background-color 300ms ease',
   cursor: 'pointer',
+  color: 'black',
   '&:hover': {
     backgroundColor: '#D8A8FF',
+    color: 'accent.main',
   },
 
   '&:hover img': {
     transform: 'scale(1.4) rotate(0deg)',
     filter: 'invert(1)',
-    opacity: 1,
+    color: 'accent.main',
     animationPlayState: 'paused',
   },
 };
@@ -328,7 +326,6 @@ const hamburgerTextStyle = {
   textAlign: 'left',
   fontSize: 'clamp(42px, 6vw, 92px)',
   fontWeight: 800,
-  color: '#000',
 };
 
 // Keyframe animations for spinning icons
@@ -341,9 +338,8 @@ const spinKeyframes = {
 };
 
 const hamburgerIconRightStyle = {
-  width: 90,
-  height: 90,
-  justifySelf: 'start',
+  width: { xs: 70, md: 90 },
+  height: { xs: 70, md: 90 },
   opacity: 0.85,
   animation: 'slowSpin var(--spin-duration) linear infinite',
   animationDirection: 'var(--spin-direction)',
@@ -353,14 +349,21 @@ const hamburgerIconRightStyle = {
 };
 
 const iconStyle = {
-  fontSize: { xs: 70, md: 140 },
+  fontSize: { xs: 70, md: 100 },
   color: 'background.default',
-  transition: 'transform 0.2s ease, color 0.2s ease',
   backgroundColor: 'transparent',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  lineHeight: 1,
+  '& svg': {
+    display: 'block',
+  },
+  transition: 'transform 0.2s ease, color 0.2s ease',
   '&:hover': {
     backgroundColor: 'transparent',
-    color: 'primary.main',
-    transform: 'translateY(-20px)',
+    color: 'accent.main',
+    transform: 'translateY(-5px)',
   },
 };
 

@@ -11,6 +11,8 @@ export default function Hero() {
       // apenas se scrollea un poco, desaparece
       if (window.scrollY > 10) {
         setShowScrollIndicator(false);
+      } else {
+        setShowScrollIndicator(true);
       }
     };
 
@@ -21,7 +23,7 @@ export default function Hero() {
   const scrollToNextSection = () => {
     const nextSection = document.getElementById(PagesInfo.HOME.sections.LINKS);
     if (!nextSection) return;
-    scrollTo(nextSection);
+    scrollTo(nextSection, 100);
   };
 
   return (

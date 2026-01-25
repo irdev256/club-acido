@@ -9,7 +9,7 @@ export const CLIENT_TIKTOK_LINK = 'https://www.tiktok.com/@abusmua?_r=1&_t=ZM-93
 export const CLIENT_FACEBOOK_LINK = '';
 export const WHATSAPP_DEFAULT_MESSAGE = 'Hola! Me darías más información?';
 export const CLIENT_EMAIL = 'clubacido@gmail.com';
-export const CLIENT_PHONE_NUMBER = '+54123456789';
+export const CLIENT_PHONE_NUMBER = '+54 123456789';
 export const CLIENT_AGENDA_PRO = 'https://agendapro.com/site/ar/elclubacido/';
 
 // OUR
