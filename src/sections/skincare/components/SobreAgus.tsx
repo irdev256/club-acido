@@ -7,7 +7,7 @@ export default function SobreAgus() {
       component="section"
       sx={{
         py: { xs: 12, md: 20 },
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'background.default',
       }}
     >
       <Container maxWidth="lg">

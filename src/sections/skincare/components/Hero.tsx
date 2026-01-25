@@ -12,10 +12,10 @@ export default function Hero() {
         background: `
   linear-gradient(
     180deg,
-    #F8F4F9 0%,
-    #FFFFFF 30%,
-    #FFF7FB 40%,
     #FDEEF4 100%
+    #FFF7FB 40%,
+    #FFFFFF 30%,
+    #F8F4F9 0%,
   )
 `,
       }}
