@@ -146,7 +146,13 @@ export default function Links() {
         mt: 6,
       }}
     >
-      <Grid container spacing={{ xs: 6, md: 8 }}>
+      <Grid
+        container
+        spacing={{ xs: 6, md: 8 }}
+        sx={{
+          position: 'relative',
+        }}
+      >
         <Grid size={{ xs: 12, md: 4 }}>
           <LinkCard
             onClick={() => navigate(PagesInfo.SKINCARE.path)}
@@ -158,7 +164,22 @@ export default function Links() {
           />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid
+          size={{ xs: 12, md: 4 }}
+          sx={{
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              display: { xs: 'none', md: 'block' },
+              position: 'absolute',
+              left: 0,
+              top: '10%',
+              height: '80%',
+              width: '3px',
+              backgroundColor: (theme) => theme.palette.divider,
+            },
+          }}
+        >
           <LinkCard
             onClick={() => navigate(PagesInfo.TATTOO.path)}
             title="Tattoo"
@@ -169,7 +190,22 @@ export default function Links() {
           />
         </Grid>
 
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid
+          size={{ xs: 12, md: 4 }}
+          sx={{
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              display: { xs: 'none', md: 'block' },
+              position: 'absolute',
+              left: 0,
+              top: '10%',
+              height: '80%',
+              width: '3px',
+              backgroundColor: (theme) => theme.palette.divider,
+            },
+          }}
+        >
           <LinkCard
             onClick={() => navigate(PagesInfo.TALLERES.path)}
             title="Talleres"
