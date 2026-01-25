@@ -193,20 +193,6 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 sx={hamburgerRowStyle}
               >
-                {/* Icono izquierdo */}
-                {item.icon && (
-                  <Box
-                    component="img"
-                    src={item.icon}
-                    alt=""
-                    sx={{
-                      ...hamburgerIconLeftStyle,
-                      '--spin-duration': getSpinDuration(index, 6, 5),
-                      '--spin-direction': getSpinDirection(index),
-                    }}
-                  />
-                )}
-
                 {/* Texto */}
                 <Typography sx={hamburgerTextStyle}>{item.label}</Typography>
 
@@ -306,7 +292,8 @@ const hamburgerRowStyle = {
 };
 
 const hamburgerTextStyle = {
-  justifySelf: 'center',
+  justifySelf: 'start',
+  textAlign: 'left',
   fontSize: 'clamp(42px, 6vw, 92px)',
   fontWeight: 800,
   color: '#000',
@@ -319,18 +306,6 @@ const spinKeyframes = {
     from: { transform: 'rotate(0deg)' },
     to: { transform: 'rotate(360deg)' },
   },
-};
-
-const hamburgerIconLeftStyle = {
-  width: 90,
-  height: 90,
-  justifySelf: 'end',
-  opacity: 0.85,
-  animation: 'slowSpin var(--spin-duration) linear infinite',
-  animationDirection: 'var(--spin-direction)',
-  transition: 'transform 300ms ease, filter 300ms ease, opacity 300ms ease',
-
-  ...spinKeyframes,
 };
 
 const hamburgerIconRightStyle = {
