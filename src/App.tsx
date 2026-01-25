@@ -5,8 +5,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-// import MusicButton from './components/common/MusicButton';
-// import WhatsAppButton from './components/common/WhatsAppButton';
 
 import './global.css';
 
@@ -18,8 +16,7 @@ import TattooPage from './pages/Tattoo';
 import SkincarePage from './pages/Skincare';
 import TalleresPage from './pages/Talleres';
 import SmoothScroll from './components/layout/SmoothScroll';
-import ToTopButton from './components/common/ToTopButton';
-import CalendarButton from './components/common/CalendarButton';
+import FloatingActions from './components/common/FloatingActions';
 
 // --------------------------------------------------------------
 
@@ -38,10 +35,7 @@ function App() {
             <Route path={PagesInfo.TALLERES.path} element={<TalleresPage />} />
             <Route path={PagesInfo.QUIZ.path} element={<QuizPage />} />
           </Routes>
-          {/* <MusicButton /> */}
-          {/* <WhatsAppButton /> */}
-          <CalendarButton />
-          <ToTopButton />
+          <FloatingActions />
           <Footer />
         </BrowserRouter>
       </ThemeProvider>

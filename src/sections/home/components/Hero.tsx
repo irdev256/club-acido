@@ -1,8 +1,23 @@
+import { useEffect, useState } from 'react';
 import { Box, Container, Stack } from '@mui/material';
 import { PagesInfo } from '../../../helpers/constants';
 import { scrollTo } from '../../../helpers/utils';
 
 export default function Hero() {
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+  useEffect(() => {
+    const onScroll = () => {
+      // apenas se scrollea un poco, desaparece
+      if (window.scrollY > 10) {
+        setShowScrollIndicator(false);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const scrollToNextSection = () => {
     const nextSection = document.getElementById(PagesInfo.HOME.sections.LINKS);
     if (!nextSection) return;
@@ -59,7 +74,6 @@ export default function Hero() {
           position: 'absolute',
           bottom: 32,
           left: '50%',
-          transform: 'translateX(-50%)',
           zIndex: 2,
           display: 'flex',
           flexDirection: 'column',
@@ -67,6 +81,14 @@ export default function Hero() {
           gap: 1,
           color: theme.palette.text.secondary,
           cursor: 'pointer',
+
+          // 👇 estado visible / oculto
+          opacity: showScrollIndicator ? 1 : 0,
+          pointerEvents: showScrollIndicator ? 'auto' : 'none',
+          transform: showScrollIndicator
+            ? 'translate(-50%, 0)'
+            : 'translate(-50%, 12px)',
+          transition: 'opacity 400ms ease, transform 400ms ease',
 
           '@keyframes scrollArrow': {
             '0%': { transform: 'translateY(0)' },
@@ -78,7 +100,7 @@ export default function Hero() {
             color: theme.palette.text.primary,
           },
         })}
-        >
+      >
           <Box
             sx={{
               animation: 'scrollArrow 0.9s ease-in-out infinite',

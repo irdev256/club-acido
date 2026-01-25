@@ -12,8 +12,8 @@ export default function Home() {
       <Hero />
       <Links />
       <SocialDemoSection />
-      <Content />
-      <FinalCTA />
+      {/* <Content /> */}
+      {/* <FinalCTA /> */}
       <SobreMi />
       <Testimonials />
     </>
