@@ -20,9 +20,9 @@ export default function SocialDemoSection() {
       })}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 6, md: 20 }} alignItems="center">
+        <Grid container spacing={{ xs: 6 }} alignItems="center">
           {/* Columna izquierda – teléfono */}
-          <Grid size={{ xs: 12, md: 4 }}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Box display="flex" justifyContent={{ xs: 'center', md: 'flex-start' }}>
               <PhoneMockup>
                 <Box
@@ -43,7 +43,7 @@ export default function SocialDemoSection() {
           </Grid>
 
           {/* Columna derecha – texto */}
-          <Grid size={{ xs: 12, md: 8 }}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Box
               sx={{
                 height: { md: '100%' },
@@ -151,17 +151,19 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
     component="span"
     sx={{
       position: 'relative',
+      display: 'inline-block',
       fontWeight: 700,
-      color: 'text.primary',
+      zIndex: 0, // 👈 crea contexto controlado
       '&::after': {
         content: '""',
         position: 'absolute',
         left: -4,
-        bottom: 2,
-        width: 'calc(100% + 8px)',
-        height: '0.5em',
+        right: -4,
+        bottom: '0.15em',
+        height: '0.55em',
         backgroundColor: '#FFE600',
-        zIndex: -1,
+        zIndex: -1, // 👈 ahora seguro
+        borderRadius: '2px',
       },
     }}
   >
