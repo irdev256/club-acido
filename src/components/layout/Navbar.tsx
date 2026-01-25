@@ -111,7 +111,7 @@ export default function Navbar() {
               scrollToSection(PagesInfo.HOME.sections.HERO);
             }}
           >
-            <Box component="img" src="/logo.png" alt="Logo_small" sx={{ width: 80, height: 28 }} />
+            <Box component="img" src="/logo-white.png" alt="Logo_small" sx={{ width: 80, height: 28 }} />
           </Box>
 
           {/* Desktop links */}
