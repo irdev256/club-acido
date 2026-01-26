@@ -10,14 +10,14 @@ export default function Hero() {
         py: { xs: 12, md: 20 },
         overflow: 'hidden',
         background: `
-  linear-gradient(
-    180deg,
-    #FDEEF4 100%
-    #FFF7FB 40%,
-    #FFFFFF 30%,
-    #F8F4F9 0%,
-  )
-`,
+                    linear-gradient(
+                      180deg,
+                      #FDEEF4 100%
+                      #FFF7FB 40%,
+                      #FFFFFF 30%,
+                      #F8F4F9 0%,
+                    )
+                  `,
       }}
     >
       {/* MANCHA DECORATIVA */}
