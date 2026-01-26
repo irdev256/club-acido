@@ -1,4 +1,5 @@
 import OrganicDivider from '../../components/common/OrganicDivider';
+import RotatingIconsDivider from '../../components/common/RotatingIconsDivider';
 import AboutAcido from './components/AboutAcido';
 import Hero from './components/Hero';
 import Links from './components/Links';
@@ -12,6 +13,7 @@ export default function Home() {
       <Links />
       <OrganicDivider />
       <SocialDemo />
+      <RotatingIconsDivider/>
       <AboutAcido />
       <Ubicacion />
       {/* <Content /> */}
