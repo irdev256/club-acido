@@ -82,7 +82,7 @@ export default function Gallery() {
     >
       <Container maxWidth="lg">
         {/* ================= HEADER ================= */}
-        <Stack spacing={2} alignItems="flex-start">
+        <Stack spacing={2} alignItems="flex-end">
           <Box
             onClick={() => window.open(CLIENT_TATTOO_LETI_INSTAGRAM_LINK, '_blank')}
             sx={{
