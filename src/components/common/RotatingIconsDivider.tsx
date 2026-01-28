@@ -11,7 +11,7 @@ export default function RotatingIconsDivider() {
     <Box
       sx={{
         width: '100%',
-        height: { xs: 32, md: 45 },
+        height: { xs: 32, md: 90 },
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
@@ -33,8 +33,8 @@ export default function RotatingIconsDivider() {
             src={ICON_SRC}
             alt=""
             sx={{
-              width: { xs: 28, md: 40 },
-              height: { xs: 28, md: 40 },
+              width: { xs: 28, md: 90 },
+              height: { xs: 28, md: 90 },
               opacity: 0.9,
 
               animation: 'slowSpin linear infinite',

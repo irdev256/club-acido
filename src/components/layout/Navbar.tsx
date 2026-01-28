@@ -4,14 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import NavigationLoader from './NavigationLoader';
-import {
-  NavItems,
-  HamburgerNavItems,
-  PagesInfo,
-  Z_INDEX,
-  CLIENT_INSTAGRAM_LINK,
-  CLIENT_TIKTOK_LINK,
-} from '../../helpers/constants';
+import { NavItems, HamburgerNavItems, PagesInfo, Z_INDEX, CLIENT_INSTAGRAM_LINK, CLIENT_TIKTOK_LINK } from '../../helpers/constants';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { alpha } from '@mui/material/styles';
 import { scrollTo } from '../../helpers/utils';
@@ -24,8 +17,10 @@ export default function Navbar() {
   const isRouteChange = useRef(location.pathname);
 
   const [open, setOpen] = useState(false);
-  const [showBrand, setShowBrand] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
+
+  const showNavbar = (isHome && !isAtTop) || !isHome;
+  const showWhiteText = !isHome && isAtTop;
 
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -43,6 +38,7 @@ export default function Navbar() {
   useEffect(() => {
     if (isRouteChange.current !== location.pathname) {
       isRouteChange.current = location.pathname;
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOpen(false);
     }
   }, [location.pathname]);
@@ -51,7 +47,6 @@ export default function Navbar() {
     const onScroll = () => {
       const atTop = window.scrollY < 10;
       setIsAtTop(atTop);
-      setShowBrand(!atTop);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -66,10 +61,10 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={(theme) => ({
-          backgroundColor: isAtTop ? 'transparent' : alpha(theme.palette.primary.main, 0.85),
+          backgroundColor: !showNavbar ? 'transparent' : alpha(theme.palette.primary.main, 0.85),
           transition: 'background-color 300ms ease, box-shadow 300ms ease',
-          boxShadow: isAtTop ? 'none' : theme.shadows[4],
-          color: isAtTop ? theme.palette.text.primary : theme.palette.primary.contrastText,
+          boxShadow: !showNavbar ? 'none' : theme.shadows[4],
+          color: showWhiteText ? 'primary.contrastText' : isAtTop ? 'text.primary' : 'primary.contrastText',
         })}
       >
         <Toolbar>
@@ -80,10 +75,10 @@ export default function Navbar() {
               alignItems: 'center',
               gap: 1.5,
               mr: 'auto',
-              opacity: showBrand ? 1 : 0,
-              transform: showBrand ? 'translateY(0)' : 'translateY(-6px)',
+              opacity: showNavbar ? 1 : 0,
+              transform: showNavbar ? 'translateY(0)' : 'translateY(-6px)',
               transition: 'opacity 400ms ease, transform 400ms ease',
-              pointerEvents: showBrand ? 'auto' : 'none',
+              pointerEvents: showNavbar ? 'auto' : 'none',
               cursor: 'pointer',
             }}
             onClick={() => {
@@ -102,7 +97,7 @@ export default function Navbar() {
             {NavItems.map((item) => {
               if (item.type === 'route') {
                 return (
-                  <Box key={item.label} component={Link} to={item.href} sx={linkStyle(isAtTop)}>
+                  <Box key={item.label} component={Link} to={item.href} sx={linkStyle(showWhiteText, isAtTop)}>
                     {item.label}
                   </Box>
                 );
@@ -110,11 +105,7 @@ export default function Navbar() {
 
               if (item.type === 'section') {
                 return (
-                  <Box
-                    key={item.label}
-                    sx={linkStyle(isAtTop)}
-                    onClick={() => isHome && scrollToSection(item.href)}
-                  >
+                  <Box key={item.label} sx={linkStyle(showWhiteText, isAtTop)} onClick={() => isHome && scrollToSection(item.href)}>
                     {item.label}
                   </Box>
                 );
@@ -124,7 +115,7 @@ export default function Navbar() {
                 return (
                   <Box
                     key={item.label}
-                    sx={linkStyle(isAtTop)}
+                    sx={linkStyle(showWhiteText, isAtTop)}
                     onClick={() => window.open(item.href, '_blank', 'noopener,noreferrer')}
                   >
                     {item.label}
@@ -137,8 +128,8 @@ export default function Navbar() {
 
             <IconButton
               onClick={() => setOpen(true)}
-              sx={(theme) => ({
-                color: isAtTop ? theme.palette.text.primary : theme.palette.primary.contrastText,
+              sx={() => ({
+                color: showWhiteText ? 'primary.contrastText' : isAtTop ? 'text.primary' : 'primary.contrastText',
               })}
             >
               <MenuIcon sx={{ fontSize: 30 }} />
@@ -157,8 +148,7 @@ export default function Navbar() {
           zIndex: Z_INDEX.HAMBURGER_MENU,
           backgroundColor: 'secondary.main',
           transform: open ? 'translateY(0)' : 'translateY(-100%)',
-          transition:
-            'transform 1200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear',
+          transition: 'transform 1200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear',
           visibility: open ? 'visible' : 'hidden',
           pointerEvents: open ? 'auto' : 'none',
 
@@ -177,34 +167,34 @@ export default function Navbar() {
             borderBottom: '1px solid rgba(0,0,0,0.25)',
           }}
         >
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            px: { xs: 3, md: 6 },
-            cursor: 'pointer',
-          }}
-          onClick={() => {
-            setOpen(false);
-
-            if (!isHome) {
-              navigate('/');
-              return;
-            }
-
-            scrollToSection(PagesInfo.HOME.sections.HERO);
-          }}
-        >
           <Box
-            component="img"
-            src="/logo-white.png"
-            alt="Logo"
             sx={{
-              width: 80,
-              height: 28,
+              display: 'flex',
+              alignItems: 'center',
+              px: { xs: 3, md: 6 },
+              cursor: 'pointer',
             }}
-          />
-        </Box>
+            onClick={() => {
+              setOpen(false);
+
+              if (!isHome) {
+                navigate('/');
+                return;
+              }
+
+              scrollToSection(PagesInfo.HOME.sections.HERO);
+            }}
+          >
+            <Box
+              component="img"
+              src="/logo-white.png"
+              alt="Logo"
+              sx={{
+                width: 80,
+                height: 28,
+              }}
+            />
+          </Box>
 
           <IconButton sx={{ mr: 2.6, color: 'white' }} onClick={() => setOpen(false)}>
             <CloseIcon />
@@ -224,8 +214,7 @@ export default function Navbar() {
               setOpen(false);
               if (item.type === 'route') navigate(item.href);
               if (item.type === 'section') scrollToSection(item.href);
-              if (item.type === 'external')
-                window.open(item.href, '_blank', 'noopener,noreferrer');
+              if (item.type === 'external') window.open(item.href, '_blank', 'noopener,noreferrer');
             };
 
             return (
@@ -269,11 +258,11 @@ export default function Navbar() {
 
 /* ================= Styles ================= */
 
-const linkStyle = (isAtTop: boolean) => ({
+const linkStyle = (showWhiteText: boolean, isAtTop: boolean) => ({
   textDecoration: 'none',
   fontSize: 18,
   cursor: 'pointer',
-  color: isAtTop ? 'text.primary' : 'primary.contrastText',
+  color: showWhiteText ? 'primary.contrastText' : isAtTop ? 'text.primary' : 'primary.contrastText',
   '&:hover': { opacity: 0.7 },
 });
 

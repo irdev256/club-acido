@@ -17,6 +17,7 @@ import SkincarePage from './pages/Skincare';
 import TalleresPage from './pages/Talleres';
 import SmoothScroll from './components/layout/SmoothScroll';
 import FloatingActions from './components/common/FloatingActions';
+import ScrollToTop from './components/layout/ScrollToTop';
 
 // --------------------------------------------------------------
 
@@ -28,6 +29,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <SmoothScroll />
+          <ScrollToTop />
           <Routes>
             <Route path={PagesInfo.HOME.path} element={<HomePage />} />
             <Route path={PagesInfo.TATTOO.path} element={<TattooPage />} />
