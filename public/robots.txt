@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.alejandrinagonzalezguia.com/sitemap.xml
+Sitemap: https://www.clubacido.com/sitemap.xml

@@ -89,7 +89,7 @@ export default function Footer() {
                     color: 'text.secondary',
                     '&:hover': { color: '#9A6B1F' },
                   }}
-                  aria-label="Instagram de Alejandrina González"
+                  aria-label="Instagram de Club Ácido"
                 >
                   <InstagramIcon />
                 </IconButton>
@@ -102,7 +102,7 @@ export default function Footer() {
                     color: 'text.secondary',
                     '&:hover': { color: '#9A6B1F' },
                   }}
-                  aria-label="TikTok de Alejandrina González"
+                  aria-label="TikTok de Club Ácido"
                 >
                   <TikTokIcon />
                 </IconButton>
@@ -115,7 +115,7 @@ export default function Footer() {
                     color: 'text.secondary',
                     '&:hover': { color: '#9A6B1F' },
                   }}
-                  aria-label="Facebook de Alejandrina González"
+                  aria-label="Facebook de Club Ácido"
                 >
                   <FacebookIcon />
                 </IconButton> */}
