@@ -17,6 +17,7 @@ export default function Navbar() {
   const isRouteChange = useRef(location.pathname);
 
   const [open, setOpen] = useState(false);
+  const [renderMenu, setRenderMenu] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
 
   const showNavbar = (isHome && !isAtTop) || !isHome;
@@ -53,6 +54,18 @@ export default function Navbar() {
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    if (open) {
+      setRenderMenu(true);
+    } else {
+      const timeout = setTimeout(() => {
+        setRenderMenu(false);
+      }, 1200); // mismo tiempo que la animación
+
+      return () => clearTimeout(timeout);
+    }
+  }, [open]);
 
   return (
     <>
@@ -127,7 +140,12 @@ export default function Navbar() {
             })}
 
             <IconButton
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                setRenderMenu(true);
+                requestAnimationFrame(() => {
+                  setOpen(true);
+                });
+              }}
               sx={() => ({
                 color: showWhiteText ? 'primary.contrastText' : isAtTop ? 'text.primary' : 'primary.contrastText',
               })}
@@ -141,17 +159,18 @@ export default function Navbar() {
       <Toolbar />
 
       {/* ================= FULLSCREEN OVERLAY MENU ================= */}
+    {renderMenu &&(
       <Box
         sx={{
           position: 'fixed',
           inset: 0,
           zIndex: Z_INDEX.HAMBURGER_MENU,
           backgroundColor: 'secondary.main',
-          transform: open ? 'translateY(0)' : 'translateY(-100%)',
-          transition: 'transform 1200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear',
-          visibility: open ? 'visible' : 'hidden',
-          pointerEvents: open ? 'auto' : 'none',
 
+          transform: open ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'transform 1200ms cubic-bezier(0.22, 1, 0.36, 1)',
+
+          pointerEvents: open ? 'auto' : 'none',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
@@ -250,7 +269,7 @@ export default function Navbar() {
           </Box>
         </Box>
       </Box>
-
+    )}
       <NavigationLoader />
     </>
   );
