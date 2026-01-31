@@ -1,42 +1,51 @@
 import { Box, Container, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PagesInfo } from '../../../helpers/constants';
+import { getLenis } from '../../../helpers/utils';
 
 type Testimonial = {
   text: string;
-  // author: string;
 };
 
 const testimonials: Testimonial[] = [
   {
-    text: 'Gracias por estar y acompañarme siempre. Gracias por todo 💜 Siento profundamente que esta mentoría, de tu mano, tiene que llegar a todo el mundo.',
+    text: 'Agus tiene una manera muy especial de explicarte todo. Me hice un tratamiento de skincare y no solo vi resultados, sino que entendí de verdad cómo cuidar mi piel.',
   },
   {
-    text: 'Gracias, Ale. Lloré todo, pero me sentí aliviada. Es muy lindo no sentirse sola al contar mi historia.',
+    text: 'Fui a tatuarme con Leti y la experiencia fue increíble. Súper cuidadosa, atenta y con una sensibilidad única para llevar la idea a la piel.',
   },
   {
-    text: 'Ale, mostrás la luz más grande de la Tierra. Mentora de almas en evolución, amor y luz.',
+    text: 'Nunca me había sentido tan cómoda en una sesión de skincare. Agus te escucha y te propone lo que realmente necesitás.',
   },
   {
-    text: 'Gracias, Ale. De verdad siento que, si no hubiera sido por la mentoría, no hubiese podido disfrutar ni mucho menos festejar.',
+    text: 'Leti entendió exactamente lo que quería para mi tattoo. El resultado superó mis expectativas y el proceso fue hermoso.',
   },
   {
-    text: 'Anoche soñé con vos. Estaba acostada con el cuerpo cubierto de pétalos de rosas y me decías que siga, que lo estaba haciendo bien. No lo sentí como algo malo, sino como el final y un nuevo comienzo. Cada día voy aprendiendo más y entendiendo cada situación.',
+    text: 'Llegué a Ácido sin saber mucho de cuidado de la piel y hoy tengo una rutina simple que realmente funciona.',
   },
   {
-    text: 'Hice la meditación y entendí que mi ángel fuiste vos todo este tiempo. Estoy profundamente agradecida. Gracias por tanto, Ale.',
+    text: 'Tatuarme con Leti no fue solo un tattoo, fue un momento para mí. Mucha calma y respeto.',
   },
 ];
 
-export default function Testimonials() {
-  const [active, setActive] = useState(0);
+export default function TestimonialsLenis() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [velocity, setVelocity] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % testimonials.length);
-    }, 7000);
+    const lenis = getLenis();
+    if (!lenis) return;
 
-    return () => clearInterval(interval);
+    const onScroll = ({ scroll, velocity }: any) => {
+      setScrollY(scroll);
+      setVelocity(velocity);
+    };
+
+    lenis.on('scroll', onScroll);
+    return () => {
+      lenis.off('scroll', onScroll);
+    };
   }, []);
 
   return (
@@ -45,97 +54,83 @@ export default function Testimonials() {
       component="section"
       sx={{
         position: 'relative',
-        py: { xs: 12, md: 16 },
+        py: { xs: 14, md: 20 },
+        backgroundColor: 'background.default',
         overflow: 'hidden',
       }}
     >
-      {/* Fondo luminoso principal */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: `
-        radial-gradient(
-          circle at top,
-          rgba(255,255,255,0.92) 0%,
-          rgba(254,252,250,0.95) 55%,
-          rgba(234,223,204,0.96) 100%
-        )
-      `,
-        }}
-      />
-
-      {/* Toque dorado espiritual */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: `
-        linear-gradient(
-          120deg,
-          rgba(200,164,93,0.08),
-          transparent 40%,
-          rgba(200,164,93,0.06)
-        )
-      `,
-          pointerEvents: 'none',
-        }}
-      />
-
-      <Container maxWidth="md" sx={{ position: 'relative', textAlign: 'center' }}>
-        <Typography variant="h4" fontWeight={600} sx={{ mb: 6, color: '#6E5B3E' }}>
+      <Container maxWidth="lg" ref={containerRef}>
+        <Typography
+          sx={{
+            fontSize: 'clamp(28px, 6vw, 56px)',
+            fontWeight: 900,
+            textTransform: 'uppercase',
+            letterSpacing: '-0.03em',
+            mb: 10,
+          }}
+        >
           Testimonios
         </Typography>
 
-        {/* Slider */}
         <Box
           sx={{
-            position: 'relative',
-            height: { xs: 260, md: 220 },
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+            gap: { xs: 6, md: 8 },
           }}
         >
           {testimonials.map((item, index) => {
-            const isActive = index === active;
+            // offsets orgánicos por card
+            const baseOffset = index * 120;
+            const float =
+              Math.sin(scrollY * 0.002 + index) * 12 +
+              Math.min(Math.abs(velocity) * 0.4, 18);
+
+            const rotate =
+              Math.sin(scrollY * 0.001 + index * 2) * 1.5;
 
             return (
               <Box
                 key={index}
                 sx={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  px: { xs: 4, md: 6 },
+                  position: 'relative',
+                  p: { xs: 4, md: 6 },
+                  backgroundColor: 'background.paper',
                   borderRadius: 3,
-                  backgroundColor: 'rgba(255,255,255,0.75)',
-                  border: '1px solid rgba(200,164,93,0.25)',
+                  border: '2px solid',
+                  borderColor: 'accent.main',
 
-                  opacity: isActive ? 1 : 0,
-                  transform: isActive ? 'translateX(0)' : 'translateX(-12px)',
-                  transition: 'opacity 1s ease-in-out, transform 1s ease-in-out',
-                  pointerEvents: isActive ? 'auto' : 'none',
+                  boxShadow: '0 30px 70px rgba(0,0,0,0.14)',
+
+                  transform: `
+                    translateY(${float}px)
+                    rotate(${rotate}deg)
+                  `,  
+
+                  transition: 'transform 120ms linear',
+
+                  willChange: 'transform',
                 }}
               >
                 <Typography
                   sx={{
-                    fontSize: 48,
+                    fontSize: 56,
                     lineHeight: 1,
-                    color: '#C8A45D',
-                    opacity: 0.5,
-                    mb: 1,
+                    fontWeight: 900,
+                    color: 'highlight.main',
+                    mb: -1,
+                    opacity: 0.7,
                   }}
                 >
                   “
                 </Typography>
 
                 <Typography
-                  variant="body1"
                   component="blockquote"
                   sx={{
-                    fontStyle: 'italic',
-                    color: 'text.secondary',
-                    mb: 4,
+                    fontSize: 16,
+                    lineHeight: 1.65,
+                    color: 'text.primary',
                   }}
                 >
                   {item.text}
@@ -143,70 +138,6 @@ export default function Testimonials() {
               </Box>
             );
           })}
-        </Box>
-        {/* Fotos de encuentros reales */}
-        <Box sx={{ mt: { xs: 8, md: 10 } }}>
-          <Typography
-            variant="body2"
-            sx={{
-              mb: 3,
-              color: '#7A6F63',
-              fontStyle: 'italic',
-            }}
-          >
-            Encuentros presenciales de mentoría y acompañamiento consciente
-          </Typography>
-
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-              gap: 3,
-            }}
-          >
-            {[
-              {
-                src: '/memoria-1.jpeg',
-                alt: 'Encuentro grupal de mentoría espiritual en un espacio de conexión',
-              },
-              {
-                src: '/memoria-2.jpeg',
-                alt: 'Participantes compartiendo un momento de mentoría espiritual consciente',
-              },
-            ].map((img) => (
-              <Box
-                key={img.src}
-                sx={{
-                  position: 'relative',
-                  overflow: 'hidden',
-                  borderRadius: 3,
-                  boxShadow: '0 18px 40px rgba(176, 142, 162, 0.25)',
-                }}
-              >
-                <Box
-                  component="img"
-                  src={img.src}
-                  alt={img.alt}
-                  sx={{
-                    display: 'block',
-                    width: '100%',
-                    height: { xs: 240, md: 300 },
-                    objectFit: 'cover',
-                    filter: 'saturate(95%)',
-                  }}
-                />
-
-                {/* Overlay sutil */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.35))',
-                  }}
-                />
-              </Box>
-            ))}
-          </Box>
         </Box>
       </Container>
     </Box>

@@ -49,6 +49,9 @@ let lenisInstance: Lenis | null = null;
 export function registerLenis(lenis: Lenis) {
   lenisInstance = lenis;
 }
+export function getLenis() {
+  return lenisInstance;
+}
 
 export function scrollTo(target: number | HTMLElement, offset = 0, immediate = false) {
   if (!lenisInstance) return;
