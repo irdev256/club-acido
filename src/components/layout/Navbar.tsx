@@ -10,6 +10,22 @@ import { alpha } from '@mui/material/styles';
 import { scrollTo } from '../../helpers/utils';
 import TikTokIcon from '../icons/TikTokIcon';
 
+type MenuColors = {
+  bg: string;
+  text: string;
+};
+
+const MENU_COLOR_KEYS = ['primary', 'secondary', 'accent', 'highlight'] as const;
+
+const getRandomMenuColors = (): MenuColors => {
+  const shuffled = [...MENU_COLOR_KEYS].sort(() => Math.random() - 0.5);
+
+  return {
+    bg: `${shuffled[0]}.main`,
+    text: `${shuffled[1]}.main`,
+  };
+};
+
 export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,6 +35,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [renderMenu, setRenderMenu] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
+
+  const [menuColors, setMenuColors] = useState<MenuColors>({
+  bg: 'secondary.main',
+  text: 'background.default',
+  });
+
 
   const showNavbar = (isHome && !isAtTop) || !isHome;
   const showWhiteText = !isHome && isAtTop;
@@ -139,19 +161,22 @@ export default function Navbar() {
               return null;
             })}
 
-            <IconButton
+           <IconButton
               onClick={() => {
+                const colors = getRandomMenuColors();
+                setMenuColors(colors);
                 setRenderMenu(true);
                 requestAnimationFrame(() => {
                   setOpen(true);
                 });
               }}
-              sx={() => ({
+              sx={{
                 color: showWhiteText ? 'primary.contrastText' : isAtTop ? 'text.primary' : 'primary.contrastText',
-              })}
+              }}
             >
               <MenuIcon sx={{ fontSize: 30 }} />
             </IconButton>
+
           </Stack>
         </Toolbar>
       </AppBar>
@@ -160,12 +185,14 @@ export default function Navbar() {
 
       {/* ================= FULLSCREEN OVERLAY MENU ================= */}
     {renderMenu &&(
-      <Box
+     <Box
         sx={{
           position: 'fixed',
           inset: 0,
           zIndex: Z_INDEX.HAMBURGER_MENU,
-          backgroundColor: 'secondary.main',
+
+          backgroundColor: menuColors.bg,
+          color: menuColors.text,
 
           transform: open ? 'translateY(0)' : 'translateY(-100%)',
           transition: 'transform 1200ms cubic-bezier(0.22, 1, 0.36, 1)',
@@ -237,7 +264,8 @@ export default function Navbar() {
             };
 
             return (
-              <Box key={item.label} onClick={handleClick} sx={hamburgerRowStyle}>
+              <Box key={item.label} onClick={handleClick}  sx={hamburgerRowStyle(menuColors.bg, menuColors.text)}
+>
                 <Typography sx={hamburgerTextStyle}>{item.label}</Typography>
 
                 {item.icon && (
@@ -285,7 +313,7 @@ const linkStyle = (showWhiteText: boolean, isAtTop: boolean) => ({
   '&:hover': { opacity: 0.7 },
 });
 
-const hamburgerRowStyle = {
+const hamburgerRowStyle = (bg: string, text: string) => ({
   width: '100%',
   minHeight: 'clamp(72px, 10vh, 110px)',
   px: { xs: 3, md: 6 },
@@ -294,7 +322,17 @@ const hamburgerRowStyle = {
   alignItems: 'center',
   borderBottom: '1px solid rgba(0,0,0,0.25)',
   cursor: 'pointer',
-};
+
+  backgroundColor: 'transparent',
+  color: text,
+  transition: 'background-color 250ms ease, color 250ms ease',
+
+  '&:hover': {
+    backgroundColor: text,
+    color: bg,
+  },
+});
+
 
 const hamburgerTextStyle = {
   fontSize: 'clamp(32px, 5vw, 88px)',
@@ -315,8 +353,13 @@ const hamburgerIconRightStyle = {
   opacity: 0.85,
   animation: 'slowSpin var(--spin-duration) linear infinite',
   animationDirection: 'var(--spin-direction)',
+  color: 'currentColor',
+
+  transition: 'color 250ms ease',
+
   ...spinKeyframes,
 };
+
 
 const iconStyle = {
   fontSize: { xs: 70, md: 100 },
