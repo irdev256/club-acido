@@ -74,7 +74,11 @@ export default function Hero() {
         onClick={scrollToNextSection}
         sx={(theme) => ({
           position: 'absolute',
-          bottom: 32,
+          bottom: {
+            sx: 'calc(12px + env(safe-area-inset-bottom))',
+            sm: 20,
+            md: 32 
+          },
           left: '50%',
           zIndex: 2,
           display: 'flex',
@@ -126,7 +130,10 @@ export default function Hero() {
 
         <Box
           sx={{
-            fontSize: 18,
+            fontSize: {
+              sm: 16,
+              md: 18
+            },
             letterSpacing: '0.12em',
             opacity: 0.7,
           }}

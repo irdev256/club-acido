@@ -55,11 +55,32 @@ export default function AboutAcido() {
             <Box component="img" src="/aboutacido-4.jpg" sx={collageImage(60, 220, -2)} />
           </Grid>
         </Grid>
-
         <Box
-          sx={{ mt: 10, backgroundColor: 'highlight.main', width: 'fit-content' }}
           onClick={() => {
             window.open(CLIENT_AGENDA_PRO, '_blank', 'noopener,noreferrer');
+          }}
+          sx={{
+            mt: 10,
+            width: 'fit-content',
+            backgroundColor: 'highlight.main',
+            cursor: 'pointer',
+            borderRadius: 1.5,
+
+            animation: 'heartBeat 4.2s ease-in-out infinite',
+            ...pulseKeyframes,
+
+            transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+
+            '@media (hover: hover)': {
+              '&:hover': {
+                animation: 'none',
+                transform: 'scale(1.07) translateY(-3px)',
+                boxShadow: `
+          0 18px 40px rgba(0,0,0,0.32),
+          0 6px 14px rgba(0,0,0,0.22)
+        `,
+              },
+            },
           }}
         >
           <Typography sx={ctaStyle}>Agendá tu turno</Typography>
@@ -98,13 +119,57 @@ const collageImage = (x: number, y: number, r: number) => ({
 
 const ctaStyle = {
   fontSize: 12,
-  color: 'black',
-  letterSpacing: '0.3em',
-  fontWeight: 700,
+  color: 'accent.main',
+  letterSpacing: '0.35em', // un poco más editorial
+  fontWeight: 800, // más presencia
   textTransform: 'uppercase',
-  border: '2px solid black',
+
   display: 'inline-block',
-  px: 4,
-  py: 1.5,
-  cursor: 'pointer',
+  px: 4.5,
+  py: 1.75,
+
+  userSelect: 'none',
+};
+
+const pulseKeyframes = {
+  '@keyframes heartBeat': {
+    '0%': {
+      transform: 'scale(1)',
+      boxShadow: '0 6px 16px rgba(0,0,0,0.18)',
+    },
+
+    /* primer golpe */
+    '10%': {
+      transform: 'scale(1.055)',
+      boxShadow: `
+        0 14px 28px rgba(0,0,0,0.28),
+        0 6px 12px rgba(0,0,0,0.22)
+      `,
+    },
+
+    '18%': {
+      transform: 'scale(1.01)',
+      boxShadow: '0 8px 20px rgba(0,0,0,0.24)',
+    },
+
+    /* segundo golpe */
+    '26%': {
+      transform: 'scale(1.045)',
+      boxShadow: `
+        0 12px 26px rgba(0,0,0,0.26),
+        0 4px 10px rgba(0,0,0,0.2)
+      `,
+    },
+
+    '34%': {
+      transform: 'scale(1)',
+      boxShadow: '0 6px 16px rgba(0,0,0,0.18)',
+    },
+
+    /* descanso corto */
+    '100%': {
+      transform: 'scale(1)',
+      boxShadow: '0 6px 16px rgba(0,0,0,0.18)',
+    },
+  },
 };
