@@ -15,15 +15,34 @@ type MenuColors = {
   text: string;
 };
 
-const MENU_COLOR_KEYS = ['primary', 'secondary', 'accent', 'highlight'] as const;
+const MENU_COLOR_COMBINATIONS: MenuColors[] = [
+  { bg: 'primary.main',   text: 'background.default' },
+  { bg: 'primary.main',   text: 'highlight.main' },
 
-const getRandomMenuColors = (): MenuColors => {
-  const shuffled = [...MENU_COLOR_KEYS].sort(() => Math.random() - 0.5);
+  { bg: 'secondary.main', text: 'background.default' },
+  { bg: 'secondary.main', text: 'highlight.main' },
 
-  return {
-    bg: `${shuffled[0]}.main`,
-    text: `${shuffled[1]}.main`,
-  };
+  { bg: 'accent.main',    text: 'background.default' },
+  { bg: 'accent.main',    text: 'primary.contrastText' },
+
+  { bg: 'highlight.main', text: 'text.primary' },
+  { bg: 'highlight.main', text: 'primary.main' },
+];
+
+const getRandomMenuColors = (prev?: MenuColors): MenuColors => {
+  let next: MenuColors;
+
+  do {
+    next = MENU_COLOR_COMBINATIONS[
+      Math.floor(Math.random() * MENU_COLOR_COMBINATIONS.length)
+    ];
+  } while (
+    prev &&
+    next.bg === prev.bg &&
+    next.text === prev.text
+  );
+
+  return next;
 };
 
 export default function Navbar() {
@@ -88,6 +107,13 @@ export default function Navbar() {
       return () => clearTimeout(timeout);
     }
   }, [open]);
+
+    useEffect(() => {
+    if (renderMenu) {
+      setMenuColors((prev) => getRandomMenuColors(prev));
+    }
+  }, [renderMenu]);
+
 
   return (
     <>
@@ -163,8 +189,6 @@ export default function Navbar() {
 
            <IconButton
               onClick={() => {
-                const colors = getRandomMenuColors();
-                setMenuColors(colors);
                 setRenderMenu(true);
                 requestAnimationFrame(() => {
                   setOpen(true);

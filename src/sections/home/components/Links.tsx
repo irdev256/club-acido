@@ -14,25 +14,28 @@ type LinkCardProps = {
   titleColor: TitleColor;
   onClick?: () => void;
   ariaLabel: string;
+  comingSoon?: boolean;
 };
 
-function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel }: LinkCardProps) {
+function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel, comingSoon }: LinkCardProps) {
   const style = positionStyles[titlePosition];
 
   return (
-    <Box
-      className="link-card"
-      onClick={onClick}
-      role="img"
-      aria-label={ariaLabel}
-      sx={{
-        width: '100%',
-        cursor: 'pointer',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
+  <Box
+    className="link-card"
+    onClick={comingSoon ? undefined : onClick}
+    role="img"
+    aria-label={ariaLabel}
+    sx={{
+      width: '100%',
+      cursor: comingSoon ? 'default' : 'pointer',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      pointerEvents: 'auto',
+      opacity: comingSoon ? 0.9 : 1,
+    }}
+  >
       {/* TÍTULO MOBILE */}
       <Box
         sx={{
@@ -78,6 +81,45 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
           aspectRatio: '1 / 1',
         }}
       >
+      {comingSoon && (
+        <Box
+          sx={(theme) => ({
+            position: 'absolute',
+            zIndex: 3,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%) rotate(-12deg)',
+
+            px: 4,
+            py: 1,
+         
+            color: theme.palette.highlight.main,
+            backgroundColor: theme.palette.highlight.contrastText,
+
+            fontWeight: 900,
+            fontSize: { xs: 18, md: 22 },
+            letterSpacing: 2,
+            textTransform: 'uppercase',
+
+            boxShadow: '0 6px 16px rgba(0,0,0,0.35)',
+            borderRadius: 0.75,
+
+            pointerEvents: 'none',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+
+            '@media (hover: hover)': {
+              '.link-card:hover &': {
+                transform: 'translate(-50%, -50%) rotate(-8deg) scale(1.06)',
+                boxShadow: '0 10px 26px rgba(0,0,0,0.45)',
+              },
+            },
+          })}
+        >
+          PRÓXIMAMENTE
+        </Box>
+      )}
+
+
         {/* TÍTULO DESKTOP */}
         <Box
           sx={(theme) => ({
@@ -97,19 +139,19 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel 
             ...(style?.right !== undefined && { right: style.right }),
 
             transform: `
-            ${style?.left === '50%' ? 'translateX(-50%)' : ''}
-            rotate(${style?.rotate ?? 0}deg)
-          `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ${style?.left === '50%' ? 'translateX(-50%)' : ''}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                rotate(${style?.rotate ?? 0}deg)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          `,
 
             transition: 'transform 0.25s ease',
 
             '@media (hover: hover)': {
               '.link-card:hover &': {
                 transform: `
-                ${style?.left === '50%' ? 'translateX(-50%)' : ''}
-                rotate(${(style?.rotate ?? 0) * 0.3}deg)
-                scale(1.06)
-              `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ${style?.left === '50%' ? 'translateX(-50%)' : ''}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                rotate(${(style?.rotate ?? 0) * 0.3}deg)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                scale(1.06)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              `,
               },
             },
           })}
@@ -191,12 +233,13 @@ export default function Links() {
 
         <Grid size={{ xs: 12, md: 4 }}>
           <LinkCard
-            onClick={() => navigate(PagesInfo.TALLERES.path)}
+            // onClick={() => navigate(PagesInfo.TALLERES.path)}
             title="Talleres"
             image="/talleres.jpg"
             titlePosition="top"
             titleColor="highlight"
             ariaLabel="Talleres"
+            comingSoon
           />
         </Grid>
       </Grid>
