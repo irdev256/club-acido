@@ -40,14 +40,14 @@ export const HamburgerNavItems: NavItem[] = [
   { label: 'Home', href: `/`, type: 'route', icon: '/icon.png' },
   { label: 'Skincare', href: '/skincare', type: 'route', icon: '/icon.png' },
   { label: 'Tattoo', href: '/tattoo', type: 'route', icon: '/icon.png' },
-  { label: 'Talleres', href: '/talleres', type: 'route', icon: '/icon.png' },
+  // { label: 'Talleres', href: '/talleres', type: 'route', icon: '/icon.png' },
   ...NavItems,
 ];
 
 // --------------------------------------------------------------
 
 export const Z_INDEX = {
-  TATTOO_GALLERY_MODAL: 500,
   FLOATING_ACTIONS: 1200,
   HAMBURGER_MENU: 1300,
+  TATTOO_GALLERY_MODAL: 1400,
 };

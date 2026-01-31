@@ -3,4 +3,5 @@ export interface NavItem {
   href: string;
   type: 'route' | 'external' | 'section';
   icon?: string;
+  comingSoon?: boolean;
 }
