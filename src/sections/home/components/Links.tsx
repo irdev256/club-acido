@@ -224,7 +224,7 @@ export default function Links() {
     <LinkCard
       onClick={() => navigate(PagesInfo.TATTOO.path)}
       title="Tattoo"
-      image="/tattoo.jpg"
+      image="/tattoo-nuevo-1.jpg"
       titlePosition="top"
       titleColor="accent"
       ariaLabel="Tattoo"

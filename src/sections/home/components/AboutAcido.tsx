@@ -50,7 +50,7 @@ export default function AboutAcido() {
 
           {/* COLLAGE */}
           <Grid size={{ xs: 12, md: 6 }} sx={{ position: 'relative', minHeight: 420 }}>
-            <Box component="img" src="/aboutacido-1.jpg" sx={collageImage(0, -20, -4)} />
+            <Box component="img" src="/sobre-acido-1.jpeg" sx={collageImage(0, -20, -4)} />
             <Box component="img" src="/aboutacido-3.jpg" sx={collageImage(140, 60, 3)} />
             <Box component="img" src="/aboutacido-4.jpg" sx={collageImage(60, 220, -2)} />
           </Grid>
