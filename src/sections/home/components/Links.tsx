@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 type TitlePosition = 'top' | 'top-left' | 'top-right' | 'bottom' | 'bottom-left' | 'bottom-right';
 
-type TitleColor = 'secondary' | 'accent' | 'highlight';
+type TitleColor = 'primary' | 'secondary' | 'accent' | 'highlight';
 
 type LinkCardProps = {
   title: string;
@@ -202,47 +202,57 @@ export default function Links() {
         mt: 6,
       }}
     >
-      <Grid
-        container
-        spacing={{ xs: 6, md: 8 }}
-        sx={{
-          position: 'relative',
-        }}
-      >
-        <Grid size={{ xs: 12, md: 4 }}>
-          <LinkCard
-            onClick={() => navigate(PagesInfo.SKINCARE.path)}
-            title="Skincare"
-            image="/skincare.jpeg"
-            titlePosition="top"
-            titleColor="secondary"
-            ariaLabel="Skincare"
-          />
-        </Grid>
+    <Grid
+  container
+  spacing={{ xs: 6, md: 8 }}
+  sx={{
+    position: 'relative',
+  }}
+>
+  <Grid size={{ xs: 12, md: 3 }}>
+    <LinkCard
+      onClick={() => navigate(PagesInfo.SKINCARE.path)}
+      title="Skincare"
+      image="/skincare.jpeg"
+      titlePosition="top"
+      titleColor="secondary"
+      ariaLabel="Skincare"
+    />
+  </Grid>
 
-        <Grid size={{ xs: 12, md: 4 }}>
-          <LinkCard
-            onClick={() => navigate(PagesInfo.TATTOO.path)}
-            title="Tattoo"
-            image="/tattoo.jpg"
-            titlePosition="bottom"
-            titleColor="accent"
-            ariaLabel="Tattoo"
-          />
-        </Grid>
+  <Grid size={{ xs: 12, md: 3 }}>
+    <LinkCard
+      onClick={() => navigate(PagesInfo.TATTOO.path)}
+      title="Tattoo"
+      image="/tattoo.jpg"
+      titlePosition="top"
+      titleColor="accent"
+      ariaLabel="Tattoo"
+    />
+  </Grid>
 
-        <Grid size={{ xs: 12, md: 4 }}>
-          <LinkCard
-            // onClick={() => navigate(PagesInfo.TALLERES.path)}
-            title="Talleres"
-            image="/talleres.jpg"
-            titlePosition="top"
-            titleColor="highlight"
-            ariaLabel="Talleres"
-            comingSoon
-          />
-        </Grid>
-      </Grid>
+  <Grid size={{ xs: 12, md: 3 }}>
+    <LinkCard
+      onClick={() => navigate('/masajes')} // cambiá por PagesInfo.MASAJES.path si lo agregás
+      title="Masajes"
+      image="/masajes.jpg" 
+      titlePosition="top-right"
+      titleColor="primary"
+      ariaLabel="Masajes"
+    />
+  </Grid>
+
+  <Grid size={{ xs: 12, md: 3 }}>
+    <LinkCard
+      title="Talleres"
+      image="/talleres.jpg"
+      titlePosition="top-right"
+      titleColor="highlight"
+      ariaLabel="Talleres"
+      comingSoon
+    />
+  </Grid>
+</Grid>
     </Box>
   );
 }
