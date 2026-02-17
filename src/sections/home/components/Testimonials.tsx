@@ -2,6 +2,7 @@ import { Box, Container, Typography, useTheme } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import { PagesInfo } from '../../../helpers/constants';
 import { getLenis } from '../../../helpers/utils';
+import { alpha } from '@mui/material/styles';
 
 type Testimonial = {
   text: string;
@@ -80,12 +81,36 @@ export default function TestimonialsLenis() {
           }}
         >
           {testimonials.map((item, index) => {
-            const float =
-              Math.sin(scrollY * 0.002 + index) * 12 +
-              Math.min(Math.abs(velocity) * 0.4, 18);
+            const containerRect =
+              containerRef.current?.getBoundingClientRect();
 
-            const rotate =
-              Math.sin(scrollY * 0.001 + index * 2) * 1.5;
+            const viewportHeight = window.innerHeight;
+
+            const percentInView = containerRect
+              ? Math.max(
+                  0,
+                  Math.min(
+                    1,
+                    (viewportHeight - containerRect.top - index * 80) /
+                      viewportHeight
+                  )
+                )
+              : 0;
+
+            // Reveal progressivo
+            const translateBase = 80 * (1 - percentInView);
+
+            // Parallax alternado
+            const parallax =
+              percentInView * 40 * (index % 2 === 0 ? 1 : -1);
+
+            // Rotación según velocidad
+            const dynamicRotate =
+              velocity * 0.4 * (index % 2 === 0 ? 1 : -1);
+
+            // Leve escala según velocidad
+            const scale =
+              1 + Math.min(Math.abs(velocity) * 0.0004, 0.04);
 
             const borderColor =
               index % 2 === 0
@@ -103,23 +128,34 @@ export default function TestimonialsLenis() {
                   borderColor,
                   borderRadius: 0,
 
+                  opacity: percentInView,
+
                   boxShadow: `
-                    0 20px 40px rgba(0,0,0,0.06)
+                    0 ${20 + Math.abs(velocity) * 0.2}px
+                    ${40 + Math.abs(velocity) * 0.3}px
+                    rgba(0,0,0,${
+                      0.08 +
+                      Math.min(Math.abs(velocity) * 0.0005, 0.08)
+                    })
                   `,
 
                   transform: `
-                    translateY(${float}px)
-                    rotate(${rotate}deg)
+                    translateY(${translateBase + parallax}px)
+                    rotate(${dynamicRotate}deg)
+                    scale(${scale})
                   `,
 
                   transition:
-                    'transform 120ms linear, background-color 0.25s ease',
+                    'transform 120ms linear, background-color 0.25s ease, opacity 0.25s ease',
 
                   '&:hover': {
-                    backgroundColor: 'action.hover',
+                    backgroundColor:
+                      index % 2 === 0
+                        ? alpha(theme.palette.secondary.main, 0.14)
+                        : alpha(theme.palette.primary.main, 0.14),
                   },
 
-                  willChange: 'transform',
+                  willChange: 'transform, opacity',
                 }}
               >
                 <Typography
