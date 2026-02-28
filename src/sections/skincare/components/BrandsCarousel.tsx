@@ -22,7 +22,7 @@ export default function BrandsCarousel() {
     <Box
       sx={{
         position: 'relative',
-        py: 6,
+        py: { xs: 4, md: 6 },
         overflow: 'hidden',
       }}
     >
@@ -46,18 +46,21 @@ export default function BrandsCarousel() {
           sx={{
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             width: '100%',
-            mb: 8,
+            mb: { xs: 5, md: 8 },
+            gap: { xs: 1.5, md: 3 },
           }}
         >
           {/* Línea izquierda */}
           <Box
             sx={{
               flex: 1,
+              maxWidth: 220,
               height: '2px',
-              backgroundColor: '#9A6B1F',
+              backgroundColor: 'secondary.main',
               opacity: 0.4,
-              mr: 3,
+              minWidth: { xs: 24, sm: 60 },
             }}
           />
 
@@ -66,10 +69,12 @@ export default function BrandsCarousel() {
             variant="overline"
             sx={{
               px: 3,
-              color: '#9A6B1F',
+              color: 'secondary.main',
               letterSpacing: 1.5,
-              fontSize: { xs: 14, md: 26 },
-              whiteSpace: 'nowrap',
+              fontSize: { xs: 12, sm: 14, md: 26 },
+              whiteSpace: { xs: 'normal', sm: 'nowrap' },
+              textAlign: 'center',
+              lineHeight: { xs: 1.25, md: 1.2 },
             }}
           >
             Marcas con las que trabajamos
@@ -79,10 +84,11 @@ export default function BrandsCarousel() {
           <Box
             sx={{
               flex: 1,
+              maxWidth: 220,
               height: '2px',
-              backgroundColor: '#9A6B1F',
+              backgroundColor: 'secondary.main',
               opacity: 0.4,
-              ml: 3,
+              minWidth: { xs: 24, sm: 60 },
             }}
           />
         </Box>
@@ -119,6 +125,7 @@ export default function BrandsCarousel() {
             slidesPerView={2.5}
             spaceBetween={40}
             breakpoints={{
+              440: { slidesPerView: 3 },
               600: { slidesPerView: 3.5 },
               900: { slidesPerView: 5 },
             }}
@@ -127,7 +134,7 @@ export default function BrandsCarousel() {
               <SwiperSlide key={brand.name}>
                 <Box
                   sx={{
-                    height: 100,
+                    height: { xs: 72, md: 100 },
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',

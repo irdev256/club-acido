@@ -43,10 +43,13 @@ export default function CalendarButton() {
       }}
     >
       <Box
+        component="button"
+        type="button"
+        aria-label="Abrir agenda"
         onClick={() => window.open(CLIENT_AGENDA_PRO, '_blank', 'noopener,noreferrer')}
         sx={{
-          width: 56,
-          height: 56,
+          width: { xs: 52, md: 56 },
+          height: { xs: 52, md: 56 },
           borderRadius: '50%',
           backgroundColor: 'highlight.main',
           color: 'accent.main',
@@ -55,17 +58,24 @@ export default function CalendarButton() {
           justifyContent: 'center',
           boxShadow: '0 8px 24px rgba(0,0,0,0.25)',
           cursor: 'pointer',
+          border: 0,
           pointerEvents: visible ? 'auto' : 'none',
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0)' : 'translateY(12px)',
           transition: 'opacity 400ms ease, transform 400ms ease, box-shadow 200ms ease',
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'manipulation',
           '&:hover': {
             transform: 'translateY(-2px) scale(1.05)',
             boxShadow: '0 12px 32px rgba(0,0,0,0.3)',
           },
+          '&:focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: 2,
+          },
         }}
       >
-        <CalendarMonthIcon sx={{ fontSize: 28 }} />
+        <CalendarMonthIcon sx={{ fontSize: { xs: 26, md: 28 } }} />
       </Box>
     </Tooltip>
   );

@@ -36,10 +36,10 @@ export default function TikTokShowcase() {
           </Typography>
         </Stack>
 
-        <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 6, md: 22 }} justifyContent="center" alignItems="flex-end">
+        <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 4, md: 8 }} justifyContent="center" alignItems="center">
           <Box
             sx={{
-              transform: { md: 'translateY(40px)' },
+              transform: { md: 'translateY(28px)' },
             }}
           >
             <PhoneMockup>
@@ -83,7 +83,7 @@ export default function TikTokShowcase() {
 
           <Box
             sx={{
-              transform: { md: 'translateY(40px)' },
+              transform: { md: 'translateY(28px)' },
             }}
           >
             <PhoneMockup>

@@ -23,8 +23,10 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel,
   return (
   <Box
     className="link-card"
+    component={comingSoon ? 'div' : 'button'}
+    type={comingSoon ? undefined : 'button'}
     onClick={comingSoon ? undefined : onClick}
-    role="img"
+    role={comingSoon ? 'img' : undefined}
     aria-label={ariaLabel}
     sx={{
       width: '100%',
@@ -34,6 +36,16 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel,
       alignItems: 'center',
       pointerEvents: 'auto',
       opacity: comingSoon ? 0.9 : 1,
+      border: 0,
+      p: 0,
+      background: 'transparent',
+      textAlign: 'inherit',
+      WebkitTapHighlightColor: 'transparent',
+      touchAction: 'manipulation',
+      '&:focus-visible': {
+        outline: '2px solid currentColor',
+        outlineOffset: 6,
+      },
     }}
   >
       {/* TÍTULO MOBILE */}
@@ -47,7 +59,7 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel,
           py: 0.75,
           willChange: 'transform',
 
-          transform: 'translateY(22px)',
+          transform: 'translateY(18px)',
 
           backgroundColor: (theme) => theme.palette[titleColor].main,
           color: (theme) => theme.palette[titleColor].contrastText,
@@ -60,7 +72,7 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel,
       >
         <Typography
           sx={{
-            fontSize: 22,
+            fontSize: { xs: 18, sm: 22 },
             fontWeight: 800,
             letterSpacing: 1,
             textTransform: 'uppercase',
@@ -77,7 +89,7 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel,
       <Box
         sx={{
           position: 'relative',
-          width: { xs: 220, sm: 260, md: 300 },
+          width: { xs: 210, sm: 250, md: 300 },
           aspectRatio: '1 / 1',
         }}
       >
@@ -204,7 +216,7 @@ export default function Links() {
     >
     <Grid
   container
-  spacing={{ xs: 6, md: 8 }}
+  spacing={{ xs: 4, md: 8 }}
   sx={{
     position: 'relative',
   }}

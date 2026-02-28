@@ -10,8 +10,8 @@ export default function FloatingActions() {
       spacing={1.5}
       sx={{
         position: 'fixed',
-        right: { xs: 16, md: 24 },
-        bottom: { xs: 16, md: 24 },
+        right: { xs: 'calc(12px + env(safe-area-inset-right))', md: 24 },
+        bottom: { xs: 'calc(12px + env(safe-area-inset-bottom))', md: 24 },
         zIndex: Z_INDEX.FLOATING_ACTIONS,
       }}
     >

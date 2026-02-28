@@ -49,7 +49,16 @@ export default function AboutAcido() {
           </Grid>
 
           {/* COLLAGE */}
-          <Grid size={{ xs: 12, md: 6 }} sx={{ position: 'relative', minHeight: 520 }}>
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{
+              position: 'relative',
+              minHeight: { xs: 'auto', md: 520 },
+              display: { xs: 'grid', md: 'block' },
+              gridTemplateColumns: { xs: 'repeat(2, minmax(0, 1fr))', md: 'none' },
+              gap: { xs: 1.5, sm: 2 },
+            }}
+          >
             <Box component="img" src="/sobre-acido-1.jpeg" sx={collageImage(0, -20, -4)} />
             <Box component="img" src="/aboutacido-3.jpg" sx={collageImage(140, 60, 3)} />
             <Box component="img" src="/aboutacido-4.jpg" sx={collageImage(60, 220, -2)} />
@@ -59,6 +68,9 @@ export default function AboutAcido() {
           </Grid>
         </Grid>
         <Box
+          component="button"
+          type="button"
+          aria-label="Agendar turno"
           onClick={() => {
             window.open(CLIENT_AGENDA_PRO, '_blank', 'noopener,noreferrer');
           }}
@@ -68,6 +80,9 @@ export default function AboutAcido() {
             backgroundColor: 'highlight.main',
             cursor: 'pointer',
             borderRadius: 1.5,
+            border: 0,
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation',
 
             animation: 'heartBeat 4.2s ease-in-out infinite',
             ...pulseKeyframes,
@@ -83,6 +98,10 @@ export default function AboutAcido() {
           0 6px 14px rgba(0,0,0,0.22)
         `,
               },
+            },
+            '&:focus-visible': {
+              outline: '2px solid currentColor',
+              outlineOffset: 4,
             },
           }}
         >
@@ -111,12 +130,14 @@ const bigHighlight = {
 };
 
 const collageImage = (x: number, y: number, r: number) => ({
-  position: 'absolute',
-  top: y,
-  left: x,
-  width: 220,
+  position: { xs: 'static', md: 'absolute' },
+  top: { md: y },
+  left: { md: x },
+  width: { xs: '100%', md: 220 },
+  height: { xs: 180, sm: 210, md: 'auto' },
   borderRadius: 2,
-  transform: `rotate(${r}deg)`,
+  objectFit: 'cover',
+  transform: { xs: `rotate(${r >= 0 ? 3 : -3}deg)`, md: `rotate(${r}deg)` },
   boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
 });
 

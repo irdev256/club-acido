@@ -30,7 +30,7 @@ export default function Hero() {
     <Box
       id={PagesInfo.HOME.sections.HERO}
       sx={(theme) => ({
-        minHeight: '93vh',
+        minHeight: { xs: '88vh', md: '93vh' },
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
@@ -54,13 +54,13 @@ export default function Hero() {
             sx={(theme) => ({
               width: '90vw',
               maxWidth: '1200px',
-              maxHeight: '70vh',
+              maxHeight: { xs: '52vh', md: '70vh' },
               objectFit: 'contain',
-              paddingBottom: theme.spacing(6),
+              paddingBottom: { xs: theme.spacing(4), md: theme.spacing(6) },
 
               '@media (max-width:600px)': {
                 width: '95vw',
-                maxHeight: '60vh',
+                maxHeight: '48vh',
               },
 
               filter: `drop-shadow(0px 10px 28px rgba(0,0,0,0.28))`,
@@ -71,6 +71,9 @@ export default function Hero() {
 
       {/* SCROLL INDICATOR */}
       <Box
+        component="button"
+        type="button"
+        aria-label="Ir a la siguiente sección"
         onClick={scrollToNextSection}
         sx={(theme) => ({
           position: 'absolute',
@@ -85,8 +88,12 @@ export default function Hero() {
           flexDirection: 'column',
           alignItems: 'center',
           gap: 1,
+          border: 0,
+          background: 'transparent',
           color: theme.palette.text.secondary,
           cursor: 'pointer',
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'manipulation',
 
           // 👇 estado visible / oculto
           opacity: showScrollIndicator ? 1 : 0,
@@ -102,6 +109,10 @@ export default function Hero() {
 
           '&:hover': {
             color: theme.palette.text.primary,
+          },
+          '&:focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: 4,
           },
         })}
       >
@@ -130,6 +141,7 @@ export default function Hero() {
 
         <Box
           sx={{
+            display: { xs: 'none', sm: 'block' },
             fontSize: {
               sm: 16,
               md: 18

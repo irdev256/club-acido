@@ -50,6 +50,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
   const isRouteChange = useRef(location.pathname);
+  const closeTimeoutRef = useRef<number | null>(null);
 
   const [open, setOpen] = useState(false);
   const [renderMenu, setRenderMenu] = useState(false);
@@ -70,10 +71,41 @@ export default function Navbar() {
     scrollTo(el, 80);
   };
 
+  const openMenu = () => {
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+
+    setMenuColors((prev) => getRandomMenuColors(prev));
+    setRenderMenu(true);
+
+    requestAnimationFrame(() => {
+      setOpen(true);
+    });
+  };
+
+  const closeMenu = () => {
+    setOpen(false);
+
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current);
+    }
+
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setRenderMenu(false);
+      closeTimeoutRef.current = null;
+    }, 1200);
+  };
+
   useEffect(() => {
     document.body.style.pointerEvents = open ? 'none' : '';
     return () => {
       document.body.style.pointerEvents = '';
+
+      if (closeTimeoutRef.current !== null) {
+        window.clearTimeout(closeTimeoutRef.current);
+      }
     };
   }, [open]);
 
@@ -96,25 +128,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    if (open) {
-      setRenderMenu(true);
-    } else {
-      const timeout = setTimeout(() => {
-        setRenderMenu(false);
-      }, 1200); // mismo tiempo que la animación
-
-      return () => clearTimeout(timeout);
-    }
-  }, [open]);
-
-    useEffect(() => {
-    if (renderMenu) {
-      setMenuColors((prev) => getRandomMenuColors(prev));
-    }
-  }, [renderMenu]);
-
-
   return (
     <>
       {/* ================= TOP NAVBAR ================= */}
@@ -131,6 +144,8 @@ export default function Navbar() {
         <Toolbar>
           {/* Logo */}
           <Box
+            component="button"
+            type="button"
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -141,6 +156,9 @@ export default function Navbar() {
               transition: 'opacity 400ms ease, transform 400ms ease',
               pointerEvents: showNavbar ? 'auto' : 'none',
               cursor: 'pointer',
+              p: 0,
+              border: 0,
+              background: 'transparent',
             }}
             onClick={() => {
               if (!isHome) {
@@ -154,8 +172,15 @@ export default function Navbar() {
           </Box>
 
           {/* Navbar Items */}
-          <Stack direction="row" spacing={3} alignItems="center">
-            {NavItems.map((item) => {
+          <Stack direction="row" spacing={{ xs: 1, md: 3 }} alignItems="center">
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                alignItems: 'center',
+                gap: 3,
+              }}
+            >
+              {NavItems.map((item) => {
               if (item.type === 'route') {
                 return (
                   <Box key={item.label} component={Link} to={item.href} sx={linkStyle(showWhiteText, isAtTop)}>
@@ -166,7 +191,13 @@ export default function Navbar() {
 
               if (item.type === 'section') {
                 return (
-                  <Box key={item.label} sx={linkStyle(showWhiteText, isAtTop)} onClick={() => isHome && scrollToSection(item.href)}>
+                  <Box
+                    key={item.label}
+                    component="button"
+                    type="button"
+                    sx={linkStyle(showWhiteText, isAtTop)}
+                    onClick={() => isHome && scrollToSection(item.href)}
+                  >
                     {item.label}
                   </Box>
                 );
@@ -176,6 +207,8 @@ export default function Navbar() {
                 return (
                   <Box
                     key={item.label}
+                    component="button"
+                    type="button"
                     sx={linkStyle(showWhiteText, isAtTop)}
                     onClick={() => window.open(item.href, '_blank', 'noopener,noreferrer')}
                   >
@@ -185,15 +218,12 @@ export default function Navbar() {
               }
 
               return null;
-            })}
+              })}
+            </Box>
 
            <IconButton
-              onClick={() => {
-                setRenderMenu(true);
-                requestAnimationFrame(() => {
-                  setOpen(true);
-                });
-              }}
+              aria-label="Abrir menú"
+              onClick={openMenu}
               sx={{
                 color: showWhiteText ? 'primary.contrastText' : isAtTop ? 'text.primary' : 'primary.contrastText',
               }}
@@ -238,14 +268,18 @@ export default function Navbar() {
           }}
         >
           <Box
+            component="button"
+            type="button"
             sx={{
               display: 'flex',
               alignItems: 'center',
               px: { xs: 3, md: 6 },
               cursor: 'pointer',
+              border: 0,
+              background: 'transparent',
             }}
             onClick={() => {
-              setOpen(false);
+              closeMenu();
 
               if (!isHome) {
                 navigate('/');
@@ -266,7 +300,7 @@ export default function Navbar() {
             />
           </Box>
 
-          <IconButton sx={{ mr: 2.6, color: 'white' }} onClick={() => setOpen(false)}>
+          <IconButton aria-label="Cerrar menú" sx={{ mr: 2.6, color: 'white' }} onClick={closeMenu}>
             <CloseIcon />
           </IconButton>
         </Box>
@@ -281,15 +315,14 @@ export default function Navbar() {
         >
           {HamburgerNavItems.map((item, index) => {
             const handleClick = () => {
-              setOpen(false);
+              closeMenu();
               if (item.type === 'route') navigate(item.href);
               if (item.type === 'section') scrollToSection(item.href);
               if (item.type === 'external') window.open(item.href, '_blank', 'noopener,noreferrer');
             };
 
             return (
-              <Box key={item.label} onClick={handleClick}  sx={hamburgerRowStyle(menuColors.bg, menuColors.text)}
->
+              <Box key={item.label} component="button" type="button" onClick={handleClick} sx={hamburgerRowStyle(menuColors.bg, menuColors.text)}>
                 <Typography sx={hamburgerTextStyle}>{item.label}</Typography>
 
                 {item.icon && (
@@ -331,10 +364,20 @@ export default function Navbar() {
 
 const linkStyle = (showWhiteText: boolean, isAtTop: boolean) => ({
   textDecoration: 'none',
-  fontSize: 18,
+  fontSize: { md: 16, lg: 18 },
   cursor: 'pointer',
   color: showWhiteText ? 'primary.contrastText' : isAtTop ? 'text.primary' : 'primary.contrastText',
+  border: 0,
+  background: 'transparent',
+  p: 0,
+  fontFamily: 'inherit',
+  WebkitTapHighlightColor: 'transparent',
+  touchAction: 'manipulation',
   '&:hover': { opacity: 0.7 },
+  '&:focus-visible': {
+    outline: '2px solid currentColor',
+    outlineOffset: 4,
+  },
 });
 
 const hamburgerRowStyle = (bg: string, text: string) => ({
@@ -346,9 +389,14 @@ const hamburgerRowStyle = (bg: string, text: string) => ({
   alignItems: 'center',
   borderBottom: '1px solid rgba(0,0,0,0.25)',
   cursor: 'pointer',
+  textAlign: 'left',
 
   backgroundColor: 'transparent',
   color: text,
+  border: 0,
+  font: 'inherit',
+  WebkitTapHighlightColor: 'transparent',
+  touchAction: 'manipulation',
   transition: 'background-color 250ms ease, color 250ms ease',
 
   '&:hover': {
@@ -388,6 +436,7 @@ const hamburgerIconRightStyle = {
 const iconStyle = {
   fontSize: { xs: 70, md: 100 },
   color: 'background.default',
+  WebkitTapHighlightColor: 'transparent',
   '&:hover': { color: 'accent.main', transform: 'translateY(-5px)' },
 };
 

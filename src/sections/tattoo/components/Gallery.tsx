@@ -84,13 +84,25 @@ export default function Gallery() {
         {/* ================= HEADER ================= */}
         <Stack spacing={2} alignItems="flex-end">
           <Box
+            component="button"
+            type="button"
+            aria-label="Abrir Instagram de Leti"
             onClick={() => window.open(CLIENT_TATTOO_LETI_INSTAGRAM_LINK, '_blank')}
             sx={{
               display: 'inline-flex',
               alignItems: 'baseline',
               gap: 1,
               cursor: 'pointer',
+              border: 0,
+              background: 'transparent',
+              p: 0,
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
               '&:hover': { opacity: 0.75 },
+              '&:focus-visible': {
+                outline: '2px solid currentColor',
+                outlineOffset: 4,
+              },
             }}
           >
             <InstagramIcon
@@ -132,6 +144,9 @@ export default function Gallery() {
           {images.map((img, index) => (
             <Box
               key={index}
+              component="button"
+              type="button"
+              aria-label={`Ver imagen ${index + 1}`}
               onClick={() => openImage(index)}
               sx={{
                 position: 'relative',
@@ -139,9 +154,15 @@ export default function Gallery() {
                 overflow: 'hidden',
                 borderRadius: 1,
                 cursor: 'pointer',
+                border: 0,
+                p: 0,
+                background: 'transparent',
+                WebkitTapHighlightColor: 'transparent',
+                touchAction: 'manipulation',
 
                 '&:hover img': { transform: 'scale(1.05)' },
                 '&:hover .overlay': { opacity: 1 },
+                '&:focus-visible .overlay': { opacity: 1 },
               }}
             >
               <Box
@@ -202,28 +223,53 @@ export default function Gallery() {
             />
 
             {/* Cerrar */}
-            <IconButton onClick={closeImage} sx={{ position: 'fixed', top: 20, right: 20, color: '#fff' }}>
+            <IconButton
+              aria-label="Cerrar galería"
+              onClick={closeImage}
+              sx={{
+                position: 'fixed',
+                top: { xs: 'calc(10px + env(safe-area-inset-top))', md: 20 },
+                right: { xs: 'calc(10px + env(safe-area-inset-right))', md: 20 },
+                color: '#fff',
+              }}
+            >
               <CloseIcon />
             </IconButton>
 
             {/* Prev */}
             <IconButton
+              aria-label="Imagen anterior"
               onClick={(e) => {
                 e.stopPropagation();
                 showPrev();
               }}
-              sx={{ position: 'fixed', left: 20, color: '#fff' }}
+              sx={{
+                position: 'fixed',
+                left: { xs: 'calc(8px + env(safe-area-inset-left))', md: 20 },
+                bottom: { xs: 'calc(12px + env(safe-area-inset-bottom))', md: 'auto' },
+                top: { xs: 'auto', md: '50%' },
+                transform: { md: 'translateY(-50%)' },
+                color: '#fff',
+              }}
             >
               <ChevronLeftIcon fontSize="large" />
             </IconButton>
 
             {/* Next */}
             <IconButton
+              aria-label="Imagen siguiente"
               onClick={(e) => {
                 e.stopPropagation();
                 showNext();
               }}
-              sx={{ position: 'fixed', right: 20, color: '#fff' }}
+              sx={{
+                position: 'fixed',
+                right: { xs: 'calc(8px + env(safe-area-inset-right))', md: 20 },
+                bottom: { xs: 'calc(12px + env(safe-area-inset-bottom))', md: 'auto' },
+                top: { xs: 'auto', md: '50%' },
+                transform: { md: 'translateY(-50%)' },
+                color: '#fff',
+              }}
             >
               <ChevronRightIcon fontSize="large" />
             </IconButton>

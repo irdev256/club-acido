@@ -88,4 +88,27 @@ export const theme = createTheme({
   shape: {
     borderRadius: 0,
   },
+
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: {
+          WebkitTapHighlightColor: 'transparent',
+        },
+        body: {
+          overscrollBehaviorX: 'none',
+        },
+        'a, button, [role="button"]': {
+          WebkitTapHighlightColor: 'transparent',
+        },
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          WebkitTapHighlightColor: 'transparent',
+        },
+      },
+    },
+  },
 });

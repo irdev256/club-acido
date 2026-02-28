@@ -8,7 +8,7 @@ export default function Hero() {
         position: 'relative',
         py: { xs: 12, md: 18 },
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, #FFF7EA 0%, #FFFFFF 55%, #FFF3F8 100%)',
+        backgroundColor: 'background.default',
       }}
     >
       <Box
@@ -19,7 +19,7 @@ export default function Hero() {
           width: 300,
           height: 300,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,196,113,0.45) 0%, transparent 70%)',
+          backgroundColor: 'background.default',
           filter: 'blur(10px)',
           zIndex: 0,
         }}

@@ -53,9 +53,10 @@ export default function WhatsAppButton() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Abrir WhatsApp"
         sx={{
-          width: 56,
-          height: 56,
+          width: { xs: 52, md: 56 },
+          height: { xs: 52, md: 56 },
           borderRadius: '50%',
           backgroundColor: '#25D366',
           color: '#fff',
@@ -67,13 +68,19 @@ export default function WhatsAppButton() {
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0)' : 'translateY(12px)',
           transition: 'opacity 400ms ease, transform 400ms ease, box-shadow 200ms ease',
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'manipulation',
           '&:hover': {
             transform: 'scale(1.05)',
             boxShadow: '0 12px 32px rgba(0,0,0,0.3)',
           },
+          '&:focus-visible': {
+            outline: '2px solid #fff',
+            outlineOffset: 2,
+          },
         }}
       >
-        <WhatsAppIcon sx={{ fontSize: 30 }} />
+        <WhatsAppIcon sx={{ fontSize: { xs: 28, md: 30 } }} />
       </Box>
     </Tooltip>
   );
