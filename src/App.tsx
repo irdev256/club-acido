@@ -15,6 +15,7 @@ import { PagesInfo } from './helpers/constants';
 import TattooPage from './pages/Tattoo';
 import SkincarePage from './pages/Skincare';
 import TalleresPage from './pages/Talleres';
+import MasajesPage from './pages/Masajes';
 import SmoothScroll from './components/layout/SmoothScroll';
 import FloatingActions from './components/common/FloatingActions';
 import ScrollToTop from './components/layout/ScrollToTop';
@@ -34,6 +35,7 @@ function App() {
             <Route path={PagesInfo.HOME.path} element={<HomePage />} />
             <Route path={PagesInfo.TATTOO.path} element={<TattooPage />} />
             <Route path={PagesInfo.SKINCARE.path} element={<SkincarePage />} />
+            <Route path={PagesInfo.MASAJES.path} element={<MasajesPage />} />
             <Route path={PagesInfo.TALLERES.path} element={<TalleresPage />} />
             <Route path={PagesInfo.QUIZ.path} element={<QuizPage />} />
           </Routes>

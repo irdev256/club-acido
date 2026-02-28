@@ -30,6 +30,7 @@ export const PagesInfo = {
   },
   SKINCARE: { path: '/skincare', helmet: 'Skincare | Club Ácido' },
   TATTOO: { path: '/tattoo', helmet: 'Tattoo | Club Ácido' },
+  MASAJES: { path: '/masajes', helmet: 'Masajes | Club Ácido' },
   TALLERES: { path: '/talleres', helmet: 'Talleres | Club Ácido' },
   QUIZ: { path: '/quiz/:quizSlug', helmet: 'Quiz | Club Ácido' },
 };
@@ -40,6 +41,7 @@ export const HamburgerNavItems: NavItem[] = [
   { label: 'Home', href: `/`, type: 'route', icon: '/icon.png' },
   { label: 'Skincare', href: '/skincare', type: 'route', icon: '/icon.png' },
   { label: 'Tattoo', href: '/tattoo', type: 'route', icon: '/icon.png' },
+  { label: 'Masajes', href: '/masajes', type: 'route', icon: '/icon.png' },
   // { label: 'Talleres', href: '/talleres', type: 'route', icon: '/icon.png' },
   ...NavItems,
 ];

@@ -233,7 +233,7 @@ export default function Links() {
 
   <Grid size={{ xs: 12, md: 3 }}>
     <LinkCard
-      onClick={() => navigate('/masajes')} // cambiá por PagesInfo.MASAJES.path si lo agregás
+      onClick={() => navigate(PagesInfo.MASAJES.path)}
       title="Masajes"
       image="/masajes.jpg" 
       titlePosition="top-right"
