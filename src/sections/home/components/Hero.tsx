@@ -75,9 +75,9 @@ export default function Hero() {
         sx={(theme) => ({
           position: 'absolute',
           bottom: {
-            sx: 'calc(12px + env(safe-area-inset-bottom))',
+            xs: 'calc(4px + env(safe-area-inset-bottom))',
             sm: 20,
-            md: 32 
+            md: 32,
           },
           left: '50%',
           zIndex: 2,

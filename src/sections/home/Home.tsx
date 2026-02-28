@@ -16,7 +16,7 @@ export default function Home() {
       <SocialDemo />
       <RotatingIconsDivider/>
       <AboutAcido />
-      {/* <Testimonials /> */}
+      <Testimonials />
       <Ubicacion />
       {/* <Content /> */}
       {/* <FinalCTA /> */}

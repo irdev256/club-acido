@@ -116,6 +116,7 @@ export default function UbicacionSection() {
               inset: 0,
               background: 'linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 22%, rgba(0,0,0,0) 40%)',
               pointerEvents: 'none',
+              display: { xs: 'none', md: 'block' },
             }}
           />
 
@@ -125,6 +126,7 @@ export default function UbicacionSection() {
               position: 'absolute',
               top: 32,
               left: 32,
+              display: { xs: 'none', md: 'block' },
               backgroundColor: 'secondary.main',
               color: '#fff',
               p: 4,

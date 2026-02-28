@@ -1,54 +1,87 @@
-import { Box, Container, Typography, useTheme } from '@mui/material';
-import { useEffect, useRef, useState } from 'react';
+import { alpha, Box, Container, Typography, useTheme } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { PagesInfo } from '../../../helpers/constants';
-import { getLenis } from '../../../helpers/utils';
-import { alpha } from '@mui/material/styles';
 
 type Testimonial = {
+  title: string;
   text: string;
 };
 
 const testimonials: Testimonial[] = [
   {
-    text: 'Arranqué con un diagnóstico de piel y me cambió completamente la forma de cuidarme. Hoy mi rutina es simple y realmente efectiva.',
+    title: 'Glow real ✨',
+    text: 'En pocas semanas mi piel se ve más pareja y luminosa.',
   },
   {
-    text: 'Mi tattoo fue una experiencia súper cuidada. Desde el diseño hasta la cicatrización, todo estuvo acompañado y explicado.',
+    title: 'Tattoo sin drama 🖤',
+    text: 'Me guiaron en todo y cicatrizó perfecto desde el día uno.',
   },
   {
-    text: 'Los masajes en Ácido son un ritual. Salís liviana, desbloqueada y con otra energía en el cuerpo.',
+    title: 'Desconexión total 🌿',
+    text: 'Entré tensa y salí liviana, como si reiniciara el cuerpo.',
   },
   {
-    text: 'No es solo skincare, es educación. Entendí qué necesita mi piel y por qué.',
+    title: 'Rutina simple 🧴',
+    text: 'Ahora sé exactamente qué usar y qué evitar cada día.',
   },
   {
-    text: 'El estudio tiene una vibra muy especial. Profesional, artístico y con mucho respeto por cada proceso.',
+    title: 'Equipo que escucha 💬',
+    text: 'Se siente humano, cercano y súper profesional en cada paso.',
   },
   {
-    text: 'Después de varias sesiones mi piel está más luminosa y equilibrada. Se nota cuando el cuidado es personalizado.',
+    title: 'Resultados visibles 🔥',
+    text: 'Mi piel cambió y lo noté rápido, sin rutinas imposibles.',
   },
 ];
 
+type SliderPhase = 'building' | 'full-hold' | 'removing' | 'base-hold';
+
+const rotations = [-3.5, 2.2, -6.2, 4.6, -1.8, 5.4];
+const stackOffsetsX = [-10, 12, -18, 16, -6, 10];
+const stackOffsetsY = [0, 6, 2, 10, 5, 12];
+const ICON_SRC = '/icon-secondary.png';
+const cardIcons = Array.from({ length: 9 });
+
 export default function TestimonialsLenis() {
   const theme = useTheme();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollY, setScrollY] = useState(0);
-  const [velocity, setVelocity] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(1);
+  const [phase, setPhase] = useState<SliderPhase>('building');
 
   useEffect(() => {
-    const lenis = getLenis();
-    if (!lenis) return;
+    const interval = window.setInterval(() => {
+      setVisibleCount((currentCount) => {
+        if (phase === 'building') {
+          if (currentCount < testimonials.length) {
+            return currentCount + 1;
+          }
 
-    const onScroll = ({ scroll, velocity }: any) => {
-      setScrollY(scroll);
-      setVelocity(velocity);
-    };
+          setPhase('full-hold');
+          return currentCount;
+        }
 
-    lenis.on('scroll', onScroll);
+        if (phase === 'full-hold') {
+          setPhase('removing');
+          return currentCount;
+        }
+
+        if (phase === 'removing') {
+          if (currentCount > 1) {
+            return currentCount - 1;
+          }
+
+          setPhase('base-hold');
+          return currentCount;
+        }
+
+        setPhase('building');
+        return currentCount;
+      });
+    }, 1750);
+
     return () => {
-      lenis.off('scroll', onScroll);
+      window.clearInterval(interval);
     };
-  }, []);
+  }, [phase]);
 
   return (
     <Box
@@ -61,7 +94,7 @@ export default function TestimonialsLenis() {
         overflow: 'hidden',
       }}
     >
-      <Container maxWidth="lg" ref={containerRef}>
+      <Container maxWidth="lg">
         <Typography
           variant="h2"
           sx={{
@@ -75,45 +108,26 @@ export default function TestimonialsLenis() {
 
         <Box
           sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: { xs: 6, md: 8 },
+            position: 'relative',
+            mx: 'auto',
+            width: 'min(100%, 760px)',
+            height: { xs: 420, md: 470 },
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           {testimonials.map((item, index) => {
-            const containerRect =
-              containerRef.current?.getBoundingClientRect();
-
-            const viewportHeight = window.innerHeight;
-
-            const percentInView = containerRect
-              ? Math.max(
-                  0,
-                  Math.min(
-                    1,
-                    (viewportHeight - containerRect.top - index * 80) /
-                      viewportHeight
-                  )
-                )
-              : 0;
-
-            // Reveal progressivo
-            const translateBase = 80 * (1 - percentInView);
-
-            // Parallax alternado
-            const parallax =
-              percentInView * 40 * (index % 2 === 0 ? 1 : -1);
-
-            // Rotación según velocidad
-            const dynamicRotate =
-              velocity * 0.4 * (index % 2 === 0 ? 1 : -1);
-
-            // Leve escala según velocidad
-            const scale =
-              1 + Math.min(Math.abs(velocity) * 0.0004, 0.04);
+            const isVisibleCard = index < visibleCount;
+            const depthFromTop = visibleCount - 1 - index;
+            const isPrimaryCard = index % 2 === 0;
+            const restingRotate = rotations[index % rotations.length];
+            const restingX = stackOffsetsX[index % stackOffsetsX.length];
+            const restingY = stackOffsetsY[index % stackOffsetsY.length];
+            const entrySideX = index % 2 === 0 ? 140 : -140;
 
             const borderColor =
-              index % 2 === 0
+              isPrimaryCard
                 ? theme.palette.primary.main
                 : theme.palette.secondary.main;
 
@@ -121,64 +135,128 @@ export default function TestimonialsLenis() {
               <Box
                 key={index}
                 sx={{
-                  position: 'relative',
-                  p: { xs: 4, md: 6 },
+                  position: 'absolute',
+                  inset: 0,
+                  m: 'auto',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start',
+                  width: { xs: '84%', md: '74%' },
+                  maxWidth: 560,
+                  minHeight: 'unset',
+                  p: { xs: 2.5, md: 3.25 },
                   backgroundColor: 'background.paper',
                   border: '2px solid',
                   borderColor,
-                  borderRadius: 0,
+                  borderRadius: 0.8,
 
-                  opacity: percentInView,
+                  opacity: isVisibleCard ? 1 : 0,
 
                   boxShadow: `
-                    0 ${20 + Math.abs(velocity) * 0.2}px
-                    ${40 + Math.abs(velocity) * 0.3}px
-                    rgba(0,0,0,${
-                      0.08 +
-                      Math.min(Math.abs(velocity) * 0.0005, 0.08)
-                    })
+                    0 ${18 + depthFromTop * 2}px
+                    ${34 + depthFromTop * 5}px
+                    rgba(0,0,0,${0.12 + Math.max(0, 0.12 - depthFromTop * 0.03)})
                   `,
 
                   transform: `
-                    translateY(${translateBase + parallax}px)
-                    rotate(${dynamicRotate}deg)
-                    scale(${scale})
+                    translate3d(
+                      ${isVisibleCard ? `${restingX}px` : `${entrySideX}px`},
+                      ${isVisibleCard ? `${restingY + depthFromTop * 2}px` : '40px'},
+                      0
+                    )
+                    rotate(${isVisibleCard ? `${restingRotate}deg` : `${restingRotate * 0.7}deg`})
+                    scale(${isVisibleCard ? `${1 - depthFromTop * 0.018}` : '0.92'})
                   `,
 
                   transition:
-                    'transform 120ms linear, background-color 0.25s ease, opacity 0.25s ease',
+                    'transform 620ms cubic-bezier(0.22, 1, 0.36, 1), opacity 420ms ease, box-shadow 0.3s ease, background-color 0.25s ease',
+                  zIndex: isVisibleCard ? index + 1 : 0,
 
-                  '&:hover': {
-                    backgroundColor:
-                      index % 2 === 0
-                        ? alpha(theme.palette.secondary.main, 0.14)
-                        : alpha(theme.palette.primary.main, 0.14),
+                  willChange: 'transform, opacity, box-shadow',
+
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: 0,
+                    pointerEvents: 'none',
+                    opacity: isVisibleCard ? 0.18 : 0,
+                    background: `linear-gradient(135deg, ${alpha(theme.palette.highlight.main, 0.25)} 0%, transparent 68%)`,
+                    transition: 'opacity 0.2s ease',
                   },
-
-                  willChange: 'transform, opacity',
                 }}
               >
                 <Typography
                   sx={{
-                    fontSize: 72,
+                    fontSize: { xs: 58, md: 72 },
                     lineHeight: 1,
                     fontWeight: 900,
-                    color: 'highlight.main',
-                    mb: -2,
+                    color: isPrimaryCard ? 'secondary.main' : 'primary.main',
+                    mb: -0.8,
                   }}
                 >
                   “
                 </Typography>
 
                 <Typography
+                  sx={{
+                    mb: 0.9,
+                    fontSize: { xs: 22, md: 34 },
+                    fontWeight: 900,
+                    letterSpacing: '-0.02em',
+                    color: isPrimaryCard ? 'primary.main' : 'secondary.main',
+                    textTransform: 'uppercase',
+                    lineHeight: 1,
+                  }}
+                >
+                  {item.title}
+                </Typography>
+
+                <Typography
                   variant="body1"
                   component="blockquote"
                   sx={{
+                    mt: { xs: 2, md: 3 },
+                    fontSize: { xs: 18, md: 24 },
+                    lineHeight: 1.25,
+                    fontWeight: 800,
                     color: 'text.primary',
+                    textAlign: 'center',
+                    alignSelf: 'center',
+                    maxWidth: '95%',
+                    m: 0,
+                    pt: { xs: 2, md: 3.5 },
                   }}
                 >
                   {item.text}
                 </Typography>
+
+                <Box
+                  sx={{
+                    mt: 'auto',
+                    pt: { xs: 2, md: 2.5 },
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexWrap: 'nowrap',
+                    gap: { xs: 0.8, md: 1.1 },
+                    overflow: 'hidden',
+                  }}
+                >
+                  {cardIcons.map((_, iconIndex) => (
+                    <Box
+                      key={`${index}-${iconIndex}`}
+                      component="img"
+                      src={ICON_SRC}
+                      alt=""
+                      sx={{
+                        width: { xs: 14, md: 18 },
+                        height: { xs: 14, md: 18 },
+                        opacity: 0.88,
+                        flexShrink: 0,
+                      }}
+                    />
+                  ))}
+                </Box>
               </Box>
             );
           })}
