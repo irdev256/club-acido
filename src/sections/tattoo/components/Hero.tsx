@@ -156,6 +156,57 @@ export default function Hero() {
             >
               <Box component="img" src="/tattoo-1.PNG" alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </Box>
+            <Box
+              sx={{
+                position: 'absolute',
+                top: 36,
+                left: 210,
+                width: 170,
+                height: 220,
+                borderRadius: 3,
+                overflow: 'hidden',
+                boxShadow: '0 16px 32px rgba(0,0,0,0.15)',
+                opacity: 0.95,
+                zIndex: 3,
+                transform: 'rotate(-8deg)',
+              }}
+            >
+              <Box component="img" src="/tattoo-3.jpg" alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </Box>
+            <Box
+              sx={{
+                position: 'absolute',
+                bottom: 32,
+                left: 120,
+                width: 150,
+                height: 190,
+                borderRadius: 3,
+                overflow: 'hidden',
+                boxShadow: '0 14px 28px rgba(0,0,0,0.14)',
+                opacity: 0.9,
+                zIndex: 2,
+                transform: 'rotate(7deg)',
+              }}
+            >
+              <Box component="img" src="/tattoo-2.PNG" alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </Box>
+            <Box
+              sx={{
+                position: 'absolute',
+                top: 280,
+                right: 10,
+                width: 140,
+                height: 180,
+                borderRadius: 3,
+                overflow: 'hidden',
+                boxShadow: '0 14px 28px rgba(0,0,0,0.14)',
+                opacity: 0.92,
+                zIndex: 4,
+                transform: 'rotate(4deg)',
+              }}
+            >
+              <Box component="img" src="/tattoo-1.PNG" alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </Box>
           </Box>
         </Stack>
       </Container>
