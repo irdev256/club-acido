@@ -7,7 +7,7 @@ export default function AboutAcido() {
       component="section"
       sx={{
         position: 'relative',
-        py: { xs: 10, md: 16 },
+        py: { xs: 7, md: 9 },
         backgroundColor: 'background.default',
         overflow: 'hidden',
       }}
@@ -19,7 +19,7 @@ export default function AboutAcido() {
             fontWeight: 900,
             letterSpacing: '-0.04em',
             textTransform: 'uppercase',
-            mb: 8,
+            mb: 6,
           }}
         >
           Sobre Ácido
@@ -28,24 +28,53 @@ export default function AboutAcido() {
         <Grid container spacing={6}>
           {/* TEXTO */}
           <Grid size={{ xs: 12, md: 6 }}>
-            <Typography sx={bigLine}>Ácido es un espacio</Typography>
-            <Typography sx={bigLine}>pensado para el</Typography>
-            <Typography sx={bigHighlight}>cuidado estético</Typography>
-            <Typography sx={bigLine}>y la búsqueda de</Typography>
-            <Typography sx={bigHighlight}>una piel real</Typography>
+            <Typography sx={bigLine}>Acido es un espacio de estética y exploración.</Typography>
+            <Typography sx={bigLine}>
+              Cuidamos <Typography component="span" sx={bigHighlight}>la piel</Typography>, pero también
+              abrimos lugar a lo <Typography component="span" sx={bigHighlight}>sensible</Typography>, lo{' '}
+              <Typography component="span" sx={bigHighlight}>creativo</Typography> y lo que transforma.
+            </Typography>
 
-            <Typography
+            <Box
+              component="button"
+              type="button"
+              aria-label="Agendar turno"
+              onClick={() => {
+                window.open(CLIENT_AGENDA_PRO, '_blank', 'noopener,noreferrer');
+              }}
               sx={{
-                mt: 4,
-                maxWidth: 420,
-                fontSize: 16,
-                lineHeight: 1.6,
-                color: 'text.secondary',
+                mt: { xs: 4, md: 3 },
+                width: 'fit-content',
+                backgroundColor: 'highlight.main',
+                cursor: 'pointer',
+                borderRadius: 1.5,
+                border: 0,
+                WebkitTapHighlightColor: 'transparent',
+                touchAction: 'manipulation',
+
+                animation: 'heartBeat 4.2s ease-in-out infinite',
+                ...pulseKeyframes,
+
+                transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+
+                '@media (hover: hover)': {
+                  '&:hover': {
+                    animation: 'none',
+                    transform: 'scale(1.07) translateY(-3px)',
+                    boxShadow: `
+          0 18px 40px rgba(0,0,0,0.32),
+          0 6px 14px rgba(0,0,0,0.22)
+        `,
+                  },
+                },
+                '&:focus-visible': {
+                  outline: '2px solid currentColor',
+                  outlineOffset: 4,
+                },
               }}
             >
-              Para esto creemos en el cuidado integral de la piel y en entender que en ella se reflejan nuestros hábitos y las decisiones de
-              autocuidado que elegimos día a día.
-            </Typography>
+              <Typography sx={ctaStyle}>Agendá tu turno</Typography>
+            </Box>
           </Grid>
 
           {/* COLLAGE */}
@@ -53,57 +82,17 @@ export default function AboutAcido() {
             size={{ xs: 12, md: 6 }}
             sx={{
               position: 'relative',
-              minHeight: { xs: 'auto', md: 580 },
+              minHeight: { xs: 'auto', md: 600 },
               display: { xs: 'grid', md: 'block' },
               gridTemplateColumns: { xs: 'repeat(2, minmax(0, 1fr))', md: 'none' },
               gap: { xs: 1.5, sm: 2 },
             }}
           >
-            <Box component="img" src="/about1.PNG" sx={collageImage(0, -20, -4)} />
-            <Box component="img" src="/about3.PNG" sx={collageImage(140, 60, 3)} />
-            <Box component="img" src="/about4.jpg" sx={collageImage(250, -10, 5)} />
+            <Box component="img" src="/about1.PNG" sx={collageImage(0, 10, -4)} />
+            <Box component="img" src="/about3.PNG" sx={collageImage(160, 85, 3)} />
+            <Box component="img" src="/about4.jpg" sx={collageImage(300, 20, 5)} />
           </Grid>
         </Grid>
-        <Box
-          component="button"
-          type="button"
-          aria-label="Agendar turno"
-          onClick={() => {
-            window.open(CLIENT_AGENDA_PRO, '_blank', 'noopener,noreferrer');
-          }}
-          sx={{
-            mt: 10,
-            width: 'fit-content',
-            backgroundColor: 'highlight.main',
-            cursor: 'pointer',
-            borderRadius: 1.5,
-            border: 0,
-            WebkitTapHighlightColor: 'transparent',
-            touchAction: 'manipulation',
-
-            animation: 'heartBeat 4.2s ease-in-out infinite',
-            ...pulseKeyframes,
-
-            transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-
-            '@media (hover: hover)': {
-              '&:hover': {
-                animation: 'none',
-                transform: 'scale(1.07) translateY(-3px)',
-                boxShadow: `
-          0 18px 40px rgba(0,0,0,0.32),
-          0 6px 14px rgba(0,0,0,0.22)
-        `,
-              },
-            },
-            '&:focus-visible': {
-              outline: '2px solid currentColor',
-              outlineOffset: 4,
-            },
-          }}
-        >
-          <Typography sx={ctaStyle}>Agendá tu turno</Typography>
-        </Box>
       </Container>
     </Box>
   );
@@ -130,8 +119,8 @@ const collageImage = (x: number, y: number, r: number) => ({
   position: { xs: 'static', md: 'absolute' },
   top: { md: y },
   left: { md: x },
-  width: { xs: '100%', md: 250 },
-  height: { xs: 200, sm: 230, md: 'auto' },
+  width: { xs: '100%', md: 300 },
+  height: { xs: 220, sm: 260, md: 'auto' },
   borderRadius: 2,
   objectFit: 'cover',
   transform: { xs: `rotate(${r >= 0 ? 3 : -3}deg)`, md: `rotate(${r}deg)` },

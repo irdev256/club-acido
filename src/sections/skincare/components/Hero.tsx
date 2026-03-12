@@ -65,27 +65,101 @@ export default function Hero() {
               </Typography>
             </Box>
 
-            <Stack spacing={2.5} maxWidth={460}>
-              <Typography
-                sx={{
-                  fontSize: { xs: 20, md: 22 },
-                  lineHeight: 1.4,
-                  color: '#2E2E2E',
-                }}
-              >
-                Piel sin promesas mágicas.
-                <br />
-                Procesos conscientes, no apurados.
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: { xs: 20, md: 32 },
-                  lineHeight: 1.4,
-                  color: '#2E2E2E',
-                }}
-              >
-                Acompañamiento honesto, humano, presente, <Highlight>PERÓN.</Highlight>
-              </Typography>
+            <Stack spacing={3} maxWidth={620}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 22, md: 28 },
+                    fontWeight: 700,
+                    lineHeight: 1.25,
+                    color: '#2E2E2E',
+                    mb: 1,
+                  }}
+                >
+                  <Highlight>Precisa y consciente</Highlight>.
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 18, md: 20 },
+                    lineHeight: 1.55,
+                    color: '#2E2E2E',
+                  }}
+                >
+                  Trabajo desde el conocimiento técnico de la piel, pero con una mirada muy atenta a cada persona. Todo acompañamiento es
+                  personalizado e integral.
+                </Typography>
+              </Box>
+
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 22, md: 28 },
+                    fontWeight: 700,
+                    lineHeight: 1.25,
+                    color: '#2E2E2E',
+                    mb: 1,
+                  }}
+                >
+                  <Highlight>Estética y experiencia</Highlight>.
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 18, md: 20 },
+                    lineHeight: 1.55,
+                    color: '#2E2E2E',
+                  }}
+                >
+                  No solo busco resultados en la piel, sino que busco crear un clima, una identidad y una experiencia alrededor del cuidado.
+                </Typography>
+              </Box>
+
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 22, md: 28 },
+                    fontWeight: 700,
+                    lineHeight: 1.25,
+                    color: '#2E2E2E',
+                    mb: 1,
+                  }}
+                >
+                  <Highlight>Curiosa y en constante aprendizaje</Highlight>.
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 18, md: 20 },
+                    lineHeight: 1.55,
+                    color: '#2E2E2E',
+                  }}
+                >
+                  Estoy todo el tiempo investigando, estudiando y cuestionando lo que hago para hacerlo mejor o entenderlo desde un punto de vista
+                  nuevo.
+                </Typography>
+              </Box>
+
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 22, md: 28 },
+                    fontWeight: 700,
+                    lineHeight: 1.25,
+                    color: '#2E2E2E',
+                    mb: 1,
+                  }}
+                >
+                  <Highlight>Humana</Highlight>.
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 18, md: 20 },
+                    lineHeight: 1.55,
+                    color: '#2E2E2E',
+                  }}
+                >
+                  Hay una intención de cuidar a la persona completa: entender sus hábitos, sus rutinas de cuidado y sus preocupaciones diarias me dan
+                  mas herramientas a la hora de guiarlos en el cuidado de su piel.
+                </Typography>
+              </Box>
             </Stack>
           </Stack>
 
