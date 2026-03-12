@@ -1,4 +1,5 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
 import PhoneMockup from '../../../components/common/PhoneMockup';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import IconButton from '@mui/material/IconButton';
@@ -6,7 +7,21 @@ import { CLIENT_INSTAGRAM_LINK, CLIENT_TIKTOK_LINK, PagesInfo } from '../../../h
 import TikTokIcon from '../../../components/icons/TikTokIcon';
 import { Highlight } from '../../../components/design/Highlight';
 
+const SOCIAL_GIFS = ['/gifs-redes/1.gif', '/gifs-redes/2.gif', '/gifs-redes/3.gif', '/gifs-redes/4.gif'];
+
 export default function SocialDemo() {
+  const [currentGifIndex, setCurrentGifIndex] = useState(0);
+
+  useEffect(() => {
+    if (SOCIAL_GIFS.length <= 1) return;
+
+    const intervalId = window.setInterval(() => {
+      setCurrentGifIndex((prevIndex) => (prevIndex + 1) % SOCIAL_GIFS.length);
+    }, 3000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <Box
       id={PagesInfo.HOME.sections.SOCIAL_DEMO}
@@ -27,12 +42,9 @@ export default function SocialDemo() {
             <Box display="flex" justifyContent={{ xs: 'center', md: 'flex-start' }}>
               <PhoneMockup>
                 <Box
-                  component="video"
-                  src="/video-landing.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                  component="img"
+                  src={SOCIAL_GIFS[currentGifIndex]}
+                  alt={`Demo en redes ${currentGifIndex + 1}`}
                   sx={{
                     width: '100%',
                     height: '100%',

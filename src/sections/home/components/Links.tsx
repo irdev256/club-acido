@@ -225,7 +225,7 @@ export default function Links() {
     <LinkCard
       onClick={() => navigate(PagesInfo.SKINCARE.path)}
       title="Skincare"
-      image="/skincare.jpeg"
+      image="/agusskincare.PNG"
       titlePosition="top"
       titleColor="secondary"
       ariaLabel="Skincare"
@@ -257,7 +257,7 @@ export default function Links() {
   <Grid size={{ xs: 12, md: 3 }}>
     <LinkCard
       title="Talleres"
-      image="/talleres.jpg"
+      image="/tallere.jpg"
       titlePosition="top-right"
       titleColor="highlight"
       ariaLabel="Talleres"
