@@ -39,8 +39,6 @@ export default function Hero() {
               }}
             >
               Masajes
-              <br />
-              Club Ácido
             </Typography>
 
             <Typography
@@ -62,7 +60,9 @@ export default function Hero() {
                 color: 'text.primary',
               }}
             >
-              Sesiones personalizadas para bajar el estrés, soltar tensiones y reconectar con tu cuerpo.
+              Belu se especializa en maderoterapia y masajes corporales. Trabaja con técnicas
+              descontracturantes, relajantes, modeladoras y drenaje linfático, enfocadas en el
+              bienestar y el cuidado del cuerpo.
             </Typography>
           </Stack>
 
@@ -80,7 +80,7 @@ export default function Hero() {
             <Box component="img" src="/masajes/masaje1.jpg" alt="Masajes" sx={imageStyle(1)} />
             <Box component="img" src="/masajes/masaje2.jpg" alt="Bienestar" sx={imageStyle(2)} />
             <Box component="img" src="/masajes/masaje3.jpg" alt="Relajación" sx={imageStyle(3)} />
-            <Box component="img" src="/masajes/masaje2.jpg" alt="Ritual" sx={imageStyle(4)} />
+            <Box component="img" src="/masajes/masaje4.jpg" alt="Ritual" sx={imageStyle(4)} />
           </Box>
         </Stack>
       </Container>

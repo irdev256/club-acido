@@ -89,7 +89,8 @@ export default function TestimonialsLenis() {
       component="section"
       sx={{
         position: 'relative',
-        py: { xs: 12, md: 18 },
+        pt: { xs: 7, md: 10 },
+        pb: { xs: 12, md: 18 },
         backgroundColor: 'background.default',
         overflow: 'hidden',
       }}

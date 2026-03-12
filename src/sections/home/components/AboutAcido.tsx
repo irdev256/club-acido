@@ -7,7 +7,8 @@ export default function AboutAcido() {
       component="section"
       sx={{
         position: 'relative',
-        py: { xs: 7, md: 9 },
+        pt: { xs: 7, md: 9 },
+        pb: { xs: 4, md: 5 },
         backgroundColor: 'background.default',
         overflow: 'hidden',
       }}

@@ -1,5 +1,4 @@
 import { Box, Container, Stack, Typography } from '@mui/material';
-import { Highlight } from '../../../components/design/Highlight';
 
 export default function Hero() {
   return (
@@ -57,10 +56,8 @@ export default function Hero() {
                     fontWeight: 700, // opcional: un poco menos pesado
                   }}
                 >
-                  Leti's
-                </Box>
-                <br />
                 Tattoos
+                </Box>
               </Typography>
 
               <Typography
@@ -83,19 +80,8 @@ export default function Hero() {
                   color: '#2E2E2E',
                 }}
               >
-                Diseños conscientes,
-                <br />
-                tatuajes con intención.
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: { xs: 20, md: 52 },
-                  lineHeight: 1.4,
-                  color: '#2E2E2E',
-                }}
-              >
-                {' '}
-                <Highlight>BLACKWORK.</Highlight>
+                Leti es tatuadora especializada en blackwork. Su trabajo explora el contraste entre
+                líneas gruesas y finas, creando piezas simples, contundentes y con carácter.
               </Typography>
             </Stack>
           </Stack>
