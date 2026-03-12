@@ -10,7 +10,7 @@ export default function Tattoo() {
       <Hero />
 
       <OrganicDivider main={theme.palette.secondary.main} />
-      <Gallery />
+      {/* <Gallery /> */}
     </>
   );
 }

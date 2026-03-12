@@ -77,10 +77,10 @@ export default function Hero() {
               transform: { md: 'rotate(-2deg)' },
             }}
           >
-            <Box component="img" src="/masajes.jpg" alt="Masajes" sx={imageStyle(1)} />
-            <Box component="img" src="/skincare-1.jpeg" alt="Bienestar" sx={imageStyle(2)} />
-            <Box component="img" src="/masajes.jpg" alt="Relajación" sx={imageStyle(3)} />
-            <Box component="img" src="/skincare-2.jpeg" alt="Ritual" sx={imageStyle(4)} />
+            <Box component="img" src="/masajes/masaje1.jpg" alt="Masajes" sx={imageStyle(1)} />
+            <Box component="img" src="/masajes/masaje2.jpg" alt="Bienestar" sx={imageStyle(2)} />
+            <Box component="img" src="/masajes/masaje3.jpg" alt="Relajación" sx={imageStyle(3)} />
+            <Box component="img" src="/masajes/masaje2.jpg" alt="Ritual" sx={imageStyle(4)} />
           </Box>
         </Stack>
       </Container>
