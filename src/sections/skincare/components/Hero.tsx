@@ -163,88 +163,33 @@ export default function Hero() {
             </Stack>
           </Stack>
 
-          {/* COLUMNA IMÁGENES – COMPOSICIÓN EDITORIAL */}
           <Box
             sx={{
-              flex: 1.2,
-              position: 'relative',
-              height: { xs: 'auto', md: 620 },
-              width: { xs: '100%', md: 520 },
-              maxWidth: '100%',
-              mx: 'auto',
-              display: { xs: 'grid', md: 'block' },
-              gridTemplateColumns: { xs: 'repeat(2, minmax(0, 1fr))', md: 'none' },
-              gap: { xs: 1.5, sm: 2 },
+              flex: 1,
+              width: '100%',
+              maxWidth: 500,
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: 2,
+              transform: { md: 'rotate(-2deg)' },
             }}
           >
-            <Box
-              sx={{
-                position: { xs: 'static', md: 'absolute' },
-                top: { md: 0 },
-                left: { md: 0 },
-                width: { xs: '100%', md: 240 },
-                height: { xs: 220, sm: 260, md: 320 },
-                borderRadius: 4,
-                overflow: 'hidden',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.18)',
-                zIndex: 2,
-                transform: { xs: 'rotate(3deg)', md: 'rotate(3deg)' },
-              }}
-            >
-              <Box component="img" src="/skincare-2.jpeg" alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </Box>
-            <Box
-              sx={{
-                position: { xs: 'static', md: 'absolute' },
-                bottom: { md: 0 },
-                right: { md: 60 },
-                width: { xs: '100%', md: 260 },
-                height: { xs: 220, sm: 260, md: 340 },
-                borderRadius: 4,
-                overflow: 'hidden',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.18)',
-                zIndex: 1,
-                transform: { xs: 'rotate(-3deg)', md: 'rotate(-4deg)' },
-              }}
-            >
-              <Box component="img" src="/skincare-3.jpeg" alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </Box>
-            <Box
-              sx={{
-                position: { xs: 'static', md: 'absolute' },
-                top: { md: 120 },
-                right: { md: 50 },
-                width: { xs: '100%', md: 180 },
-                height: { xs: 220, sm: 260, md: 240 },
-                borderRadius: 3,
-                overflow: 'hidden',
-                boxShadow: '0 16px 32px rgba(0,0,0,0.15)',
-                opacity: 0.9,
-                transform: { xs: 'rotate(3deg)', md: 'rotate(6deg)' },
-              }}
-            >
-              <Box component="img" src="/skincare-4.jpeg" alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </Box>
-            <Box
-              sx={{
-                position: { xs: 'static', md: 'absolute' },
-                bottom: { md: 36 },
-                left: { md: 150 },
-                width: { xs: '100%', md: 170 },
-                height: { xs: 220, sm: 260, md: 220 },
-                borderRadius: 3,
-                overflow: 'hidden',
-                boxShadow: '0 16px 32px rgba(0,0,0,0.15)',
-                opacity: 0.92,
-                zIndex: 3,
-                transform: { xs: 'rotate(-3deg)', md: 'rotate(-7deg)' },
-              }}
-            >
-              <Box component="img" src="/skincare-5.jpeg" alt="" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </Box>
+            <Box component="img" src="/skincare/skincare1.jpg" alt="Skincare 1" sx={imageStyle(1)} />
+            <Box component="img" src="/skincare/skincare2.jpg" alt="Skincare 2" sx={imageStyle(2)} />
+            <Box component="img" src="/skincare/skincare3.jpg" alt="Skincare 3" sx={imageStyle(3)} />
+            <Box component="img" src="/skincare/skincare5.jpg" alt="Skincare 4" sx={imageStyle(4)} />
           </Box>
         </Stack>
       </Container>
     </Box>
   );
 }
+
+const imageStyle = (index: number) => ({
+  width: '100%',
+  aspectRatio: '4 / 5',
+  borderRadius: 2,
+  objectFit: 'cover',
+  boxShadow: '0 18px 40px rgba(0,0,0,0.16)',
+  transform: `rotate(${index % 2 === 0 ? -3 : 3}deg)`,
+});

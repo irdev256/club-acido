@@ -108,7 +108,7 @@ export default function SobreAgus() {
             >
               <Box
                 component="img"
-                src="/agus.jpeg"
+                src="/skincare/lolobio.jpg"
                 alt="Agustina Pereyra"
                 sx={{
                   width: '100%',
