@@ -53,7 +53,7 @@ export default function AboutAcido() {
             size={{ xs: 12, md: 6 }}
             sx={{
               position: 'relative',
-              minHeight: { xs: 'auto', md: 520 },
+              minHeight: { xs: 'auto', md: 580 },
               display: { xs: 'grid', md: 'block' },
               gridTemplateColumns: { xs: 'repeat(2, minmax(0, 1fr))', md: 'none' },
               gap: { xs: 1.5, sm: 2 },
@@ -61,8 +61,7 @@ export default function AboutAcido() {
           >
             <Box component="img" src="/about1.PNG" sx={collageImage(0, -20, -4)} />
             <Box component="img" src="/about3.PNG" sx={collageImage(140, 60, 3)} />
-            <Box component="img" src="/about4.jpg" sx={collageImage(60, 220, -2)} />
-            <Box component="img" src="/about2.PNG" sx={collageImage(250, -10, 5)} />
+            <Box component="img" src="/about4.jpg" sx={collageImage(250, -10, 5)} />
           </Grid>
         </Grid>
         <Box
@@ -131,8 +130,8 @@ const collageImage = (x: number, y: number, r: number) => ({
   position: { xs: 'static', md: 'absolute' },
   top: { md: y },
   left: { md: x },
-  width: { xs: '100%', md: 220 },
-  height: { xs: 180, sm: 210, md: 'auto' },
+  width: { xs: '100%', md: 250 },
+  height: { xs: 200, sm: 230, md: 'auto' },
   borderRadius: 2,
   objectFit: 'cover',
   transform: { xs: `rotate(${r >= 0 ? 3 : -3}deg)`, md: `rotate(${r}deg)` },

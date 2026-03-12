@@ -88,38 +88,11 @@ export default function SocialDemo() {
                   mb: 5,
                 }}
               >
-                Proceso <Highlight>real</Highlight>.
+                Compartimos <Highlight>procesos,</Highlight>
                 <br />
-                Cuerpo <Highlight>presente</Highlight>.
+               <Highlight>autocuidado</Highlight> e información,
                 <br />
-                Contenido <Highlight>vivo</Highlight>.
-              </Typography>
-
-              <Typography
-                sx={{
-                  fontSize: 18,
-                  lineHeight: 1.5,
-                  color: 'text.secondary',
-                  maxWidth: 520,
-                  mb: 4,
-                }}
-              >
-                Lo que pasa acá no se explica.
-                <br />
-                <strong>Se vive.</strong>
-              </Typography>
-
-              <Typography
-                sx={{
-                  fontSize: 11,
-                  letterSpacing: '0.25em',
-                  textTransform: 'uppercase',
-                  fontWeight: 700,
-                  color: 'text.primary',
-                  mb: 3,
-                }}
-              >
-                Seguí el proceso
+                y el <Highlight>universo creativo</Highlight> de Ácido.
               </Typography>
 
               <Box
