@@ -40,9 +40,9 @@ export default function Footer() {
                 {CLIENT_PHONE_NUMBER}
               </Link>
 
-              <Link href={`mailto:${CLIENT_EMAIL}`} underline="none" color="text.secondary">
+              {/* <Link href={`mailto:${CLIENT_EMAIL}`} underline="none" color="text.secondary">
                 {CLIENT_EMAIL}
-              </Link>
+              </Link> */}
             </Stack>
           </Grid>
           {/* Ubicación */}

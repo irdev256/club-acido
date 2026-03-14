@@ -9,7 +9,7 @@ export const CLIENT_INSTAGRAM_LINK = 'https://www.instagram.com/clubacido?igsh=Z
 export const CLIENT_TIKTOK_LINK = 'https://www.tiktok.com/@abusmua?_r=1&_t=ZM-93Cp8S85gjc';
 export const CLIENT_FACEBOOK_LINK = '';
 export const CLIENT_EMAIL = 'clubacido@gmail.com';
-export const CLIENT_PHONE_NUMBER = '+54 123456789';
+export const CLIENT_PHONE_NUMBER = '+54 1150357118';
 export const CLIENT_AGENDA_PRO = 'https://www.fresha.com/es/a/acido-moron-gobernador-inocencio-arias-2570-pk9u9hvh';
 export const CLIENT_TATTOO_LETI_INSTAGRAM_LINK = 'https://www.instagram.com/letiriot/';
 export const CLIENT_GOOGLE_MAPS_IFRAME =
