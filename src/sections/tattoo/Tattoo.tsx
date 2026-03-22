@@ -1,6 +1,6 @@
 import { useTheme } from '@mui/material';
 import OrganicDivider from '../../components/common/OrganicDivider';
-import Gallery from './components/Gallery';
+// import Gallery from './components/Gallery';
 import Hero from './components/Hero';
 
 export default function Tattoo() {
