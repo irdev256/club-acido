@@ -5,14 +5,7 @@ export const diagnosticoPielQuiz: QuizDefinition = {
   title: 'Diagnóstico de tu piel',
   description: 'Descubrí las necesidades de tu piel con este sencillo quiz.',
   theme: {
-    accentColor: '#9A6B1F',
-    background: `
-      radial-gradient(
-        circle at top,
-        rgba(255,255,255,0.95),
-        rgba(234,223,204,0.98)
-      )
-    `,
+    accentColor: '#BC5EE8',
   },
 
   results: [

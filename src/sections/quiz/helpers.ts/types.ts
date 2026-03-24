@@ -1,7 +1,11 @@
 export type QuizState = {
   step: number;
-  answers: Record<string, string>;
+  answers: QuizAnswers;
 };
+
+export type QuizAnswerValue = string | string[];
+
+export type QuizAnswers = Record<string, QuizAnswerValue>;
 
 export type QuizOptionScore = {
   resultId: string;
@@ -12,12 +16,14 @@ export type QuizOption = {
   id: string;
   label: string;
   scores: QuizOptionScore[];
+  excludeResultIds?: string[];
 };
 
 export type QuizQuestion = {
   id: string;
   title: string;
   subtitle?: string;
+  allowMultiple?: boolean;
   options: QuizOption[];
 };
 
@@ -31,6 +37,9 @@ export type QuizResult = {
   title: string;
   description: string;
   recommendation: string;
+  disclaimer?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
 };
 
 export type QuizDefinition = {

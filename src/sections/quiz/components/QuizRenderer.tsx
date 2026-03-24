@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import type { QuizDefinition } from '../helpers.ts/types';
+import type { QuizAnswerValue, QuizAnswers, QuizDefinition } from '../helpers.ts/types';
 
 import QuestionStep from './QuestionStep';
 import QuizNavigation from './QuizNavigation';
@@ -13,8 +13,14 @@ type Props = {
 
 type QuizState = {
   step: number;
-  answers: Record<string, string>;
+  answers: QuizAnswers;
 };
+
+function hasAnswer(value: QuizAnswerValue | undefined) {
+  if (!value) return false;
+
+  return Array.isArray(value) ? value.length > 0 : true;
+}
 
 export default function QuizRenderer({ quiz }: Props) {
   const storageKey = `quiz:${quiz.slug}`;
@@ -31,7 +37,16 @@ export default function QuizRenderer({ quiz }: Props) {
       ...prev,
       answers: {
         ...prev.answers,
-        [question.id]: optionId,
+        [question.id]: question.allowMultiple
+          ? (() => {
+              const currentValue = prev.answers[question.id];
+              const selectedIds = Array.isArray(currentValue) ? currentValue : currentValue ? [currentValue] : [];
+
+              return selectedIds.includes(optionId)
+                ? selectedIds.filter((selectedId) => selectedId !== optionId)
+                : [...selectedIds, optionId];
+            })()
+          : optionId,
       },
     }));
   };
@@ -62,7 +77,7 @@ export default function QuizRenderer({ quiz }: Props) {
     <Box>
       <QuestionStep question={question} selected={answers[question.id]} onSelect={setAnswer} accentColor={quiz.theme?.accentColor} />
 
-      <QuizNavigation step={step} total={quiz.questions.length} canNext={!!answers[question.id]} onNext={goNext} onBack={goBack} />
+      <QuizNavigation step={step} total={quiz.questions.length} canNext={hasAnswer(answers[question.id])} onNext={goNext} onBack={goBack} />
     </Box>
   );
 }

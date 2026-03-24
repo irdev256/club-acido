@@ -1,5 +1,5 @@
 import type Lenis from 'lenis';
-import type { QuizDefinition } from '../sections/quiz/helpers.ts/types';
+import type { QuizAnswers, QuizDefinition, QuizAnswerValue } from '../sections/quiz/helpers.ts/types';
 
 type WhatsAppOptions = {
   baseUrl: string;
@@ -12,8 +12,15 @@ export function buildWhatsAppLink({ baseUrl, message }: WhatsAppOptions) {
   return `${baseUrl}?text=${encodeURIComponent(message)}`;
 }
 
-export function evaluateQuizByScore(quiz: QuizDefinition, answers: Record<string, string>) {
+function toAnswerIds(answer: QuizAnswerValue | undefined) {
+  if (!answer) return [];
+
+  return Array.isArray(answer) ? answer : [answer];
+}
+
+export function evaluateQuizByScore(quiz: QuizDefinition, answers: QuizAnswers) {
   const scoreMap: Record<string, number> = {};
+  const blockedResults = new Set<string>();
 
   // Inicializar scores
   quiz.results.forEach((r) => {
@@ -22,23 +29,45 @@ export function evaluateQuizByScore(quiz: QuizDefinition, answers: Record<string
 
   // Sumar puntos
   quiz.questions.forEach((q) => {
-    const answerId = answers[q.id];
-    if (!answerId) return;
+    const answerIds = toAnswerIds(answers[q.id]);
+    if (answerIds.length === 0) return;
 
-    const option = q.options.find((o) => o.id === answerId);
-    if (!option) return;
+    answerIds.forEach((answerId) => {
+      const option = q.options.find((o) => o.id === answerId);
+      if (!option) return;
 
-    option.scores.forEach(({ resultId, points }) => {
-      scoreMap[resultId] += points;
+      option.excludeResultIds?.forEach((resultId) => {
+        blockedResults.add(resultId);
+      });
+
+      option.scores.forEach(({ resultId, points }) => {
+        scoreMap[resultId] += points;
+      });
     });
   });
 
-  // Resultado ganador
-  const winnerId = Object.entries(scoreMap).sort(([, a], [, b]) => b - a)[0]?.[0];
+  let winner = null;
+  let highestScore = Number.NEGATIVE_INFINITY;
+
+  quiz.results.forEach((result) => {
+    if (blockedResults.has(result.id)) return;
+
+    const score = scoreMap[result.id];
+
+    if (score > highestScore) {
+      winner = result;
+      highestScore = score;
+    }
+  });
+
+  if (!winner) {
+    winner = quiz.results.find((result) => !blockedResults.has(result.id)) ?? quiz.results[0] ?? null;
+  }
 
   return {
-    winner: quiz.results.find((r) => r.id === winnerId) ?? null,
+    winner,
     scores: scoreMap,
+    blockedResults: [...blockedResults],
   };
 }
 

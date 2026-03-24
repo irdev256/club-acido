@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import TikTokShowcase from './components/TiktokShowcase';
 import SobreAgus from './components/SobreAgus';
 import BrandsCarousel from './components/BrandsCarousel';
+import QuizCta from './components/QuizCta';
 
 export default function Skincare() {
   const theme = useTheme();
@@ -12,6 +13,7 @@ export default function Skincare() {
       <Hero />
       <OrganicDivider main={theme.palette.secondary.main} />
       <SobreAgus />
+      <QuizCta />
       <BrandsCarousel />
       <TikTokShowcase />
     </>
