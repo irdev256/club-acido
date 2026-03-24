@@ -21,33 +21,33 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel,
   const style = positionStyles[titlePosition];
 
   return (
-  <Box
-    className="link-card"
-    component={comingSoon ? 'div' : 'button'}
-    type={comingSoon ? undefined : 'button'}
-    onClick={comingSoon ? undefined : onClick}
-    role={comingSoon ? 'img' : undefined}
-    aria-label={ariaLabel}
-    sx={{
-      width: '100%',
-      cursor: comingSoon ? 'default' : 'pointer',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      pointerEvents: 'auto',
-      opacity: comingSoon ? 0.9 : 1,
-      border: 0,
-      p: 0,
-      background: 'transparent',
-      textAlign: 'inherit',
-      WebkitTapHighlightColor: 'transparent',
-      touchAction: 'manipulation',
-      '&:focus-visible': {
-        outline: '2px solid currentColor',
-        outlineOffset: 6,
-      },
-    }}
-  >
+    <Box
+      className="link-card"
+      component={comingSoon ? 'div' : 'button'}
+      type={comingSoon ? undefined : 'button'}
+      onClick={comingSoon ? undefined : onClick}
+      role={comingSoon ? 'img' : undefined}
+      aria-label={ariaLabel}
+      sx={{
+        width: '100%',
+        cursor: comingSoon ? 'default' : 'pointer',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        pointerEvents: 'auto',
+        opacity: comingSoon ? 0.9 : 1,
+        border: 0,
+        p: 0,
+        background: 'transparent',
+        textAlign: 'inherit',
+        WebkitTapHighlightColor: 'transparent',
+        touchAction: 'manipulation',
+        '&:focus-visible': {
+          outline: '2px solid currentColor',
+          outlineOffset: 6,
+        },
+      }}
+    >
       {/* TÍTULO MOBILE */}
       <Box
         sx={{
@@ -93,44 +93,43 @@ function LinkCard({ title, image, titlePosition, titleColor, onClick, ariaLabel,
           aspectRatio: '1 / 1',
         }}
       >
-      {comingSoon && (
-        <Box
-          sx={(theme) => ({
-            position: 'absolute',
-            zIndex: 3,
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%) rotate(-12deg)',
+        {comingSoon && (
+          <Box
+            sx={(theme) => ({
+              position: 'absolute',
+              zIndex: 3,
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%) rotate(-12deg)',
 
-            px: 4,
-            py: 1,
-         
-            color: theme.palette.highlight.main,
-            backgroundColor: theme.palette.highlight.contrastText,
+              px: 4,
+              py: 1,
 
-            fontWeight: 900,
-            fontSize: { xs: 18, md: 22 },
-            letterSpacing: 2,
-            textTransform: 'uppercase',
+              color: theme.palette.highlight.main,
+              backgroundColor: theme.palette.highlight.contrastText,
 
-            boxShadow: '0 6px 16px rgba(0,0,0,0.35)',
-            borderRadius: 0.75,
+              fontWeight: 900,
+              fontSize: { xs: 18, md: 22 },
+              letterSpacing: 2,
+              textTransform: 'uppercase',
 
-            pointerEvents: 'none',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: '0 6px 16px rgba(0,0,0,0.35)',
+              borderRadius: 0.75,
 
-            '@media (hover: hover)': {
-              '.link-card:hover &': {
-                transform: 'translate(-50%, -50%) rotate(-8deg) scale(1.06)',
-                boxShadow: '0 10px 26px rgba(0,0,0,0.45)',
+              pointerEvents: 'none',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+
+              '@media (hover: hover)': {
+                '.link-card:hover &': {
+                  transform: 'translate(-50%, -50%) rotate(-8deg) scale(1.06)',
+                  boxShadow: '0 10px 26px rgba(0,0,0,0.45)',
+                },
               },
-            },
-          })}
-        >
-          PRÓXIMAMENTE
-        </Box>
-      )}
-
+            })}
+          >
+            PRÓXIMAMENTE
+          </Box>
+        )}
 
         {/* TÍTULO DESKTOP */}
         <Box
@@ -214,57 +213,50 @@ export default function Links() {
         mt: 6,
       }}
     >
-    <Grid
-  container
-  spacing={{ xs: 4, md: 8 }}
-  sx={{
-    position: 'relative',
-  }}
->
-  <Grid size={{ xs: 12, md: 3 }}>
-    <LinkCard
-      onClick={() => navigate(PagesInfo.SKINCARE.path)}
-      title="Skincare"
-      image="/agusskincare.PNG"
-      titlePosition="top"
-      titleColor="secondary"
-      ariaLabel="Skincare"
-    />
-  </Grid>
+      <Grid
+        container
+        spacing={{ xs: 4, md: 8 }}
+        sx={{
+          position: 'relative',
+        }}
+      >
+        <Grid size={{ xs: 12, md: 3 }}>
+          <LinkCard
+            onClick={() => navigate(PagesInfo.SKINCARE.path)}
+            title="Skincare"
+            image="/agusskincare.jpg"
+            titlePosition="top"
+            titleColor="secondary"
+            ariaLabel="Skincare"
+          />
+        </Grid>
 
-  <Grid size={{ xs: 12, md: 3 }}>
-    <LinkCard
-      onClick={() => navigate(PagesInfo.TATTOO.path)}
-      title="Tattoo"
-      image="/tattoo-nuevo-1.jpg"
-      titlePosition="top"
-      titleColor="accent"
-      ariaLabel="Tattoo"
-    />
-  </Grid>
+        <Grid size={{ xs: 12, md: 3 }}>
+          <LinkCard
+            onClick={() => navigate(PagesInfo.TATTOO.path)}
+            title="Tattoo"
+            image="/tattoo-nuevo-1.jpg"
+            titlePosition="top"
+            titleColor="accent"
+            ariaLabel="Tattoo"
+          />
+        </Grid>
 
-  <Grid size={{ xs: 12, md: 3 }}>
-    <LinkCard
-      onClick={() => navigate(PagesInfo.MASAJES.path)}
-      title="Masajes"
-      image="/masajes.jpg" 
-      titlePosition="top-right"
-      titleColor="primary"
-      ariaLabel="Masajes"
-    />
-  </Grid>
+        <Grid size={{ xs: 12, md: 3 }}>
+          <LinkCard
+            onClick={() => navigate(PagesInfo.MASAJES.path)}
+            title="Masajes"
+            image="/masajes.jpg"
+            titlePosition="top-right"
+            titleColor="primary"
+            ariaLabel="Masajes"
+          />
+        </Grid>
 
-  <Grid size={{ xs: 12, md: 3 }}>
-    <LinkCard
-      title="Talleres"
-      image="/tallere.jpg"
-      titlePosition="top-right"
-      titleColor="highlight"
-      ariaLabel="Talleres"
-      comingSoon
-    />
-  </Grid>
-</Grid>
+        <Grid size={{ xs: 12, md: 3 }}>
+          <LinkCard title="Talleres" image="/tallere.jpg" titlePosition="top-right" titleColor="highlight" ariaLabel="Talleres" comingSoon />
+        </Grid>
+      </Grid>
     </Box>
   );
 }
