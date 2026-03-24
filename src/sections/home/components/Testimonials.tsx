@@ -17,7 +17,7 @@ const testimonials: Testimonial[] = [
     text: 'Me supo relajar para después sacarme todas las tensiones. Sali renovada, recomiendo.',
   },
   {
-    title: 'Cejas cada mes 🩷',
+    title: 'Cejas cada mes 💗',
     text: 'Empecé a atenderme una vez que los permisos del COVID se estaban levantando, y desde ahí me hago el perfilado religiosamente TODOS los meses.',
   },
   {
@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
     text: 'En una de mis cejitas hay un remolino que Agus logra contener. Gracias por el hermoso espacio y la hermosa persona que sos con tus pacientes.',
   },
   {
-    title: 'Piel en proceso 🫶🏼',
+    title: 'Piel en proceso 🌸',
     text: 'Llegué toda brotada y me diste la tranquilidad de que lo íbamos a mejorar, pasito a pasito, siempre escuchando lo que necesitaba.',
   },
   {
