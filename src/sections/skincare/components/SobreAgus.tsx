@@ -111,6 +111,7 @@ export default function SobreAgus() {
                 src="/skincare/lolobio.jpg"
                 alt="Agustina Pereyra"
                 sx={{
+                  display: 'block',
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
