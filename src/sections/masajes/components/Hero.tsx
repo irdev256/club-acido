@@ -1,4 +1,7 @@
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
+const MASAJES_INSTAGRAM_URL = 'https://www.instagram.com/naturalbienestar_/';
 
 export default function Hero() {
   return (
@@ -64,6 +67,26 @@ export default function Hero() {
               descontracturantes, relajantes, modeladoras y drenaje linfático, enfocadas en el
               bienestar y el cuidado del cuerpo.
             </Typography>
+
+            <Button
+              component="a"
+              href={MASAJES_INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="contained"
+              startIcon={<InstagramIcon />}
+              sx={{
+                mt: 1,
+                width: 'fit-content',
+                textTransform: 'none',
+                fontWeight: 700,
+                px: 3,
+                py: 1.2,
+                borderRadius: 999,
+              }}
+            >
+              Instagram de Belu
+            </Button>
           </Stack>
 
           <Box

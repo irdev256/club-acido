@@ -1,4 +1,7 @@
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
+const TATTOO_INSTAGRAM_URL = 'https://www.instagram.com/letiriot/';
 
 export default function Hero() {
   return (
@@ -83,6 +86,26 @@ export default function Hero() {
                 Leti es tatuadora especializada en blackwork. Su trabajo explora el contraste entre
                 líneas gruesas y finas, creando piezas simples, contundentes y con carácter.
               </Typography>
+
+              <Button
+                component="a"
+                href={TATTOO_INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                startIcon={<InstagramIcon />}
+                sx={{
+                  mt: 1,
+                  width: 'fit-content',
+                  textTransform: 'none',
+                  fontWeight: 700,
+                  px: 3,
+                  py: 1.2,
+                  borderRadius: 999,
+                }}
+              >
+                Instagram de Leti
+              </Button>
             </Stack>
           </Stack>
 
