@@ -90,8 +90,8 @@ export default function AboutAcido() {
             }}
           >
             <Box component="img" src="/about1.PNG" sx={collageImage(0, 10, -4)} />
-            <Box component="img" src="/about3.PNG" sx={collageImage(160, 85, 3)} />
-            <Box component="img" src="/about4.jpg" sx={collageImage(300, 20, 5)} />
+            <Box component="img" src="/about3.PNG" sx={collageImage(300, 20, 5)} />
+            <Box component="img" src="/about4.jpg" sx={collageImage(160, 125, 3)} />
           </Grid>
         </Grid>
       </Container>
