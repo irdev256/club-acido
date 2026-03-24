@@ -45,7 +45,7 @@ export default function TikTokShowcase() {
             <PhoneMockup>
               <Box
                 component="video"
-                src="/tiktok-1.mp4"
+                src="/skincare/tiktok-1.mp4"
                 autoPlay
                 loop
                 muted
@@ -67,7 +67,7 @@ export default function TikTokShowcase() {
             <PhoneMockup>
               <Box
                 component="video"
-                src="/tiktok-2.mp4"
+                src="/skincare/tiktok-2.mp4"
                 autoPlay
                 loop
                 muted
@@ -89,7 +89,7 @@ export default function TikTokShowcase() {
             <PhoneMockup>
               <Box
                 component="video"
-                src="/tiktok-3.mp4"
+                src="/skincare/tiktok-3.mp4"
                 autoPlay
                 loop
                 muted

@@ -11,32 +11,32 @@ const talleres: Taller[] = [
   {
     title: 'Skincare para principiantes',
     description: 'Aprendé a armar una rutina simple y efectiva con foco en tu tipo de piel.',
-    image: '/talleres.jpg',
+    image: '/talleres/talleres-cover.jpg',
   },
   {
     title: 'Autocuidado diario',
     description: 'Hábitos concretos para sostener bienestar en medio de la rutina.',
-    image: '/aboutacido-3.jpg',
+    image: '/home/about/about-acido-3.PNG',
   },
   {
     title: 'Workshop de masajes faciales',
     description: 'Técnicas prácticas para desinflamar, relajar y activar circulación.',
-    image: '/masajes.jpg',
+    image: '/masajes/masajes-cover.jpg',
   },
   {
     title: 'Lectura de etiquetas',
     description: 'Entendé ingredientes y elegí productos según necesidad real.',
-    image: '/aboutacido-4.jpg',
+    image: '/home/about/about-acido-4.jpg',
   },
   {
     title: 'Cuidados estacionales',
     description: 'Qué ajustar en cada época del año para cuidar mejor tu piel.',
-    image: '/talleres.jpg',
+    image: '/talleres/talleres-cover.jpg',
   },
   {
     title: 'Espacio de consultas',
     description: 'Traé tus dudas y trabajamos casos reales en formato grupal.',
-    image: '/aboutacido-1.jpg',
+    image: '/home/about/about-acido-1.PNG',
   },
 ];
 

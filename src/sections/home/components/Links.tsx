@@ -224,7 +224,7 @@ export default function Links() {
           <LinkCard
             onClick={() => navigate(PagesInfo.SKINCARE.path)}
             title="Skincare"
-            image="/agusskincare.jpg"
+            image="/skincare/skincare-cover.jpg"
             titlePosition="top"
             titleColor="secondary"
             ariaLabel="Skincare"
@@ -235,7 +235,7 @@ export default function Links() {
           <LinkCard
             onClick={() => navigate(PagesInfo.TATTOO.path)}
             title="Tattoo"
-            image="/tattoo-nuevo-1.jpg"
+            image="/tattoo/tattoo-cover.jpg"
             titlePosition="top"
             titleColor="accent"
             ariaLabel="Tattoo"
@@ -246,7 +246,7 @@ export default function Links() {
           <LinkCard
             onClick={() => navigate(PagesInfo.MASAJES.path)}
             title="Masajes"
-            image="/masajes.jpg"
+            image="/masajes/masajes-cover.jpg"
             titlePosition="top-right"
             titleColor="primary"
             ariaLabel="Masajes"
@@ -254,7 +254,14 @@ export default function Links() {
         </Grid>
 
         <Grid size={{ xs: 12, md: 3 }}>
-          <LinkCard title="Talleres" image="/tallere.jpg" titlePosition="top-right" titleColor="highlight" ariaLabel="Talleres" comingSoon />
+          <LinkCard
+            title="Talleres"
+            image="/talleres/talleres-cover.jpg"
+            titlePosition="top-right"
+            titleColor="highlight"
+            ariaLabel="Talleres"
+            comingSoon
+          />
         </Grid>
       </Grid>
     </Box>

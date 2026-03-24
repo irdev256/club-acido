@@ -31,9 +31,19 @@ export default function AboutAcido() {
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography sx={bigLine}>Acido es un espacio de estética y exploración.</Typography>
             <Typography sx={bigLine}>
-              Cuidamos <Typography component="span" sx={bigHighlight}>la piel</Typography>, pero también
-              abrimos lugar a lo <Typography component="span" sx={bigHighlight}>sensible</Typography>, lo{' '}
-              <Typography component="span" sx={bigHighlight}>creativo</Typography> y lo que transforma.
+              Cuidamos{' '}
+              <Typography component="span" sx={bigHighlight}>
+                la piel
+              </Typography>
+              , pero también abrimos lugar a lo{' '}
+              <Typography component="span" sx={bigHighlight}>
+                sensible
+              </Typography>
+              , lo{' '}
+              <Typography component="span" sx={bigHighlight}>
+                creativo
+              </Typography>{' '}
+              y lo que transforma.
             </Typography>
 
             <Box
@@ -89,9 +99,9 @@ export default function AboutAcido() {
               gap: { xs: 1.5, sm: 2 },
             }}
           >
-            <Box component="img" src="/about1.PNG" sx={collageImage(0, 10, -4)} />
-            <Box component="img" src="/about3.PNG" sx={collageImage(300, 20, 5)} />
-            <Box component="img" src="/about4.jpg" sx={collageImage(160, 125, 3)} />
+            <Box component="img" src="/home/about/about-acido-1.PNG" sx={collageImage(0, 10, -4)} />
+            <Box component="img" src="/home/about/about-acido-3.PNG" sx={collageImage(300, 20, 5)} />
+            <Box component="img" src="/home/about/about-acido-4.jpg" sx={collageImage(160, 125, 3)} />
           </Grid>
         </Grid>
       </Container>

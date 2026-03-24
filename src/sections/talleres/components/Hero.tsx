@@ -74,10 +74,10 @@ export default function Hero() {
               gap: 2,
             }}
           >
-            <Box component="img" src="/talleres.jpg" alt="Talleres" sx={collageImage(4)} />
-            <Box component="img" src="/aboutacido-3.jpg" alt="Práctica" sx={collageImage(-3)} />
-            <Box component="img" src="/aboutacido-4.jpg" alt="Workshop" sx={collageImage(-5)} />
-            <Box component="img" src="/talleres.jpg" alt="Clase grupal" sx={collageImage(3)} />
+            <Box component="img" src="/talleres/talleres-cover.jpg" alt="Talleres" sx={collageImage(4)} />
+            <Box component="img" src="/home/about/about-acido-3.PNG" alt="Práctica" sx={collageImage(-3)} />
+            <Box component="img" src="/home/about/about-acido-4.jpg" alt="Workshop" sx={collageImage(-5)} />
+            <Box component="img" src="/talleres/talleres-cover.jpg" alt="Clase grupal" sx={collageImage(3)} />
           </Box>
         </Stack>
       </Container>

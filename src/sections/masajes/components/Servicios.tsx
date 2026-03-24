@@ -11,32 +11,32 @@ const servicios: Servicio[] = [
   {
     title: 'Masaje descontracturante',
     description: 'Ideal para liberar zonas de tensión y recuperar movilidad.',
-    image: '/masajes.jpg',
+    image: '/masajes/masajes-cover.jpg',
   },
   {
     title: 'Masaje relajante',
     description: 'Una pausa profunda para bajar el ritmo y descansar.',
-    image: '/skincare-3.jpeg',
+    image: '/masajes/masaje-card-3.jpeg',
   },
   {
     title: 'Masaje espalda y cuello',
     description: 'Trabajo focalizado para aliviar carga diaria en hombros y cervicales.',
-    image: '/masajes.jpg',
+    image: '/masajes/masajes-cover.jpg',
   },
   {
     title: 'Drenaje suave',
     description: 'Movimientos gentiles para favorecer desinflamación y bienestar.',
-    image: '/skincare-4.jpeg',
+    image: '/masajes/masaje-card-4.jpeg',
   },
   {
     title: 'Sesión anti-estrés',
     description: 'Combinación de técnicas para relajar cuerpo y mente.',
-    image: '/masajes.jpg',
+    image: '/masajes/masajes-cover.jpg',
   },
   {
     title: 'Ritual cuerpo completo',
     description: 'Una experiencia integral para terminar liviana y renovada.',
-    image: '/skincare-5.jpeg',
+    image: '/masajes/masaje-card-5.jpeg',
   },
 ];
 
