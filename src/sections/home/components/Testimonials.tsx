@@ -9,28 +9,28 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    title: 'Glow real ✨',
-    text: 'En pocas semanas mi piel se ve más pareja y luminosa.',
+    title: 'Espalda y cervical 💖',
+    text: 'Venia muy mal de la espalda y la cervical y Belu hizo magia.',
   },
   {
-    title: 'Tattoo sin drama 🖤',
-    text: 'Me guiaron en todo y cicatrizó perfecto desde el día uno.',
+    title: 'Renovada total ✨',
+    text: 'Me supo relajar para después sacarme todas las tensiones. Sali renovada, recomiendo.',
   },
   {
-    title: 'Desconexión total 🌿',
-    text: 'Entré tensa y salí liviana, como si reiniciara el cuerpo.',
+    title: 'Cejas cada mes 🩷',
+    text: 'Empecé a atenderme una vez que los permisos del COVID se estaban levantando, y desde ahí me hago el perfilado religiosamente TODOS los meses.',
   },
   {
-    title: 'Rutina simple 🧴',
-    text: 'Ahora sé exactamente qué usar y qué evitar cada día.',
+    title: 'Gracias Agus ✨',
+    text: 'En una de mis cejitas hay un remolino que Agus logra contener. Gracias por el hermoso espacio y la hermosa persona que sos con tus pacientes.',
   },
   {
-    title: 'Equipo que escucha 💬',
-    text: 'Se siente humano, cercano y súper profesional en cada paso.',
+    title: 'Piel en proceso 🫶🏼',
+    text: 'Llegué toda brotada y me diste la tranquilidad de que lo íbamos a mejorar, pasito a pasito, siempre escuchando lo que necesitaba.',
   },
   {
-    title: 'Resultados visibles 🔥',
-    text: 'Mi piel cambió y lo noté rápido, sin rutinas imposibles.',
+    title: 'Pasión que se nota 🌿',
+    text: 'Gracias por tu pasión y tu amor a lo que haces.',
   },
 ];
 
